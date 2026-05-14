@@ -23,6 +23,7 @@ const App=()=>{
       <Route path='/api' element={<Api />} />
       <Route path='/detail/:id' element={<Details />} />
        <Route path='/apis/:id' element={<Apidetail />} />
+       {/* <Route path='/apis/:id' element={<Apidetail />} /> */}
 
     </Routes>
     </BrowserRouter>
