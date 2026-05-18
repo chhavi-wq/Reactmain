@@ -21,16 +21,14 @@ const Api=()=>{
     return <p>Loading....</p>
   }
     return(
-        <div className="grid grid-cols-4 border">
+        <div className="grid grid-cols-4 gap-6 ">
             {
                 data.slice(0,10).map((item)=>(
-<div className="border" key={item.id}>
+<div className=" p-4 bg-red-400 items-center justify-center flex flex-row" key={item.id}>
    <Link to={`/apis/${item.id}`} >  <img src={item.images[0]} alt="" />
-    <p>{item.title}</p>
-    <span>{item.brand}</span>
-    <p>{item.description.slice(0,50)}....</p>
-
- <button className="bg-green-300 text-black text-xl border-rounded w-[90px] " >Buy</button>
+    <h1 className=" items-center justify-center flex">{item.title}</h1>
+    <h1 className=" items-center justify-center flex">{item.brand}</h1>
+ <button className="bg-[#D2B48C] px-6 rounded-4xl py-1 text-black">Buy</button>
 </Link> 
 </div>
                 ))
