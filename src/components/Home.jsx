@@ -22,6 +22,7 @@ const Home=()=>{
         <br />
         We believe in skincare should support your skin, not overwhelm <br />
         it, combining modern approach with calm, minimal approach.</p>
+        {/* <p>abc</p> */}
         <button className="rounded-4xl mt-7 px-10 py-2 text-white bg-[#6B7D5C]">More about Sage</button>
         </div>
     </div>
