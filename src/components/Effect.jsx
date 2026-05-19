@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import I from "../assets/vite.svg"
 import { Link } from "react-router-dom";
 export const product=[
@@ -13,11 +13,24 @@ export const product=[
     {id:9,name:"speaker",price:8000,description:"this is speaker",img:I},
     {id:10,name:"printer",price:12000,description:"this is printer",img:I},
 ]
+
 const Effect=()=>{
+  const[search,setSearch]=useState("");
     return(
-        <div className="grid grid-cols-4">
+      <>
+      <input
+  type="text"
+  placeholder="Search product..."
+  value={search}
+  onChange={(e)=>setSearch(e.target.value)}
+  className="border p-2 rounded mb-6"
+/>
+        <div className="grid pt-15 grid-cols-4">
           {
-            product.map((item)=>(
+           product.filter((item)=>(
+            item.name.toLowerCase().includes(search.toLowerCase())
+           ))
+          .map((item)=>(
                 <div key={item.id}>
                     <img src={item.img} alt="" />
                     <h1 className="text-red-500">{item.name}</h1>
@@ -32,6 +45,7 @@ const Effect=()=>{
           }
            
         </div>
+        </>
     )
 }
 export default Effect;

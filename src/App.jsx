@@ -1,7 +1,7 @@
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Navbar from './components/Navbar.jsx'
 import Home from './components/Home.jsx'
-import Service from './components/Service.jsx'
+import Shop from './components/Shop.jsx'
 import Login from './components/Login.jsx'
 import Contact from './components/Contact.jsx'
 import Effect from './components/Effect.jsx'
@@ -15,7 +15,7 @@ const App=()=>{
     <Navbar />
     <Routes>
       <Route path='/' element={<Home />} />
-      <Route path='/service' element={<Service />} />
+      <Route path='/shop' element={<Shop />} />
       <Route path='/login' element={<Login />} />
       <Route path='/contact' element={<Contact />} />
       <Route path='*' element={<h1>404 Not Found</h1>} />
@@ -23,8 +23,6 @@ const App=()=>{
       <Route path='/api' element={<Api />} />
       <Route path='/detail/:id' element={<Details />} />
        <Route path='/apis/:id' element={<Apidetail />} />
-       {/* <Route path='/apis/:id' element={<Apidetail />} /> */}
-         {/* <Route path='/apis/:id' element={<Apidetail />} /> */}
 
     </Routes>
     </BrowserRouter>

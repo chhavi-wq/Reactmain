@@ -8,7 +8,7 @@ const Navbar=()=>{
              <div>
                  <ul className="flex justify-around bg">
                 <Link to="/"><li>Home </li></Link>
-                <Link to="/service"><li>Service</li></Link>
+                <Link to="/shop"><li>Shop</li></Link>
                 <Link to="/login"><li>Login</li></Link>
                 <Link to="/contact"><li>Contact</li></Link>
                 </ul>
