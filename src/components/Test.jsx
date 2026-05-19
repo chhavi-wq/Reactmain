@@ -4,12 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { SearchContext } from "../SearchProvider";
 
-const Api=()=>{
+const Test=()=>{
 
     const [data,setData]=useState()
     const [loading,setLoading]=useState(true)
     // const[search,setSearch]=useState("");
-    const{search,setSearch}=useContext(SearchContext)
+    const{search}=useContext(SearchContext)
 
 
     useEffect(()=>{
@@ -75,4 +75,4 @@ const Api=()=>{
         </>
     )
 }
-export default Api
+export default Test

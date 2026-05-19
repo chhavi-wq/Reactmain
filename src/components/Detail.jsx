@@ -9,7 +9,6 @@ const Details=()=>{
     );
     return(
         <div>
-            detail page
             <img src={data.img} alt="" />
             <h1>{data.name}</h1>
             <p>{data.description}</p>

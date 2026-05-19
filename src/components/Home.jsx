@@ -2,7 +2,7 @@ const Home=()=>{
    
     return(
         <>
-       <div className="h-screen w-full flex items-end justify-center bg-cover bg-[url('main.jpg')]">
+       <div className="h-screen w-full flex pt-5 items-end justify-center bg-cover bg-[url('main.jpg')]">
     
     <h1 className="text-white text-[540px] leading-none font-bold font-serif">
         sage
