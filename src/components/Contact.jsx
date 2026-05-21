@@ -11,7 +11,7 @@ const Contact=()=>{
         <div className="bg-white p-10 text-black h-[50%] w-[60%] p-2">
             <div className="flex justify-between h-full"> 
                 <div id="leftDiv">
-                    <h1 className="text-black font-bold text-[70px]">Get in touch</h1>
+                    <h1 className="text-black font-bold text-[50px]">Get in touch</h1>
                     <h1 className="text-black font-bold text-[20px]">Email</h1>
                     <p>Moneta@gmail.com</p>
                     <h1 className="text-black font-bold text-[20px]">Phone</h1>

@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
-
-
 const Apidetail=()=>{
 const navigate=useNavigate() //imp
     const {id}=useParams()
@@ -23,18 +21,11 @@ const navigate=useNavigate() //imp
   if(loading){
     return <p>Loading....</p>
   }
-
-
     return(
         <div>
             detail page
             <div className="flex gap-30">
-
-           
-
             <div >
-
-           
             <img src={data.images[0]} alt="" />
              </div>
              <div>
