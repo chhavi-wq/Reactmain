@@ -18,12 +18,11 @@ const Navbar=()=>{
         <>
              <div>
                  <ul className="flex justify-around bg">
-                <Link to="/"><li><IoIosHome />Home </li></Link>
+                <Link to="/"><li>Home </li></Link>
                 <Link to="/shop"><li>Shop</li></Link>
                 <Link to="/login"><li>Login</li></Link>
-                <Link to="/test"><li>Test</li></Link>
                 <li onClick={handlelogout}>Logout</li>
-                <input value={search} onChange={(e)=>setSearch(e.target.value)} className="border" type="search"  placeholder="search....."/>
+                {/* <input value={search} onChange={(e)=>setSearch(e.target.value)} className="border" type="search"  placeholder="search....."/> */}
                 <Link to="/contact"><li>Contact</li></Link>
                 </ul>
             </div>

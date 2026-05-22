@@ -8,7 +8,6 @@ import Effect from './components/Effect.jsx'
 import Api from './components/Api.jsx'
 import Details from "./components/Detail.jsx"
 import Apidetail from './components/Apidetail.jsx'
-import Test from './components/Test.jsx'
 import SearchProvider from './SearchProvider.jsx'
 import ProtectRouting from './Protectrouting.jsx'
 const App=()=>{
@@ -32,7 +31,6 @@ const App=()=>{
       <Route path='/api' element={<Api />} />
       <Route path='/detail/:id' element={<Details />} />
        <Route path='/apis/:id' element={<Apidetail />} />
-        <Route path='/test' element={<Test />} />
 
     </Routes>
     </BrowserRouter>
