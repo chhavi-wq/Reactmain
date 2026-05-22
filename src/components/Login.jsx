@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
     const navigate=useNavigate()
@@ -27,39 +28,56 @@ setFormdata({
     e.preventDefault();
 
     if(!formdata.email || !formdata.password ){
-        alert("all feild required")
+        toast.error("all feild required")
     }
 
     if(isSignup){
         if(!formdata.name || !formdata.confirmPassword){
-          return  alert("all feild required")
+          return  toast.error("all feild required")
         }
 
         if(formdata.password != formdata.confirmPassword){
-          return  alert("password does not match")
+          return  toast.error("password does not match")
         }
+        const users = JSON.parse(localStorage.getItem("users")) || [];
 
-        localStorage.setItem("users",JSON.stringify(formdata))
-       return  alert("singup successsfulyy")
-        setIsSignup(true)
+        users.push(formdata)
+
+        localStorage.setItem("users",JSON.stringify(users))
+      toast.success("signup successful")
+        setIsSignup(!isSignup)
     }
    if (!isSignup) {
   const users = JSON.parse(localStorage.getItem("users")) || [];
+  if(users.length > 0){
+    const currentUser = users.find(
+      (user) =>
+        user.email === formdata.email && user.password === formdata.password
+    );
+    if(!currentUser){
+      toast.error("Invalid email or password");
+      return;
+    }}
 
   if (users.length === 0) {
-    alert("User not found");
+    toast.error("User not found");
     // return;
   }
 
  
 
 
-  alert("Login successfully");
+  toast.success("Login successfully");
+  localStorage.setItem("currentUser",JSON.stringify(formdata))
   navigate("/");
 }
   };
 
   return (
+    <>
+    <div className="fixed top-0 left-0 w-full z-50">
+      <ToastContainer />
+    </div>
     <div className="bg-[#3E2723] h-screen w-full flex justify-center items-center">
       <div className="bg-white  w-[30%] p-6 flex flex-col rounded-lg">
         <form
@@ -151,6 +169,7 @@ setFormdata({
         </form>
       </div>
     </div>
+    </>
   );
 };
 

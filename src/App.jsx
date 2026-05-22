@@ -10,6 +10,7 @@ import Details from "./components/Detail.jsx"
 import Apidetail from './components/Apidetail.jsx'
 import Test from './components/Test.jsx'
 import SearchProvider from './SearchProvider.jsx'
+import ProtectRouting from './Protectrouting.jsx'
 const App=()=>{
   return(
     <>
@@ -19,7 +20,10 @@ const App=()=>{
     <BrowserRouter>
     <Navbar />
     <Routes>
-      <Route path='/' element={<Home />} />
+      <Route path='/' element={ <ProtectRouting>
+        <Home />
+        </ProtectRouting>
+        } />
       <Route path='/shop' element={<Shop />} />
       <Route path='/login' element={<Login />} />
       <Route path='/contact' element={<Contact />} />

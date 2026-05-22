@@ -23,15 +23,23 @@ const navigate=useNavigate()
   }
     return(
         <div>
-            detail page
+            
             <div className="flex gap-30">
             <div >
-            <img src={data.images[0]} alt="" />
+            <img className="w-full h-full object-cover" src={data.images[0]} alt="" />
              </div>
              <div>
-            <h1>{data.brand}</h1>
-            <p>{data.description}</p>
-            <span>{data.price}</span>
+            <h1 className="text-[70px] font-bold ">{data.brand}</h1>
+            <p className="text-[20px] font-serif ">{data.description}</p>
+            <span className="text-[60px] font-bold ">${data.price}</span>
+            <h1 className="text-[30px] font-bold ">Color</h1>
+            <div className="flex gap-5">
+                <div className="bg-[#6366F1] rounded-full w-10 h-10"></div>
+                <div className="bg-[#2563EB] underline underline-offset-8 decoration-2 decoration-black-4 rounded-full w-10 h-10"></div>
+                <div className="bg-[#2DD4BF] rounded-full w-10 h-10"></div>
+                <div className="bg-[#FB7185] rounded-full w-10 h-10"></div>
+                <div className="bg-[#F97316] rounded-full w-10 h-10"></div>
+            </div>
             <div className="flex gap-30">
                 <button onClick={()=>navigate(`/apis/${Number(id)-1}`)} className="border">Previous</button>
                 <button onClick={()=>navigate(`/apis/${Number(id)+1}`)} className="border">Next</button>
