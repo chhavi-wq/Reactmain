@@ -1,32 +1,76 @@
-import {Link, useNavigate} from "react-router-dom"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse } from "@fortawesome/free-solid-svg-icons";
-import { useContext } from "react";
-import { SearchContext } from "../SearchProvider";
-import { IoIosHome } from "react-icons/io";
+import { Link, useNavigate } from "react-router-dom";
+import { FaUserCircle } from "react-icons/fa";
 
+const Navbar = () => {
+  const navigate = useNavigate();
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+console.log(currentUser);
+  const handleLogout = () => {
+    localStorage.removeItem("currentUser");
+    navigate("/login");
+  };
+  return (
+    <>
+    <nav className="sticky top-4 mx-6 text-black-400 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-lg shadow-lg">
+      <ul className="flex items-center justify-between px-8 py-4 text-black">
 
-const Navbar=()=>{
-    const {search,setSearch}=useContext(SearchContext)
-    const navigate=useNavigate()
+        <div className="flex gap-6 font-medium">
+          <Link to="/">
+            <li className="hover:text-blue-300 transition">
+              Home
+            </li>
+          </Link>
 
-    const handlelogout=()=>{
-        localStorage.removeItem("currentUser")
-        navigate("/login")
-    }
-    return (
-        <>
-             <div>
-                 <ul className="flex justify-around bg">
-                <Link to="/"><li>Home </li></Link>
-                <Link to="/shop"><li>Shop</li></Link>
-                <Link to="/login"><li>Login</li></Link>
-                <li onClick={handlelogout}>Logout</li>
-                {/* <input value={search} onChange={(e)=>setSearch(e.target.value)} className="border" type="search"  placeholder="search....."/> */}
-                <Link to="/contact"><li>Contact</li></Link>
-                </ul>
-            </div>
-        </>
-    )
-}
+          <Link to="/contact">
+            <li className="hover:text-blue-300 transition">
+              Contact
+            </li>
+          </Link>
+
+          <Link to="/shop">
+            <li className="hover:text-blue-300 transition">
+              Shop
+            </li>
+          </Link>
+
+          <Link to="/effect">
+            <li className="hover:text-blue-300 transition">
+              Effect
+            </li>
+          </Link>
+
+          <Link to="/api">
+            <li className="hover:text-blue-300 transition">
+              Api
+            </li>
+          </Link>
+        </div>
+
+        <div className="flex items-center gap-5">
+           {currentUser ?(
+         <li
+            onClick={handleLogout}
+            className="cursor-pointer hover:text-red-300 transition font-medium"
+          >
+            Logout
+          </li>
+           )
+            :(
+            <Link to="/login">
+            <li className="hover:text-green-300 transition font-medium">
+              Login
+            </li>
+          </Link>
+          
+            )}
+          <li className="text-3xl cursor-pointer hover:scale-110 transition">
+            <FaUserCircle />
+          </li>
+        </div>
+      </ul>
+    </nav>
+    </>
+  );
+};
+
 export default Navbar;

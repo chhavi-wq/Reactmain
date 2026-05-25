@@ -14,8 +14,6 @@ const App=()=>{
   return(
     <>
     <SearchProvider>
-
-   
     <BrowserRouter>
     <Navbar />
     <Routes>
