@@ -44,6 +44,11 @@ console.log(currentUser);
               Api
             </li>
           </Link>
+          <Link to="/cart">
+            <li className="hover:text-blue-300 transition">
+              Cart
+            </li>
+          </Link>
         </div>
 
         <div className="flex items-center gap-5">

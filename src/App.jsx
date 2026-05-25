@@ -10,6 +10,8 @@ import Details from "./components/Detail.jsx"
 import Apidetail from './components/Apidetail.jsx'
 import SearchProvider from './SearchProvider.jsx'
 import ProtectRouting from './Protectrouting.jsx'
+import Cart from './components/Cart.jsx'
+import Cro from './components/Crowsel.jsx'
 const App=()=>{
   return(
     <>
@@ -29,6 +31,8 @@ const App=()=>{
       <Route path='/api' element={<Api />} />
       <Route path='/detail/:id' element={<Details />} />
        <Route path='/apis/:id' element={<Apidetail />} />
+       <Route path='/cart' element={<Cart/>}/>
+         <Route path='/crr' element={<Cro/>}/>
 
     </Routes>
     </BrowserRouter>

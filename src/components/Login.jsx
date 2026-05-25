@@ -93,7 +93,6 @@ setFormdata({
               : "Login to continue"}
           </p>
 
-          {/* Name (Signup only) */}
           {isSignup && (
             <div className="mt-5">
               <label className="text-xl font-bold">Name</label>
@@ -108,7 +107,6 @@ setFormdata({
             </div>
           )}
 
-          {/* Email */}
           <div className="mt-5">
             <label className="text-xl font-bold">Email</label>
             <input
@@ -121,7 +119,7 @@ setFormdata({
             />
           </div>
 
-          {/* Password */}
+  
           <div className="mt-5">
             <label className="text-xl font-bold">Password</label>
             <input
@@ -134,7 +132,6 @@ setFormdata({
             />
           </div>
 
-          {/* Confirm Password (Signup only) */}
           {isSignup && (
             <div className="mt-5">
               <label className="text-xl font-bold">Confirm Password</label>
