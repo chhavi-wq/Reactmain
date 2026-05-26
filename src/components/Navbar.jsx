@@ -9,6 +9,10 @@ console.log(currentUser);
     localStorage.removeItem("currentUser");
     navigate("/login");
   };
+  const cartitem=JSON.parse(localStorage.getItem("cart"))
+  console.log("cartttttt",cartitem)
+  const count=cartitem.length
+  console.log("counttttt",count)
   return (
     <>
     <nav className="sticky top-4 mx-6 text-black-400 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-lg shadow-lg">
@@ -46,7 +50,7 @@ console.log(currentUser);
           </Link>
           <Link to="/cart">
             <li className="hover:text-blue-300 transition">
-              Cart
+              Cart {count}
             </li>
           </Link>
         </div>
