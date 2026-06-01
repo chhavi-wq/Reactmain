@@ -1,51 +1,126 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { faSquareTwitter } from "@fortawesome/free-brands-svg-icons/faSquareTwitter";
-import { faSquareFacebook } from "@fortawesome/free-brands-svg-icons/faSquareFacebook";
-import { faSquareInstagram } from "@fortawesome/free-brands-svg-icons/faSquareInstagram";
-import { faSquareXTwitter } from "@fortawesome/free-brands-svg-icons/faSquareXTwitter";
-const Contact=()=>{
-    return (
-        <>
-        <div className="bg-gray-400 h-screen items-center justify-center flex w-full">
-        <div className="bg-white p-10 text-black h-[50%] w-[60%] p-2">
-            <div className="flex justify-between h-full"> 
-                <div id="leftDiv">
-                    <h1 className="text-black font-bold text-[50px]">Get in touch</h1>
-                    <h1 className="text-black font-bold text-[20px]">Email</h1>
-                    <p>Moneta@gmail.com</p>
-                    <h1 className="text-black font-bold text-[20px]">Phone</h1>
-                    <p>+1 (123) 456-7890</p>
-                    <h1 className="text-black font-bold text-[20px]" >Address</h1>
-                    <p>123 Main Street, City, State 12345</p>
-                    <h1 className="text-black font-bold text-[20px]" >Follow us</h1>
-                    <div>
-    <FontAwesomeIcon icon={faSquareTwitter} /> 
-    <FontAwesomeIcon icon={faSquareFacebook} />
-    <FontAwesomeIcon icon={faSquareInstagram} />
-    <FontAwesomeIcon icon={faSquareXTwitter} />
+import {
+  faSquareFacebook,
+  faSquareInstagram,
+  faSquareXTwitter,
+} from "@fortawesome/free-brands-svg-icons";
 
-                    </div>
+const Contact = () => {
+  return (
+    <>
+      <div className="bg-[#0F172A] min-h-screen flex items-center justify-center px-6">
+        <div className="bg-[#1E293B] text-white rounded-3xl shadow-2xl w-full max-w-6xl p-10">
+          <div className="flex flex-col md:flex-row justify-between gap-14">
+            
+            <div className="md:w-1/2">
+              <h1 className="text-5xl font-bold mb-8 text-[#60A5FA]">
+                Get in touch
+              </h1>
+
+              <div className="space-y-6">
+                <div>
+                  <h2 className="font-semibold text-xl text-gray-200">
+                    Email
+                  </h2>
+                  <p className="text-gray-400 mt-1">
+                    moneta@gmail.com
+                  </p>
                 </div>
-                <div id="rightDiv" className="flex flex-col justify-center">
-                    <div className="flex pt-10 gap-10">
-                        <div>
-                            <h1 className="font-bold text-xl">Your Name</h1>
-                            <input className="p-4 mt-3 mb-5 bg-gray-200" type="text" placeholder="Your full name" />
-                        </div>
-                        <div>
-                            <h1 className="font-bold text-xl">Email Address</h1>
-                            <input className="p-4 mt-3 mb-5 bg-gray-200" type="text" placeholder="Your email address" />
-                        </div>
-                    </div>
-                    <h1 className="font-bold text-xl">Message</h1>
-                    <textarea className="p-4 mt-3 mb-5 bg-gray-200" placeholder="Write something...."></textarea>
-                    <button className="bg-black text-white rounded-xl p-4" type="submit">Send Message</button>
+
+                <div>
+                  <h2 className="font-semibold text-xl text-gray-200">
+                    Phone
+                  </h2>
+                  <p className="text-gray-400 mt-1">
+                    +1 (123) 456-7890
+                  </p>
                 </div>
+
+                <div>
+                  <h2 className="font-semibold text-xl text-gray-200">
+                    Address
+                  </h2>
+                  <p className="text-gray-400 mt-1">
+                    123 Main Street, City, State 12345
+                  </p>
+                </div>
+
+                <div>
+                  <h2 className="font-semibold text-xl text-gray-200 mb-3">
+                    Follow us
+                  </h2>
+
+                  <div className="flex gap-5 text-4xl text-[#60A5FA]">
+                    <FontAwesomeIcon
+                      icon={faSquareFacebook}
+                      className="hover:text-white duration-300 cursor-pointer"
+                    />
+
+                    <FontAwesomeIcon
+                      icon={faSquareInstagram}
+                      className="hover:text-white duration-300 cursor-pointer"
+                    />
+
+                    <FontAwesomeIcon
+                      icon={faSquareXTwitter}
+                      className="hover:text-white duration-300 cursor-pointer"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
+
+            <div className="md:w-1/2">
+              <div className="flex flex-col md:flex-row gap-6">
+                <div className="w-full">
+                  <h1 className="font-semibold text-lg mb-2">
+                    Your Name
+                  </h1>
+
+                  <input
+                    className="w-full bg-[#334155] text-white p-4 rounded-xl outline-none border border-transparent focus:border-[#60A5FA]"
+                    type="text"
+                    placeholder="Your full name"
+                  />
+                </div>
+
+                <div className="w-full">
+                  <h1 className="font-semibold text-lg mb-2">
+                    Email Address
+                  </h1>
+
+                  <input
+                    className="w-full bg-[#334155] text-white p-4 rounded-xl outline-none border border-transparent focus:border-[#60A5FA]"
+                    type="text"
+                    placeholder="Your email address"
+                  />
+                </div>
+              </div>
+
+              <div className="mt-6">
+                <h1 className="font-semibold text-lg mb-2">
+                  Message
+                </h1>
+
+                <textarea
+                  className="w-full h-40 bg-[#334155] text-white p-4 rounded-xl outline-none border border-transparent focus:border-[#60A5FA]"
+                  placeholder="Write something..."
+                ></textarea>
+              </div>
+
+              <button
+                className="mt-6 bg-[#60A5FA] hover:bg-[#3B82F6] text-white font-semibold px-8 py-4 rounded-xl duration-300 w-full"
+                type="submit"
+              >
+                Send Message
+              </button>
+            </div>
+
+          </div>
         </div>
-        </div>
-        </>
-    )
-}
+      </div>
+    </>
+  );
+};
+
 export default Contact;
