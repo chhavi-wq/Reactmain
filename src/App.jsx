@@ -13,6 +13,7 @@ import ProtectRouting from './Protectrouting.jsx'
 import Cart from './components/Cart.jsx'
 import Cro from './components/Crowsel.jsx'
 import Checkout from "./components/Checkout.jsx";
+import Backend from './backednapiss/BackendApi.jsx'
 const App=()=>{
   return(
     <>
@@ -35,6 +36,9 @@ const App=()=>{
        <Route path='/cart' element={<Cart/>}/>
          <Route path='/crr' element={<Cro/>}/>
          <Route path='/checkout' element={<Checkout/>} />
+
+
+         <Route path="/test" element={<Backend/>}/>
 
     </Routes>
     </BrowserRouter>
