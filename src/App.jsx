@@ -14,6 +14,7 @@ import Cart from './components/Cart.jsx'
 import Cro from './components/Crowsel.jsx'
 import Checkout from "./components/Checkout.jsx";
 import Backend from './backednapiss/BackendApi.jsx'
+import UpdateApi from './backednapiss/UpdateApi.jsx'
 const App=()=>{
   return(
     <>
@@ -39,6 +40,7 @@ const App=()=>{
 
 
          <Route path="/test" element={<Backend/>}/>
+         <Route path ="/update" element ={<UpdateApi />} />
 
     </Routes>
     </BrowserRouter>

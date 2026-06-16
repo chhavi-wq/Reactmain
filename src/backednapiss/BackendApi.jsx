@@ -56,10 +56,6 @@ const Backend = () => {
             setLoading(false);
         }
     };
-    const update=()=>{
-        
-    }
-
     return (
         <div style={{ maxWidth: "400px", margin: "40px auto" }}>
             <h2>Create User</h2>
@@ -115,7 +111,7 @@ const Backend = () => {
                 <button type="submit" disabled={loading}>
                     {loading ? "Creating..." : "Create User"}
                 </button>
-                <button onClick={update}>update</button>
+                
             </form>
         </div>
     );
