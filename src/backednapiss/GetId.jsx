@@ -3,36 +3,59 @@ import { useState } from "react";
 const GetUserById = () => {
   const [id, setId] = useState("");
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
   const getUser = async () => {
-    const response = await fetch(
-      `http://localhost:4000/api/getuser/${id}`
-    );
+    if (!id) {
+      setMessage("Please enter user ID");
+      return;
+    }
 
-    const data = await response.json();
+    setLoading(true);
+    setMessage("");
+    setUser(null);
 
-    if (response.ok) {
+    try {
+      const response = await
+       fetch(`http://localhost:4000/api/getbyid/${id}`)
+      ;
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setMessage(data.message || "User not found");
+        setLoading(false);
+        return;
+      }
+
       setUser(data.user);
+    } catch (error) {
+      setMessage("Server error");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div>
+    <div style={{ marginTop: "40px", padding: "40px" }}>
       <input
         type="text"
         placeholder="Enter User ID"
         value={id}
         onChange={(e) => setId(e.target.value)}
       />
-
-      <button onClick={getUser}>
-        Get User
+    <br />
+      <button onClick={getUser} disabled={loading}>
+        {loading ? "Loading..." : "Get User"}
       </button>
 
+      {message && <p>{message}</p>}
+    <br />
       {user && (
-        <div>
-          <p>{user.firstname}</p>
-          <p>{user.email}</p>
+        <div style={{ marginTop: "20px" }}>
+          <p><strong>Name:</strong> {user.firstname}</p>
+          <p><strong>Email:</strong> {user.email}</p>
         </div>
       )}
     </div>
@@ -40,3 +63,4 @@ const GetUserById = () => {
 };
 
 export default GetUserById;
+

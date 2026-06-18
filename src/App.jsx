@@ -18,7 +18,9 @@ import UpdateApi from './backednapiss/UpdateApi.jsx'
 import LoginOtp from './backednapiss/LoginOtp.jsx'
 import Verify from './backednapiss/VerifyOtp.jsx'
 import GetUsers from './backednapiss/GetUsers.jsx'
-import GetUserById  from './backednapiss/GetUsers.jsx'
+import GetUserById  from './backednapiss/GetId.jsx'
+import DeleteUser from './backednapiss/DeleteApi.jsx'
+
 const App=()=>{
   return(
     <>
@@ -50,7 +52,9 @@ const App=()=>{
 
          <Route path="/verify" element={<Verify />} />
          <Route path="/getall" element={<GetUsers />} />
-         <Route path="/getUserId" element={<GetUserById />}/>
+         <Route path="/getId" element={<GetUserById />} />
+
+         <Route path="/deleteuser" element={<DeleteUser />}/>
 
     </Routes>
     </BrowserRouter>

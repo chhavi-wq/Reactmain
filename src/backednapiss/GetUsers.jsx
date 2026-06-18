@@ -11,6 +11,7 @@ const GetUsers = () => {
         console.log(result);
 
         SetData(result.use);
+        console.log("abccccc",result.use)
     };
 
     return (
@@ -46,7 +47,7 @@ const GetUsers = () => {
       }}
     >
       <img
-        src={`http://localhost:4000/${item.avatar[0]}`}
+        src={`http://localhost:4000/${item?.avatar[0]}`}
         alt="avatar"
         width="100"
       />
