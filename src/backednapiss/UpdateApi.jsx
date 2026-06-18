@@ -51,15 +51,16 @@ const UpdateApi = ()=>{
 };
 
 return(
-    <div>
+    <div style={{ maxWidth: "400px", margin: "40px auto" }}>
         <form onSubmit={handleSubmit}>
-
+            <p >User Login</p>
+            {message && <p>{message}</p>}
         <input type="text" placeholder="Your email" name="email" onChange={handleChange} required/>
 
         <input type="password" placeholder="Your Password" name="password" onChange={handleChange} required/>
 
          <button type="submit" disabled={loading}>
-                    {loading ? "Logging In..." : "Logged in Successfully"}
+                    {loading ? "Logging In..." : "Login"}
                 </button>
         </form>
     </div>

@@ -15,6 +15,10 @@ import Cro from './components/Crowsel.jsx'
 import Checkout from "./components/Checkout.jsx";
 import Backend from './backednapiss/BackendApi.jsx'
 import UpdateApi from './backednapiss/UpdateApi.jsx'
+import LoginOtp from './backednapiss/LoginOtp.jsx'
+import Verify from './backednapiss/VerifyOtp.jsx'
+import GetUsers from './backednapiss/GetUsers.jsx'
+import GetUserById  from './backednapiss/GetUsers.jsx'
 const App=()=>{
   return(
     <>
@@ -41,6 +45,12 @@ const App=()=>{
 
          <Route path="/test" element={<Backend/>}/>
          <Route path ="/update" element ={<UpdateApi />} />
+
+         <Route path="/LoginOtp" element={<LoginOtp />} />
+
+         <Route path="/verify" element={<Verify />} />
+         <Route path="/getall" element={<GetUsers />} />
+         <Route path="/getUserId" element={<GetUserById />}/>
 
     </Routes>
     </BrowserRouter>
