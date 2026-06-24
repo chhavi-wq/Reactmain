@@ -5,7 +5,7 @@ const Home=()=>{
     return(
         <>
         <div className="h-screen w-full">
-       <div className="h-screen w-full flex items-end justify-center bg-cover bg-green-500">
+       <div className="h-screen w-full flex items-end justify-center bg-cover bg-[url('main.jpg')]">
        <h1 className="text-[500px] font-bold font-serif text-white">
   sage
 </h1>
