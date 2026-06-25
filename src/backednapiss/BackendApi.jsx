@@ -23,7 +23,7 @@ const Backend = () => {
         setMessage("");
 
         try {
-            const response = await fetch("https://backend-fiyc.onrender.com/create", {
+            const response = await fetch("https://backend-fiyc.onrender.com/api/create", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
