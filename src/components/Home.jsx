@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <>
       <div className="h-screen w-full">
-        <div className="h-screen w-full flex items-end justify-center bg-cover " style={{ backgroundImage: `url(${IM})` }}>
+        <div className="h-screen w-full flex items-end justify-center bg-cover" style={{ backgroundImage: `url(${IM})` }}>
           <h1 className="text-[500px] font-bold font-serif text-white">
             sage
           </h1>
