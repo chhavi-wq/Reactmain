@@ -1,5 +1,4 @@
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
-import Navbar from './components/Navbar.jsx'
 import Home from './components/Home.jsx'
 import Shop from './components/Shop.jsx'
 import Login from './components/Login.jsx'
@@ -13,18 +12,12 @@ import ProtectRouting from './Protectrouting.jsx'
 import Cart from './components/Cart.jsx'
 import Cro from './components/Crowsel.jsx'
 import Checkout from "./components/Checkout.jsx";
-import Backend from './backednapiss/BackendApi.jsx'
-import UpdateApi from './backednapiss/UpdateApi.jsx'
-import LoginOtp from './backednapiss/LoginOtp.jsx'
-import Verify from './backednapiss/VerifyOtp.jsx'
-import GetUsers from './backednapiss/GetUsers.jsx'
-import GetUserById  from './backednapiss/GetUsers.jsx'
+import VerifyOtp from './components/prop/VerifyOtp.jsx'
 const App=()=>{
   return(
     <>
     <SearchProvider>
     <BrowserRouter>
-    <Navbar />
     <Routes>
       <Route path='/' element={ <ProtectRouting>
         <Home />
@@ -40,17 +33,8 @@ const App=()=>{
        <Route path='/apis/:id' element={<Apidetail />} />
        <Route path='/cart' element={<Cart/>}/>
          <Route path='/crr' element={<Cro/>}/>
-         <Route path='/checkout' element={<Checkout/>} />
-
-
-         <Route path="/test" element={<Backend/>}/>
-         <Route path ="/update" element ={<UpdateApi />} />
-
-         <Route path="/LoginOtp" element={<LoginOtp />} />
-
-         <Route path="/verify" element={<Verify />} />
-         <Route path="/getall" element={<GetUsers />} />
-         <Route path="/getUserId" element={<GetUserById />}/>
+         <Route path='/checkout' element={<Checkout/>} />      
+         <Route path="/verifyotp" element={<VerifyOtp />} />
 
     </Routes>
     </BrowserRouter>

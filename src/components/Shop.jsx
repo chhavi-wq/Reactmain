@@ -1,17 +1,47 @@
-import Api from "./Api.jsx"
-import { useEffect,useState } from "react";
-const Shop=()=>{
-    
-    return(
-    <>
-    <div className="h-[400px] bg-[#1E293B] bg-cover w-full bg">
-    <h2 className="font-bold font-serif text-white justify-center items-center flex text-[300px]">shop</h2></div>
-        <div className="py-20 p-10 h-[80%] bg-white w-full">
-        <h1 className="font-serif p-4 flex text-[50px] font-bold text-black flex">Give All You Need</h1>
+import Api from "./Api.jsx";
+import Navbar from "./Navbar.jsx";
 
-         <Api/>
+const Shop = () => {
+  return (
+    <>
+      <Navbar />
+
+      {/* Hero Section */}
+      <section className="mt-20 px-6">
+  <div className="relative h-[500px] rounded-3xl overflow-hidden">
+    <img
+      src="/banner.jpg"
+      alt="Banner"
+      className="w-full h-full object-cover"
+    />
+
+    <div className="absolute inset-0 bg-black/40 flex flex-col justify-center px-16">
+      <h1 className="text-6xl font-bold text-white">
+        Summer Collection
+      </h1>
+
+      <p className="text-white text-xl mt-4 max-w-lg">
+        Discover the latest trends and premium essentials.
+      </p>
+
+      <button className="mt-8 w-fit bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-200">
+        Shop Now
+      </button>
     </div>
+  </div>
+</section>
+
+      {/* Products Section */}
+     <section className="px-6 pb-20">
+  <div className="flex justify-center font-mono mt-20 items-center text-center mb-8">
+    <h2 className="text-6xl font-bold">Featured Products</h2>
+
+  </div>
+
+  <Api />
+</section>
     </>
-    )
-}
+  );
+};
+
 export default Shop;

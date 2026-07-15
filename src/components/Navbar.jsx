@@ -21,26 +21,25 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="sticky top-4 mx-6 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-lg shadow-lg">
-        <ul className="flex items-center justify-between px-8 py-4 text-black">
-
+    <nav className="fixed top-4 left-0 right-0 mx-6 rounded-2xl border border-white/20 bg-white/40 backdrop-blur-lg shadow-lg z-50">
+  <ul className="flex items-center justify-between px-8 py-4 text-black">
 
           <div className="flex gap-6 font-medium">
 
             <Link to="/">
-              <li className="hover:text-blue-300 transition">
+              <li className="hover:scale-110 duration-200 transition">
                 Home
               </li>
             </Link>
 
             <Link to="/contact">
-              <li className="hover:text-blue-300 transition">
+              <li className="hover:scale-110  duration-200 transition">
                 Contact
               </li>
             </Link>
 
             <Link to="/shop">
-              <li className="hover:text-blue-300 transition">
+              <li className="hover:scale-110 duration-200  transition">
                 Shop
               </li>
             </Link>
@@ -58,7 +57,7 @@ const Navbar = () => {
             </Link> */}
 
             <Link to="/cart">
-              <li className="hover:text-blue-300 transition">
+              <li className="hover:scale-110 duration-200 transition">
                 Cart ({count})
               </li>
             </Link>
@@ -69,13 +68,13 @@ const Navbar = () => {
             {currentUser ? (
               <li
                 onClick={handleLogout}
-                className="cursor-pointer hover:text-red-300 transition font-medium list-none"
+                className="cursor-pointer hover:scale-110 duration-200 transition font-medium list-none"
               >
                 Logout
               </li>
             ) : (
               <Link to="/login">
-                <li className="hover:text-green-300 transition font-medium">
+                <li className="hover:scale-110 duration-200 transition font-medium">
                   Login
                 </li>
               </Link>

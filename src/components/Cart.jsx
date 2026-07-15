@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
+import Navbar from "./Navbar";
 import {
   addToCart,
   clearCart,
@@ -21,6 +22,8 @@ const Cart = () => {
 
   if (cartItems.length === 0) {
     return (
+      <>
+      <Navbar/>
       <div className="min-h-screen flex items-center justify-center bg-[#fafafa]">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-gray-800">
@@ -32,11 +35,15 @@ const Cart = () => {
           </p>
         </div>
       </div>
+    </>
+
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#f7f7f7] py-10 px-4">
+    <>
+     <Navbar/>
+    <div className="min-h-screen bg-[#f7f7f7] py-25 px-4">
       
       <div className="max-w-7xl mx-auto">
     
@@ -184,6 +191,7 @@ const Cart = () => {
         </div>
       </div>
     </div>
+   </>
   );
 };
 

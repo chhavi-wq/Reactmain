@@ -1,126 +1,165 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Navbar from "./Navbar";
 import {
-  faSquareFacebook,
-  faSquareInstagram,
-  faSquareXTwitter,
-} from "@fortawesome/free-brands-svg-icons";
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+  FaEnvelope,
+  FaClock,
+  FaFacebookSquare,
+  FaInstagram,
+  FaTwitterSquare,
+} from "react-icons/fa";
 
-const Contact = () => {
+export default function Contact() {
   return (
     <>
-      <div className="bg-[#0F172A] min-h-screen flex items-center justify-center px-6">
-        <div className="bg-[#1E293B] text-white rounded-3xl shadow-2xl w-full max-w-6xl p-10">
-          <div className="flex flex-col md:flex-row justify-between gap-14">
-            
-            <div className="md:w-1/2">
-              <h1 className="text-5xl font-bold mb-8 text-[#60A5FA]">
-                Get in touch
-              </h1>
+      <Navbar />
 
-              <div className="space-y-6">
-                <div>
-                  <h2 className="font-semibold text-xl text-gray-200">
-                    Email
-                  </h2>
-                  <p className="text-gray-400 mt-1">
-                    moneta@gmail.com
-                  </p>
-                </div>
+      <section className="bg-gray-100 min-h-screen py-25 px-6">
+        <div className="max-w-7xl mx-auto">
 
-                <div>
-                  <h2 className="font-semibold text-xl text-gray-200">
-                    Phone
-                  </h2>
-                  <p className="text-gray-400 mt-1">
-                    +1 (123) 456-7890
-                  </p>
-                </div>
+          <div className="text-center mb-14">
+            <h1 className="text-5xl font-bold text-gray-800">
+              Contact Us
+            </h1>
+            <p className="text-gray-500 mt-4 text-lg">
+              We'd love to hear from you. Send us a message anytime.
+            </p>
+          </div>
+          <div className="bg-white rounded-3xl shadow-xl overflow-hidden grid md:grid-cols-2">
 
-                <div>
-                  <h2 className="font-semibold text-xl text-gray-200">
-                    Address
-                  </h2>
-                  <p className="text-gray-400 mt-1">
-                    123 Main Street, City, State 12345
-                  </p>
-                </div>
+       
+            <div className="bg-blue-600 text-white p-10">
 
-                <div>
-                  <h2 className="font-semibold text-xl text-gray-200 mb-3">
-                    Follow us
-                  </h2>
+              <h2 className="text-3xl font-bold mb-8">
+                Get in Touch
+              </h2>
 
-                  <div className="flex gap-5 text-4xl text-[#60A5FA]">
-                    <FontAwesomeIcon
-                      icon={faSquareFacebook}
-                      className="hover:text-white duration-300 cursor-pointer"
-                    />
+              <div className="space-y-8">
 
-                    <FontAwesomeIcon
-                      icon={faSquareInstagram}
-                      className="hover:text-white duration-300 cursor-pointer"
-                    />
-
-                    <FontAwesomeIcon
-                      icon={faSquareXTwitter}
-                      className="hover:text-white duration-300 cursor-pointer"
-                    />
+                <div className="flex gap-5">
+                  <FaMapMarkerAlt className="text-2xl mt-1" />
+                  <div>
+                    <h3 className="font-semibold text-lg">Address</h3>
+                    <p className="text-blue-100">
+                      Delhi, New Delhi XYZ Road
+                    </p>
                   </div>
                 </div>
+
+                <div className="flex gap-5">
+                  <FaPhoneAlt className="text-2xl mt-1" />
+                  <div>
+                    <h3 className="font-semibold text-lg">Phone</h3>
+                    <p className="text-blue-100">
+                      +98 *** *** **
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-5">
+                  <FaEnvelope className="text-2xl mt-1" />
+                  <div>
+                    <h3 className="font-semibold text-lg">Email</h3>
+                    <p className="text-blue-100">
+                      contact@us.com
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-5">
+                  <FaClock className="text-2xl mt-1" />
+                  <div>
+                    <h3 className="font-semibold text-lg">
+                      Working Hours
+                    </h3>
+                    <p className="text-blue-100">
+                      Monday - Friday
+                      <br />
+                      9:00 AM - 6:00 PM
+                    </p>
+                  </div>
+                </div>
+
               </div>
+
+              <div className="flex gap-5 mt-12 text-4xl">
+                <FaFacebookSquare className="cursor-pointer hover:scale-110 transition" />
+                <FaInstagram className="cursor-pointer hover:scale-110 transition" />
+                <FaTwitterSquare className="cursor-pointer hover:scale-110 transition" />
+              </div>
+
             </div>
 
-            <div className="md:w-1/2">
-              <div className="flex flex-col md:flex-row gap-6">
-                <div className="w-full">
-                  <h1 className="font-semibold text-lg mb-2">
-                    Your Name
-                  </h1>
+            <div className="p-10">
+
+              <h2 className="text-3xl font-bold text-gray-800 mb-8">
+                Send us a Message
+              </h2>
+
+              <div className="grid md:grid-cols-2 gap-6">
+
+                <div>
+                  <label className="font-medium text-gray-700">
+                    Name
+                  </label>
 
                   <input
-                    className="w-full bg-[#334155] text-white p-4 rounded-xl outline-none border border-transparent focus:border-[#60A5FA]"
                     type="text"
-                    placeholder="Your full name"
+                    placeholder="Your Name"
+                    className="w-full mt-2 border border-gray-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
 
-                <div className="w-full">
-                  <h1 className="font-semibold text-lg mb-2">
-                    Email Address
-                  </h1>
+                <div>
+                  <label className="font-medium text-gray-700">
+                    Email
+                  </label>
 
                   <input
-                    className="w-full bg-[#334155] text-white p-4 rounded-xl outline-none border border-transparent focus:border-[#60A5FA]"
-                    type="text"
-                    placeholder="Your email address"
+                    type="email"
+                    placeholder="Your Email"
+                    className="w-full mt-2 border border-gray-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
+
               </div>
 
               <div className="mt-6">
-                <h1 className="font-semibold text-lg mb-2">
+                <label className="font-medium text-gray-700">
+                  Subject
+                </label>
+
+                <input
+                  type="text"
+                  placeholder="Subject"
+                  className="w-full mt-2 border border-gray-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+
+              <div className="mt-6">
+                <label className="font-medium text-gray-700">
                   Message
-                </h1>
+                </label>
 
                 <textarea
-                  className="w-full h-40 bg-[#334155] text-white p-4 rounded-xl outline-none border border-transparent focus:border-[#60A5FA]"
-                  placeholder="Write something..."
+                  rows="6"
+                  placeholder="Write your message..."
+                  className="w-full mt-2 border border-gray-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
                 ></textarea>
               </div>
 
-              <button
-                className="mt-6 bg-[#60A5FA] hover:bg-[#3B82F6] text-white font-semibold px-8 py-4 rounded-xl duration-300 w-full"
-                type="submit"
-              >
+              <button className="w-full mt-8 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 rounded-xl transition">
                 Send Message
               </button>
+
             </div>
 
           </div>
+
+         
+
         </div>
-      </div>
+      </section>
     </>
   );
-};
-
-export default Contact;
+}

@@ -93,25 +93,8 @@ const Apidetail = () => {
           </p>
 
           <h1 className="text-5xl font-bold mt-10">
-            ${data.price}
+            ₹{Math.floor(data.price*100)}
           </h1>
-          <div className="mt-10">
-            <h1 className="text-2xl font-semibold mb-5">
-              Available Colors
-            </h1>
-
-            <div className="flex gap-5">
-              <div className="bg-gray-400 rounded-full w-10 h-10 border-2 border-white shadow"></div>
-
-              <div className="bg-[#7A8F85] rounded-full w-10 h-10 border-4 border-black"></div>
-
-              <div className="bg-[#3A3A3A] rounded-full w-10 h-10 border-2 border-white shadow"></div>
-
-              <div className="bg-yellow-200 rounded-full w-10 h-10 border-2 border-white shadow"></div>
-
-              <div className="bg-pink-200 rounded-full w-10 h-10 border-2 border-white shadow"></div>
-            </div>
-          </div>
 
           <div className="flex gap-6 mt-14">
 

@@ -1,4 +1,4 @@
-import I from "../assets/hero.png";
+
 
 const Cro = () => {
   return (
@@ -16,7 +16,7 @@ const Cro = () => {
           data-carousel-item="active"
         >
           <img
-            src={I}
+            src={"/banner.jpg"}
             className="absolute block w-full h-full object-cover"
             alt="Slide 1"
           />
@@ -28,7 +28,7 @@ const Cro = () => {
           data-carousel-item
         >
           <img
-            src={I}
+            src={"/banner.jpg"}
             className="absolute block w-full h-full object-cover"
             alt="Slide 2"
           />
@@ -40,7 +40,7 @@ const Cro = () => {
           data-carousel-item
         >
           <img
-            src={I}
+            src={"/banner.jpg"}
             className="absolute block w-full h-full object-cover"
             alt="Slide 3"
           />
@@ -52,7 +52,7 @@ const Cro = () => {
           data-carousel-item
         >
           <img
-            src={I}
+            src={"/banner.jpg"}
             className="absolute block w-full h-full object-cover"
             alt="Slide 4"
           />
@@ -64,7 +64,7 @@ const Cro = () => {
           data-carousel-item
         >
           <img
-            src={I}
+            src={"/banner.jpg"}
             className="absolute block w-full h-full object-cover"
             alt="Slide 5"
           />
