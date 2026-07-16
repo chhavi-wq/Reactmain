@@ -28,7 +28,7 @@ const VerifyOtp = () => {
       const data = await response.json();
       if(response.ok){
         toast.success(data.message);
-        navigate("/login");
+        navigate("/");
         return;
       }
       else{

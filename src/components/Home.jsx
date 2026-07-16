@@ -311,8 +311,8 @@ const benefits = [{
 </section>
 
 {/* shop-by-category */}
-   <section className="py-15 px-10 bg-[#FFFCF8]">
-      <div className="flex h-[500px] text-[#1F2C26] flex-row w-full">
+   <section className="py-15 bg-[#FFFCF8]">
+      <div className="flex h-[500px] px-10 text-[#1F2C26] flex-row w-full">
         <div className="w-1/3 py-10 px-3">
           <h1 className="text-5xl font-serif" >Shop by Category</h1>
           <p className="text-lg font-serif py-6">Discover collections for every lifestyle—from beauty and fashion to furniture, groceries, pet care, and fragrances. Find everything you need in one place.</p>
@@ -337,63 +337,23 @@ const benefits = [{
 
         </div>
       </div>
-
-       <div>
-      <Swiper 
-      slidesPerView={4}
-      spaceBetween={20}
-      loop={true}
-      autoplay={{
-        delay: 2500,
-        disableOnInteraction: false
-      }}>
-
-        <SwiperSlide>
-                  <img src={product[6].images[0]} alt="" />
-                  <h1>Chanel</h1>
-        </SwiperSlide>
-
-        <SwiperSlide>
-           <img src={product[8].images[0]} alt="" />
-                <h1>Dolce & Gabbana</h1>
-        </SwiperSlide>
-
-        <SwiperSlide>
-           <img src={product[7].images[0]} alt="" />
-                <h1>Christian Dior</h1>
-          </SwiperSlide>
-
-           <SwiperSlide>
-           <img src={product[7].images[0]} alt="" />
-                <h1>Gucci</h1>
-          </SwiperSlide>
-
-         <SwiperSlide>
-           <img src={product[5].images[0]} alt="" />
-                <h1>Calvin Klein</h1>
-          </SwiperSlide>
-
-          <SwiperSlide>
-                <h1>Furniture Co.</h1>
-          </SwiperSlide>
-
-           <SwiperSlide>
-                <h1>Annibale Colombo</h1>
-          </SwiperSlide>
-
-           <SwiperSlide>
-                <h1>Gucci</h1>
-          </SwiperSlide>
-
-           <SwiperSlide>
-                <h1>Knoll</h1>
-          </SwiperSlide>
-
-      </Swiper>
-      </div>
-
-    {/* best seller */}
+       
+       <section>
       <div>
+       <h1>Enlighten your home</h1>
+       <p>Luminous Living : Innovative <br/> Lightning Designs</p>
+       <p>Most of the style's furniture has a touch of modern European <br/> furniture with a 
+       simple design to create harmony with the dark <br/> interior design ..</p>
+       <button onClick={() => navigate("./shop")}>Shop Now</button>
+      </div>
+      <div>
+        <img src=""></img>
+        
+      </div>
+      </section>
+      
+    {/* best seller */}
+      <div className="px-15">
         <div className="flex justify-between">
         <h1 className="font-serif text-5xl text-[#1F2C26] mb-7 px-4">Best Sellers</h1>
         <button className="font-bold text-lg flex hover:scale-90 duration-300 transition-transform items-center gap-2 text-center">View All <FaArrowRightLong /></button>
@@ -422,6 +382,7 @@ const benefits = [{
     />
     <div className="inset-0 bg-black/40 absolute"></div>
     <div className="absolute right-8 top-20 text-right text-white">
+      <h2>Use code "FIRST50" for</h2>
       <h1 className="text-8xl font-black leading-none">
         50%
         <br />
@@ -430,7 +391,7 @@ const benefits = [{
 
       <p className="mt-2 font-bold text-lg">Clean. Vegan. Powerful.</p>
 
-      <button className="mt-5 rounded-full hover:scale-90 duration-300 transition bg-white/30 backdrop-blur-md px-6 py-2 font-semibold">
+      <button className="mt-5 rounded-full text-xl hover:scale-90 duration-300 transition bg-white/30 backdrop-blur-md px-6 py-2 font-semibold">
         Buy Now
       </button>
     </div>
@@ -444,6 +405,7 @@ const benefits = [{
     />
      <div className="inset-0 bg-black/30 absolute"></div>
     <div className="absolute right-8 top-20 text-right text-white">
+      <h2>Use code "NATURAL30" for</h2>
       <h1 className="text-8xl font-black leading-none">
         30%
         <br />
@@ -452,7 +414,7 @@ const benefits = [{
 
       <p className="mt-2 font-bold text-lg">Natural Skincare Collection</p>
 
-      <button className="mt-5 rounded-full hover:scale-90 duration-300 transition bg-white/30 backdrop-blur-md bg-[#7A5C8D] px-6 py-2 font-semibold">
+      <button className="mt-5 rounded-full hover:scale-90 duration-300 transition text-xl bg-white/30 backdrop-blur-md bg-[#7A5C8D] px-6 py-2 font-semibold">
         Buy Now
       </button>
     </div>
