@@ -47,10 +47,20 @@ const [product, setProduct] = useState([]);
     };
     full();
   }, []);
-  console.log(product)
+
   const beautyProducts = product.filter((item)=> item.category === "fragrances");
 const randomProduct = Math.floor(Math.random()* beautyProducts.length);
  const featuredProducts = beautyProducts[randomProduct];
+
+ const freshProduct = product.filter((item)=> item.tags[0] === "fruits" || item.tags[0] === "vegetables")
+ const groceryProduct = Math.floor(Math.random()* freshProduct.length);
+const grocery = freshProduct[groceryProduct];
+
+const shopProducts = product.filter((item)=> item.category === "beauty");
+const randomShop = Math.floor(Math.random()* shopProducts.length);
+ const addCartProduct = shopProducts[randomShop];
+
+
  const collections = [{
   "id":1,
   "title":"Beauty",
@@ -131,158 +141,470 @@ const benefits = [{
         loop
         className="h-screen"
       >
-           <SwiperSlide>
-            <div className="flex min-h-screen bg-[#e2dfd6] justify-between flex-row">
-        <div className="h-screen px-20 w-1/2 mt-45">
-          <h1 className="text-[#3E2723] font-bold text-lg">Modern Designs. Timeless Comfort.</h1>
-          <p className="text-8xl font-bold text-[#3E2723] tracking-tight">Furniture <br />That Defines <br />Your Space</p>
-          <h2 className="py-6 font-bold text-lg text-[#3E2723]">Discover curated collections that blend style, <br /> functionality and quality 
-          for every corner of your home.</h2>
-          <button onClick={()=>{navigate("/shop")}} className="border bg-[#3E2723] border-[#3E2723] text-white hover:shadow-2xl hover:scale-110 transition duration-300 uppercase px-10 py-3 flex items-center gap-2">SHOP NOW <GrLinkNext /> </button>
-        </div>
 
-        <div className="w-1/2">
-          <img className="h-screen object-cover" src="/furniture.jpg" alt="" />
-        </div>
-        </div>
-      </SwiperSlide>
+          <SwiperSlide>
+  <div className="flex min-h-screen bg-[#F8F5F0]">
 
-       <SwiperSlide>
-          <div className="relative h-screen bg-[url('/groceries.jpg')] bg-cover bg-center">
-  <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
-
-  <div className="relative px-25 py-40 z-10">
-   <h1 className="text-white font-bold text-xl  py-5 font-mono">All natural products</h1>
-   <p className="text-white font-bold text-7xl font-mono">Fresh and Healthy <br />Veggies Organic <br />Market</p>
-   <p className="text-white font-bold text-lg py-5 font-mono">Organic food is a food produced by methods that <br />comply with the standard of farming</p>
-   <button onClick={()=>{navigate("/shop")}} className="bg-green-800 border-green-800 text-xl mt-5 rounded-xl items-center text-center flex gap-5 hover:scale-90 hover:bg-green-900 transition duration-300 text-white py-2 px-10 ">SHOP NOW <FaCartShopping /></button>
-  </div>
-<div className="absolute bottom-50 right-15 z-20 bg-white/30 backdrop-blur-lg rounded-2xl p-5 w-80 shadow-2xl border border-white/20">
-  <div className="text-yellow-400 text-lg">
-    ⭐⭐⭐
-  </div>
-
-  <p className="text-white italic py-3">
-    "The vegetables were incredibly fresh and the delivery was quick. Definitely ordering again!"
-  </p>
-
-  <div className="flex items-center gap-3">
-    <img
-      src="/user.jpg"
-      alt=""
-      className="w-12 h-12 rounded-full object-cover border-2 border-white"
-    />
-
-    <div>
-      <h4 className="font-semibold text-white">Sarah Wilson</h4>
-      <p className="text-sm text-gray-200">Verified Buyer</p>
-    </div>
-  </div>
-</div>
-</div>
-        
-      </SwiperSlide>
-
-
-        <SwiperSlide>
-  <div className="relative flex min-h-screen bg-[url('./skin.jpg')] bg-cover bg-bottom">
-
-    <div className="absolute inset-0 bg-white/10"></div>
-
-    <div className="relative z-10 w-1/2 px-20 py-15 mt-25">
-      <span className="inline-block px-5 py-2 rounded-full bg-white/30 backdrop-blur-md text-[#4E342E] font-semibold">
-        ✨ 100% Natural Ingredients
-      </span>
-
-      <h1 className="text-[#4E342E] font-bold font-serif text-9xl mt-6">
-        Nurture <br /> Your Skin
+    <div className="flex w-1/2 flex-col justify-center px-20">
+      <h1 className="mt-6 text-7xl font-bold leading-tight text-[#3E2E24]">
+        Furniture
+        <br />
+        That Feels
+        <br />
+        Like Home
       </h1>
 
-      <p className="text-xl text-[#4E342E] font-serif py-5">
-        Discover luxurious body oils enriched with botanical extracts for radiant, healthy skin.
+      <p className="mt-8 max-w-lg text-lg leading-8 text-[#5F544C]">
+        Discover thoughtfully crafted furniture that combines
+        timeless design, exceptional comfort, and lasting quality
+        for every corner of your home.
       </p>
 
-      <button onClick={()=>{navigate("/shop")}} className="group border-2 border-[#4E342E] px-10 py-3 rounded-full font-semibold text-[#4E342E] flex items-center gap-3 transition-all duration-300 hover:bg-[#4E342E] hover:text-white hover:scale-105 hover:shadow-2xl">
-        SHOP COLLECTION
-        <GrLinkNext className="group-hover:translate-x-2 transition-transform duration-300" />
+      <button
+        onClick={() => navigate("/shop")}
+        className="mt-10 flex w-fit items-center gap-3 rounded-full bg-[#5B4A3F] px-8 py-4 text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#43362E] hover:shadow-xl"
+      >
+        Explore Collection
+        <GrLinkNext />
       </button>
+      <div className="mt-10 flex items-center gap-6">
+
+  <div className="rounded-2xl border border-[#DDD2C6] bg-[#FCFAF7] px-6 py-4 shadow-sm">
+    <p className="text-2xl font-light text-[#3E2E24]">
+      500K+
+    </p>
+    <p className="text-sm text-[#7B7067]">
+      Happy Customers
+    </p>
+  </div>
+
+  <div className="rounded-2xl border border-[#DDD2C6] bg-[#FCFAF7] px-6 py-4 shadow-sm">
+    <p className="text-2xl font-light text-[#3E2E24]">
+      4.9★
+    </p>
+    <p className="text-sm text-[#7B7067]">
+      Customer Rating
+    </p>
+  </div>
+
+</div>
+
     </div>
+
+    <div className="w-1/2 overflow-hidden">
+
+      <img
+        src="/furniture.jpg"
+        alt="Furniture"
+        className="h-screen w-full object-cover transition duration-700 hover:scale-105"
+      />
+
+    </div>
+
+  </div>
+        </SwiperSlide>
+
+
+       <SwiperSlide>
+  <div className="relative h-screen bg-[url('/groceries.jpg')] bg-cover bg-center">
 
    
-    <div className="absolute bottom-50 right-10 bg-white/20 backdrop-blur-lg rounded-3xl p-6 w-80 shadow-2xl">
-      <div className="text-yellow-400 text-xl">★★★★★</div>
+   <div className="absolute inset-0 bg-gradient-to-r from-black/75 to-transparent"></div>
 
-      <p className="text-[#4E342E] italic py-3">
-        "My skin feels incredibly soft after just one week. The fragrance is amazing!"
+  
+    <div className="relative z-10 flex h-full items-center px-20">
+
+      <div className="max-w-xl">
+
+        <p className="uppercase tracking-[0.35em] text-sm text-white">
+          Farm Fresh
+        </p>
+
+        <h1 className="mt-6 text-7xl font-bold leading-tight text-white">
+          Fresh &
+          <br />
+          Organic
+          <br />
+          Goodness
+        </h1>
+
+        <p className="mt-8 text-lg leading-8 text-white">
+          Carefully selected organic fruits and vegetables,
+          delivered fresh to your doorstep with quality you can trust.
+        </p>
+
+        <button
+          onClick={() => navigate("/shop")}
+          className="mt-10 flex items-center gap-3 rounded-full bg-green-800 px-8 py-4 text-white transition-all duration-300 hover:scale-90 hover:bg-green-900 hover:shadow-xl"
+        >
+          Shop Fresh Picks
+          <FaCartShopping />
+        </button>
+
+      </div>
+
+    </div>
+
+    <div className="absolute left-180 bottom-16 text-white w-70 rounded-[30px] border border-white/50 p-6 backdrop-blur-md shadow-xl">
+
+      <div className="text-yellow-400 text-lg">
+        ★★★★★
+      </div>
+
+      <p className="mt-4 italic leading-7]">
+        "Everything arrived fresh and beautifully packed.
+        The quality exceeded my expectations."
       </p>
 
-      <div className="flex items-center gap-3">
+      <div className="mt-6 flex items-center gap-3">
+
         <img
           src="/user.jpg"
-          className="w-12 h-12 rounded-full object-cover"
-          alt=""
+          alt="Customer"
+          className="h-12 w-12 rounded-full object-cover"
         />
+
         <div>
-          <h4 className="font-semibold text-[#4E342E]">Emma Carter</h4>
-          <p className="text-sm text-[#4E342E]">Verified Customer</p>
+          <h4 className="font-medium ">
+            Sarah Wilson
+          </h4>
+
+          <p className="text-sm ">
+            Verified Customer
+          </p>
         </div>
+
       </div>
+
     </div>
 
-  </div>
-      </SwiperSlide>
+<div className="absolute right-16 bottom-16 z-30">
 
-        
-         <SwiperSlide>
-                    <div className="relative h-screen bg-[url('/perfume.jpg')] bg-cover bg-bottom">
-  <div className="absolute inset-0 bg-gradient-to-l from-black/30 to-transparent"></div>
+  {grocery && (
+    <Link to={`/apis/${grocery.id}`}>
 
-  <div className="relative px-25 py-30 z-10">
-   <p className="text-black text-8xl font-serif">Elegance in <br /> Every Scent</p>
-   <p className="text-black text-lg py-5 font-sans">Discover luxurious fragrances crafted to <br />captivate, inspire, 
-   and leave a lasting <br />impression</p>
-   <button onClick={()=>{navigate("/shop")}} className="border rounded-4xl px-10 backdrop-blur-md bg-white/20 text-black border-transparent font-serif text-xl py-5 hover:scale-90 transition duration-300">Find Your Signature Scent</button>
-  </div>
-  
-  <div className="flex z-10 text-white relative px-25 items-center gap-4">
+      <div
+        className="
+        w-80
+        rounded-[32px]
+        border
+        border-white/20
+        bg-white/15
+        backdrop-blur-xl
+        p-6
+        shadow-2xl
+        transition-all
+        duration-500
+        hover:-translate-y-2
+        hover:scale-105
+        hover:bg-white/20
+      "
+      >
 
-  <div className="backdrop-blur-md bg-white/30 rounded-xl px-5 py-5">
-    <div className="flex text-yellow-400">
-      <FaStar /> <FaStar /> <FaStar /> <FaStar /> <FaStar />
-    </div>
-    <p className="italic py-2">
-      "Absolutely love the quality! Fast shipping and  <br />beautiful packaging."
-    </p>
-    <div className="flex text-center gap-2 items-center">
-     <img src="/user.jpg" className="w-6 h-6 object-cover rounded-full" alt="" />
-    <h4 className="font-semibold mt-1">  Emily Carter</h4>
-    </div>
-  </div>
+        <p className="uppercase tracking-[0.25em] text-xs text-[#DDE8D5]">
+          Featured Product
+        </p>
+
+        <img
+          src={grocery.images[0]}
+          alt={grocery.title}
+          className="mt-5 h-52 w-full object-contain transition duration-500 group-hover:scale-105"
+        />
+
+        <div className="mt-5">
+
+          <p className="text-sm text-[#DDE8D5]">
+            Organic Collection
+          </p>
+
+          <h2 className="mt-2 text-2xl font-light text-white line-clamp-1">
+            {grocery.title}
+          </h2>
+
+          <div className="mt-4 flex items-center justify-between">
+
+            <h3 className="text-2xl font-light text-white">
+              ₹{Math.floor(grocery.price * 100)}
+            </h3>
+
+            <span className="rounded-full bg-[#7C8B73] px-4 py-2 text-xs text-white">
+              View
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </Link>
+  )}
+
 </div>
 
- <div className="flex z-10 text-white absolute right-10 bottom-50 px-25 items-center gap-4">
 
-  <div className="backdrop-blur-md bg-white/30 rounded-xl px-5 py-5">
-    {featuredProducts && (
-      <Link to={`/apis/${featuredProducts.id}`}>
+  </div>
+</SwiperSlide>
+
+<SwiperSlide>
+  <div className="relative flex min-h-screen bg-[url('/skin.jpg')] bg-cover bg-center">
+    <div className="absolute inset-0 bg-gradient-to-r from-[#F8F5F0]/60 via-[#F8F5F0]/20 to-transparent"></div>
+
+    <div className="relative z-10 flex w-1/2 flex-col justify-center px-20">
+
+      <span className="w-fit rounded-full bg-white/40 backdrop-blur-md px-5 py-2 text-[#5B4A3F] text-sm tracking-wide">
+        ✨ Botanical Skincare
+      </span>
+       <div className="flex items-center gap-10 mt-12">
+
   <div>
-  <img className="h-40 w-40 cover" src={featuredProducts.images[0]} alt="" />
-    <h2>{featuredProducts.title}</h2>
-    <p>₹{Math.floor(featuredProducts.price*100)}</p>
+    <h2 className="text-3xl font-light text-[#3E2E24]">
+      4.9★
+    </h2>
+    <p className="text-[#6F655D] text-sm">
+      Average Rating
+    </p>
   </div>
-  </Link>
-)}
+
+  <div className="w-px h-12 bg-[#CFC5BA]"></div>
+
+  <div>
+    <h2 className="text-3xl font-light text-[#3E2E24]">
+      25K+
+    </h2>
+    <p className="text-[#6F655D] text-sm">
+      Happy Customers
+    </p>
+  </div>
+
+  <div className="w-px h-12 bg-[#CFC5BA]"></div>
+
+  <div>
+    <h2 className="text-3xl font-light text-[#3E2E24]">
+      100%
+    </h2>
+    <p className="text-[#6F655D] text-sm">
+      Botanical Formula
+    </p>
   </div>
 
 </div>
 
+      <h1 className="mt-6 text-7xl font-light leading-tight text-[#3E2E24]">
+        Nourish
+        <br />
+        Your Skin
+      </h1>
+
+      <p className="mt-8 max-w-lg text-lg leading-8 text-[#5F544C]">
+        Discover luxurious skincare crafted with botanical extracts,
+        designed to restore, protect and reveal your natural glow.
+      </p>
+
+      <button
+        onClick={() => navigate("/shop")}
+        className="mt-10 flex w-fit items-center gap-3 rounded-full bg-[#5B4A3F] px-8 py-4 text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#43362E] hover:shadow-xl"
+      >
+        Explore Collection
+        <GrLinkNext />
+      </button>
+
+    </div>
+
+<div className="absolute right-30 top-30 z-30">
+
+      {addCartProduct && (
+        <Link to={`/apis/${addCartProduct.id}`}>
+
+          <div className="w-80 rounded-[30px] border border-white/20 bg-white/20 p-6 backdrop-blur-xl shadow-2xl transition duration-500 ">
+
+            <img
+              src={addCartProduct.images[0]}
+              alt={addCartProduct.title}
+              className="mt-5 h-45 w-full object-contain transition duration-500 group-hover:scale-110"
+            />
+
+            <h2 className="mt-5 text-2xl font-light text-[#3E2E24] line-clamp-1">
+              {addCartProduct.title}
+            </h2>
+
+            <div className="mt-4 flex items-center justify-between">
+
+              <p className="text-2xl text-[#5B4A3F]">
+                ₹{Math.floor(addCartProduct.price * 100)}
+              </p>
+
+              <span className="rounded-full bg-[#5B4A3F] px-4 py-2 text-sm text-white">
+                View
+              </span>
+
+            </div>
+
+          </div>
+
+        </Link>
+      )}
+
+    </div>
+
+    <div className="relative z-10 flex w-1/2 flex-col justify-center px-20">
+      
+   <div className="absolute right-30 bottom-16 w-96 rounded-[32px] bg-white/25 backdrop-blur-xl border border-white/30 p-8 shadow-2xl">
+
+  <div className="flex items-center gap-1 text-yellow-400 text-lg">
+    ★★★★★
+  </div>
+
+  <p className="mt-5 italic leading-8 text-[#3E2E24]">
+    "After two weeks my skin felt noticeably smoother and more hydrated.
+    The texture is luxurious and absorbs beautifully."
+  </p>
+
+  <div className="mt-6 flex items-center justify-between">
+
+    <div className="flex items-center gap-3">
+
+      <img
+        src="/user.jpg"
+        className="w-12 h-12 rounded-full object-cover"
+        alt=""
+      />
+
+      <div>
+
+        <h4 className="font-medium text-[#3E2E24]">
+          Emma Carter
+        </h4>
+
+        <p className="text-sm text-[#7B7067]">
+          Verified Buyer
+        </p>
+
+      </div>
+
+    </div>
 
 
-
+  </div>
 
 </div>
-      </SwiperSlide>
+    </div>
 
+
+  </div>
+</SwiperSlide>
+        
+        <SwiperSlide>
+  <div className="relative h-screen bg-[url('/perfume.jpg')] bg-cover bg-center">
+
+    {/* Overlay */}
+    <div className="absolute inset-0 bg-gradient-to-r from-[#1E1714]/70 via-[#1E1714]/25 to-transparent"></div>
+
+    {/* Content */}
+
+    <div className="relative z-10 flex h-full items-center px-20">
+
+      <div className="max-w-xl">
+
+        <h1 className="mt-6 text-7xl font-bold leading-tight text-white">
+          Elegance
+          <br />
+          In Every
+          Scent
+        </h1>
+
+        <p className="mt-8 text-lg leading-8 text-[#ECE5DD]">
+          Discover timeless fragrances crafted with rare notes,
+          designed to leave a lasting impression.
+        </p>
+
+        <button
+          onClick={() => navigate("/shop")}
+          className="mt-10 rounded-full bg-[#5B4A3F] px-8 py-4 text-white hover:bg-[#43362E] transition"
+        >
+          Discover Fragrances
+        </button>
+
+        {/* Statistics */}
+
+        <div className="mt-14 flex gap-10">
+
+          <div>
+            <h2 className="text-3xl text-white font-light">
+              4.9★
+            </h2>
+
+            <p className="text-[#D6C8BA] text-sm">
+              Customer Rating
+            </p>
+
+          </div>
+
+          <div className="w-px bg-white/20"></div>
+
+          <div>
+
+            <h2 className="text-3xl text-white font-light">
+              120+
+            </h2>
+
+            <p className="text-[#D6C8BA] text-sm">
+              Luxury Fragrances
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    {/* Featured Product */}
+
+    <div className="absolute right-50 z-30 bottom-16">
+
+      {featuredProducts && (
+
+        <Link to={`/apis/${featuredProducts.id}`}>
+
+          <div className="group w-80 rounded-[32px] bg-white/15 backdrop-blur-xl border border-white/20 p-6 shadow-2xl transition duration-500 hover:-translate-y-2">
+
+            <p className="uppercase tracking-[0.25em] text-xs text-[#E8DDD3]">
+              Signature Pick
+            </p>
+
+            <img
+              src={featuredProducts.images[0]}
+              className="mt-5 h-52 w-full object-contain group-hover:scale-105 transition"
+            />
+
+            <h2 className="mt-5 text-2xl font-light text-white line-clamp-1">
+              {featuredProducts.title}
+            </h2>
+
+            <div className="mt-4 flex justify-between items-center">
+
+              <p className="text-2xl text-white">
+                ₹{Math.floor(featuredProducts.price * 100)}
+              </p>
+
+              <span className="rounded-full border-t-1 border-white bg-white/50 backdrop-blur-md px-4 py-2 text-sm">
+                View
+              </span>
+
+            </div>
+
+          </div>
+
+        </Link>
+
+      )}
+
+    </div>
+
+  </div>
+</SwiperSlide>
       </Swiper>
     </div>
  
