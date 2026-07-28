@@ -5,7 +5,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   // Get current user safely
-  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  const token = localStorage.getItem("token");
 
   // Get cart items safely
   const cartitem = JSON.parse(localStorage.getItem("cart")) || [];
@@ -15,7 +15,7 @@ const Navbar = () => {
 
   // Logout function
   const handleLogout = () => {
-    localStorage.removeItem("currentUser");
+    localStorage.removeItem("token");
     navigate("/login");
   };
 
@@ -44,6 +44,7 @@ const Navbar = () => {
               </li>
             </Link>
 
+
             {/* <Link to="/effect">
               <li className="hover:text-blue-300 transition">
                 Effect
@@ -63,9 +64,14 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div className="flex items-center gap-5">
-
-            {currentUser ? (
+          <div className="flex text-center items-center gap-5">
+              <Link to="/admin">
+              <li className="cursor-pointer hover:scale-110 duration-200 transition font-medium list-none"
+              >
+                Admin
+                </li>
+              </Link>
+            {token ? (
               <li
                 onClick={handleLogout}
                 className="cursor-pointer hover:scale-110 duration-200 transition font-medium list-none"

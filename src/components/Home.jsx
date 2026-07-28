@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { GrSecure } from "react-icons/gr";
 import { FaLeaf } from "react-icons/fa";
 import { IoIosReturnLeft } from "react-icons/io";
-
+import {ToastContainer, toast} from "react-toastify";
 import { FaArrowRightLong } from "react-icons/fa6";
 
 import { CiDeliveryTruck } from "react-icons/ci";
@@ -129,7 +129,7 @@ const benefits = [{
   return (
     <>
           <Navbar />
-    <div className=" mx-auto">
+    <div className=" mx-auto bg-[#FCFAF7]">
 
 {/* hero-page */}
     <div className="mx-auto ">
@@ -220,15 +220,31 @@ const benefits = [{
           Farm Fresh
         </p>
 
-        <h1 className="mt-6 text-7xl font-bold leading-tight text-white">
+        <div className="mt-10 flex flex-wrap gap-10 text-white">
+  <div>
+    <h3 className="text-3xl font-bold">15K+</h3>
+    <p className="mt-1 text-sm uppercase tracking-widest text-white/80">
+      Happy Customers
+    </p>
+  </div>
+
+  <div>
+    <h3 className="text-3xl font-bold">120+</h3>
+    <p className="mt-1 text-sm uppercase tracking-widest text-white/80">
+      Organic Products
+    </p>
+  </div>
+
+</div>
+
+        <h1 className="mt-6 text-7xl font-semibold leading-tight text-white">
           Fresh &
-          <br />
           Organic
           <br />
           Goodness
         </h1>
 
-        <p className="mt-8 text-lg leading-8 text-white">
+        <p className="mt-5 text-lg leading-8 text-white">
           Carefully selected organic fruits and vegetables,
           delivered fresh to your doorstep with quality you can trust.
         </p>
@@ -245,40 +261,8 @@ const benefits = [{
 
     </div>
 
-    <div className="absolute left-180 bottom-16 text-white w-70 rounded-[30px] border border-white/50 p-6 backdrop-blur-md shadow-xl">
 
-      <div className="text-yellow-400 text-lg">
-        ★★★★★
-      </div>
-
-      <p className="mt-4 italic leading-7]">
-        "Everything arrived fresh and beautifully packed.
-        The quality exceeded my expectations."
-      </p>
-
-      <div className="mt-6 flex items-center gap-3">
-
-        <img
-          src="/user.jpg"
-          alt="Customer"
-          className="h-12 w-12 rounded-full object-cover"
-        />
-
-        <div>
-          <h4 className="font-medium ">
-            Sarah Wilson
-          </h4>
-
-          <p className="text-sm ">
-            Verified Customer
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-
-<div className="absolute right-16 bottom-16 z-30">
+<div className="absolute right-60 bottom-16 z-30">
 
   {grocery && (
     <Link to={`/apis/${grocery.id}`}>
@@ -327,7 +311,7 @@ const benefits = [{
               ₹{Math.floor(grocery.price * 100)}
             </h3>
 
-            <span className="rounded-full bg-[#7C8B73] px-4 py-2 text-xs text-white">
+            <span className="rounded-full bg-green-900 px-4 py-2 text-xs text-white">
               View
             </span>
 
@@ -352,7 +336,7 @@ const benefits = [{
 
     <div className="relative z-10 flex w-1/2 flex-col justify-center px-20">
 
-      <span className="w-fit rounded-full bg-white/40 backdrop-blur-md px-5 py-2 text-[#5B4A3F] text-sm tracking-wide">
+      <span className="w-fit rounded-full bg-white/40 backdrop-blur-md px-10 py-2 text-[#5B4A3F] text-sm tracking-wide">
         ✨ Botanical Skincare
       </span>
        <div className="flex items-center gap-10 mt-12">
@@ -411,11 +395,10 @@ const benefits = [{
 
     </div>
 
-<div className="absolute right-30 top-30 z-30">
+<div className="absolute right-60 bottom-30 z-30">
 
       {addCartProduct && (
         <Link to={`/apis/${addCartProduct.id}`}>
-
           <div className="w-80 rounded-[30px] border border-white/20 bg-white/20 p-6 backdrop-blur-xl shadow-2xl transition duration-500 ">
 
             <img
@@ -447,300 +430,506 @@ const benefits = [{
 
     </div>
 
-    <div className="relative z-10 flex w-1/2 flex-col justify-center px-20">
-      
-   <div className="absolute right-30 bottom-16 w-96 rounded-[32px] bg-white/25 backdrop-blur-xl border border-white/30 p-8 shadow-2xl">
-
-  <div className="flex items-center gap-1 text-yellow-400 text-lg">
-    ★★★★★
-  </div>
-
-  <p className="mt-5 italic leading-8 text-[#3E2E24]">
-    "After two weeks my skin felt noticeably smoother and more hydrated.
-    The texture is luxurious and absorbs beautifully."
-  </p>
-
-  <div className="mt-6 flex items-center justify-between">
-
-    <div className="flex items-center gap-3">
-
-      <img
-        src="/user.jpg"
-        className="w-12 h-12 rounded-full object-cover"
-        alt=""
-      />
-
-      <div>
-
-        <h4 className="font-medium text-[#3E2E24]">
-          Emma Carter
-        </h4>
-
-        <p className="text-sm text-[#7B7067]">
-          Verified Buyer
-        </p>
-
-      </div>
-
-    </div>
-
-
-  </div>
-
-</div>
-    </div>
-
 
   </div>
 </SwiperSlide>
         
-        <SwiperSlide>
-  <div className="relative h-screen bg-[url('/perfume.jpg')] bg-cover bg-center">
+       <SwiperSlide>
+  <div className="relative h-screen overflow-hidden bg-[url('/perfume.jpg')] bg-cover bg-center">
 
-    {/* Overlay */}
-    <div className="absolute inset-0 bg-gradient-to-r from-[#1E1714]/70 via-[#1E1714]/25 to-transparent"></div>
+   
+    <div className="absolute inset-0 bg-black/30"></div>
+    <div className="absolute inset-0 bg-gradient-to-r from-[#15110F]/80 via-[#15110F]/35 to-transparent"></div>
+    <div className="absolute inset-0 bg-gradient-to-t from-[#15110F]/50 to-transparent"></div>
 
-    {/* Content */}
 
-    <div className="relative z-10 flex h-full items-center px-20">
+    <div className="relative z-20 flex h-full items-center justify-between px-20">
 
-      <div className="max-w-xl">
+     
+      <div className="">
 
-        <h1 className="mt-6 text-7xl font-bold leading-tight text-white">
+     
+        <div className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-5 py-2 backdrop-blur-md">
+          <span className="text-xs uppercase tracking-[0.35em] text-[#D6B17B]">
+            NEW COLLECTION 2026
+          </span>
+        </div>
+
+        
+        <h1 className="mt-8 text-7xl  font-bold leading-[0.9] text-white">
           Elegance
           <br />
           In Every
           Scent
         </h1>
 
-        <p className="mt-8 text-lg leading-8 text-[#ECE5DD]">
-          Discover timeless fragrances crafted with rare notes,
-          designed to leave a lasting impression.
+     
+        <p className="mt-6 py-3 text-xl text-[#DDD5CB]">
+          Discover timeless fragrances crafted from the world's
+          finest ingredients, <br /> designed to leave a signature that
+          lingers long after you've left the room.
         </p>
 
+      
         <button
           onClick={() => navigate("/shop")}
-          className="mt-10 rounded-full bg-[#5B4A3F] px-8 py-4 text-white hover:bg-[#43362E] transition"
+          className="group mt-12 flex items-center gap-4 rounded-full border border-white/20 bg-white/10 px-8 py-4 text-white backdrop-blur-xl transition-all duration-300 hover:bg-white hover:text-black"
         >
-          Discover Fragrances
+          <span>Explore Collection</span>
+
+          <span className="text-xl transition group-hover:translate-x-2">
+            →
+          </span>
         </button>
 
-        {/* Statistics */}
-
-        <div className="mt-14 flex gap-10">
+      
+        <div className="mt-10 flex gap-14">
 
           <div>
-            <h2 className="text-3xl text-white font-light">
+            <h2 className="text-4xl font-light text-white">
               4.9★
             </h2>
 
-            <p className="text-[#D6C8BA] text-sm">
-              Customer Rating
+            <p className="mt-2 text-xs uppercase tracking-[0.25em] text-[#C8BAA6]">
+              Rating
             </p>
-
           </div>
 
-          <div className="w-px bg-white/20"></div>
+          <div className="h-14 w-px bg-white/20"></div>
 
           <div>
-
-            <h2 className="text-3xl text-white font-light">
+            <h2 className="text-4xl font-light text-white">
               120+
             </h2>
 
-            <p className="text-[#D6C8BA] text-sm">
-              Luxury Fragrances
+            <p className="mt-2 text-xs uppercase tracking-[0.25em] text-[#C8BAA6]">
+              Fragrances
             </p>
+          </div>
 
+          <div className="h-14 w-px bg-white/20"></div>
+
+          <div>
+            <h2 className="text-4xl font-light text-white">
+              50K+
+            </h2>
+
+            <p className="mt-2 text-xs uppercase tracking-[0.25em] text-[#C8BAA6]">
+              Happy Clients
+            </p>
           </div>
 
         </div>
 
       </div>
 
+  
+<div className="relative flex w-[420px] flex-col items-end">
+  
+{featuredProducts && (
+
+  <Link to={`/apis/${featuredProducts.id}`}>
+
+    <div className="relative mt-40 w-[360px] rounded-[40px] border border-white/20 bg-white/10 px-8 pb-8 pt-36 backdrop-blur-2xl shadow-[0_25px_80px_rgba(0,0,0,0.4)] transition duration-500 hover:-translate-y-2">
+
+   
+      <img
+        src={featuredProducts.images[0]}
+        alt={featuredProducts.title}
+        className="absolute -top-24 left-1/2 h-56 -translate-x-1/2 object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.45)] transition duration-500 group-hover:scale-105"
+      />
+
+      <p className="text-center text-xs uppercase tracking-[0.3em] text-[#D6B17B]">
+        Signature Pick
+      </p>
+
+      <h2 className="mt-5 line-clamp-1 text-center text-2xl font-light text-white">
+        {featuredProducts.title}
+      </h2>
+
+      <div className="mt-8 flex items-center justify-between">
+
+        <div>
+          <p className="text-sm text-[#CFC2B5]">
+            Starting From
+          </p>
+
+          <h3 className="text-3xl font-light text-white">
+            ₹{Math.floor(featuredProducts.price * 100)}
+          </h3>
+        </div>
+
+        <button className="rounded-full border border-white/20 bg-white/10 px-6 py-3 text-white transition hover:bg-white hover:text-black">
+          View →
+        </button>
+
+      </div>
+
     </div>
 
-    {/* Featured Product */}
+  </Link>
 
-    <div className="absolute right-50 z-30 bottom-16">
+)}
 
-      {featuredProducts && (
+</div>
 
-        <Link to={`/apis/${featuredProducts.id}`}>
+</div>
 
-          <div className="group w-80 rounded-[32px] bg-white/15 backdrop-blur-xl border border-white/20 p-6 shadow-2xl transition duration-500 hover:-translate-y-2">
+</div>
 
-            <p className="uppercase tracking-[0.25em] text-xs text-[#E8DDD3]">
-              Signature Pick
-            </p>
-
-            <img
-              src={featuredProducts.images[0]}
-              className="mt-5 h-52 w-full object-contain group-hover:scale-105 transition"
-            />
-
-            <h2 className="mt-5 text-2xl font-light text-white line-clamp-1">
-              {featuredProducts.title}
-            </h2>
-
-            <div className="mt-4 flex justify-between items-center">
-
-              <p className="text-2xl text-white">
-                ₹{Math.floor(featuredProducts.price * 100)}
-              </p>
-
-              <span className="rounded-full border-t-1 border-white bg-white/50 backdrop-blur-md px-4 py-2 text-sm">
-                View
-              </span>
-
-            </div>
-
-          </div>
-
-        </Link>
-
-      )}
-
-    </div>
-
-  </div>
 </SwiperSlide>
+
       </Swiper>
     </div>
  
  {/* benefits */}
-    <section className="bg-[#FFFCF8] py-24">
+ <section className="bg-[#FCFAF7] py-28">
+  <div className="mx-auto max-w-3xl text-center mb-16">
+
+    <p className="uppercase tracking-[0.35em] text-sm text-[#7C8B73]">
+      Why Choose SAGE
+    </p>
+
+    <h2 className="mt-5 text-5xl font-light text-[#3E2E24]">
+      Thoughtfully Crafted
+      <br />
+      For Everyday Living
+    </h2>
+
+    <p className="mt-6 text-lg leading-8 text-[#6E6258]">
+      Premium quality, timeless aesthetics, and exceptional service—
+      everything designed to elevate your shopping experience.
+    </p>
+
+  </div>
+
   <div className="mx-auto grid max-w-7xl gap-8 px-8 md:grid-cols-2 lg:grid-cols-4">
+
     {benefits.map((item, index) => (
+
       <div
         key={index}
-        className="rounded-3xl bg-white p-10 text-center shadow-md transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl cursor-pointer"
+        className="group rounded-[32px] border border-[#E8DED3] bg-[#FFFCF8] p-10 transition-all duration-500 hover:-translate-y-2 hover:border-[#CDBAA6] hover:shadow-xl"
       >
-        <div className="mb-6 flex justify-center text-5xl text-[#8B5E3C]">
+        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#F5EFE7] text-3xl text-[#7C8B73] transition duration-300 group-hover:bg-[#5B4A3F] group-hover:text-white">
+
           {item.icons}
+
         </div>
 
-        <h2 className="mb-4 text-2xl font-serif  font-bold text-[#3E2723]">
+        <h2 className="mt-8 text-2xl font-light text-[#3E2E24]">
+
           {item.about}
+
         </h2>
 
-        <p className="leading-7 text-gray-600">
+        <div className="mt-4 h-px w-12 bg-[#D8CEC3]"></div>
+
+        <p className="mt-5 leading-8 text-[#6F655D]">
+
           {item.description}
+
         </p>
+
       </div>
+
     ))}
+
   </div>
+
 </section>
 
 {/* shop-by-category */}
-   <section className="py-15 bg-[#FFFCF8]">
-      <div className="flex h-[500px] px-10 text-[#1F2C26] flex-row w-full">
-        <div className="w-1/3 py-10 px-3">
-          <h1 className="text-5xl font-serif" >Shop by Category</h1>
-          <p className="text-lg font-serif py-6">Discover collections for every lifestyle—from beauty and fashion to furniture, groceries, pet care, and fragrances. Find everything you need in one place.</p>
-          <button onClick={()=>{navigate("/shop")}} className="group uppercase font-bold border-2 border-[#1F2C26] px-10 py-3 rounded-full font-semibold text-[#1F2C26] flex items-center gap-3 transition-all duration-300 hover:bg-[#1F2C26] hover:text-white hover:scale-105 hover:shadow-2xl">
-        View All Products
-        <GrLinkNext className="group-hover:translate-x-2 font-bold transition-transform duration-300" />
-      </button>
+ <section className="bg-[#FCFAF7] mb-40">
+
+  <div className="max-w-7xl mx-auto text-center mb-16">
+
+    <p className="uppercase tracking-[0.35em] text-sm text-[#7C8B73]">
+      Collections
+    </p>
+
+    <h1 className="mt-5 text-5xl font-light text-[#3E2E24]">
+      Shop by Category
+    </h1>
+
+    <p className="mt-6 text-lg leading-8 text-[#6E6258]">
+      Carefully curated collections designed to complement every
+      lifestyle and every home.
+    </p>
+
+  </div>
+
+  <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8 max-w-8xl mx-auto px-8">
+
+    {collections.map((item) => (
+
+      <div
+        key={item.id}
+        className="group overflow-hidden rounded-[30px] bg-white border border-[#E6DDD2] hover:shadow-xl transition duration-500"
+      >
+
+        <div className="overflow-hidden">
+
+          <img
+            src={item.image}
+            className="h-80 w-full object-cover group-hover:scale-110 transition duration-700"
+          />
+
         </div>
 
-        <div className="flex gap-6 flex-row w-2/3 ">
-       {collections.map((item)=>(
-        <div id="container" className="hover:shadow-xl overflow-hidden duration-300 transition" key={item.id}>
-          <div className="overflow-hidden">
-          <img src={item.image} className="hover:scale-110 duration-300 transition" id="image" alt={item.title} />
-          </div>
-          <h1 className="text-2xl font-serif  mt-3">{item.title}</h1>
-          <button onClick={()=>{
-            navigate("./shop")
-          }} className="flex font-serif items-center text-md text-center gap-2 ml-15">Shop Now <FaArrowRightLong /></button>
-          </div>
-       ))}
+        <div className="p-7">
+
+          <h2 className="text-2xl text-[#3E2E24]">
+            {item.title}
+          </h2>
+
+          <button
+            onClick={() => navigate("/shop")}
+            className="mt-5 flex items-center gap-3 text-[#7C8B73] hover:gap-5 transition-all"
+          >
+            Explore
+            <FaArrowRightLong />
+          </button>
 
         </div>
+
       </div>
-       
-       <section>
-      <div>
-       <h1>Enlighten your home</h1>
-       <p>Luminous Living : Innovative <br/> Lightning Designs</p>
-       <p>Most of the style's furniture has a touch of modern European <br/> furniture with a 
-       simple design to create harmony with the dark <br/> interior design ..</p>
-       <button onClick={() => navigate("./shop")}>Shop Now</button>
-      </div>
-      <div>
-        <img src=""></img>
-        
-      </div>
-      </section>
-      
-    {/* best seller */}
-      <div className="px-15">
-        <div className="flex justify-between">
-        <h1 className="font-serif text-5xl text-[#1F2C26] mb-7 px-4">Best Sellers</h1>
-        <button className="font-bold text-lg flex hover:scale-90 duration-300 transition-transform items-center gap-2 text-center">View All <FaArrowRightLong /></button>
-        </div>
- <Swiper modules={[Navigation]}
-  navigation
-  slidesPerView={4}
-  spaceBetween={20}>
-  {product.map((product) => (
-    <SwiperSlide key={product.id}>
-      <ProductCard product={product} />
-    </SwiperSlide>
-  ))}
-</Swiper>
-      </div>
-    </section>
+
+    ))}
+
+  </div>
+
+</section>
 
 {/* discount */}
-          <section className="grid grid-cols-1 bg-[#FFFCF8] md:grid-cols-2 gap-8  px-7 py-16">
-  <div className="relative group overflow-hidden rounded-3xl bg-[#D6B89D] h-[500px]">
-   
+<section className="bg-[#241A15] my-20">
+
+<div className="flex items-center gap-16 ">
+
+  {/* Left Content */}
+  <div className="w-[45%] px-20">
+   <p className="mt-10 max-w-sm  mb-10 text-xl italic text-white/70">
+  “Lighting shapes the atmosphere before a single word is spoken.”
+</p>
+
+    <p className="uppercase tracking-[0.35em] text-sm text-white">
+      Inspired Living
+    </p>
+
+    <h1 className="mt-5 text-6xl font-bold text-white">
+      Enlighten
+      <br />
+      Your Home
+    </h1>
+
+    <p className="mt-8 text-lg leading-8 text-white">
+      Bring warmth and sophistication into every room with timeless
+      lighting pieces that blend modern elegance with everyday comfort.
+    </p>
+
+    <button
+      onClick={() => navigate("/shop")}
+      className="mt-5 rounded-full bg-[#5B4A3F] px-8 py-4 text-white transition hover:bg-[#43362E]"
+    >
+      Explore Collection
+    </button>
+
+  </div>
+  
+
+  {/* Right Image */}
+  <div className="w-[55%]">
+
     <img
-      src="/food.jpg"
-      alt=""
-      className="group-hover:scale-110 ease-in-out transition-transform duration-300 h-full w-full object-cover"
+      src="/interior.jpg"
+      alt="Interior"
+      className="h-[650px] w-full object-cover shadow-2xl"
     />
-    <div className="inset-0 bg-black/40 absolute"></div>
-    <div className="absolute right-8 top-20 text-right text-white">
-      <h2>Use code "FIRST50" for</h2>
-      <h1 className="text-8xl font-black leading-none">
-        50%
-        <br />
-        OFF
-      </h1>
 
-      <p className="mt-2 font-bold text-lg">Clean. Vegan. Powerful.</p>
-
-      <button className="mt-5 rounded-full text-xl hover:scale-90 duration-300 transition bg-white/30 backdrop-blur-md px-6 py-2 font-semibold">
-        Buy Now
-      </button>
-    </div>
   </div>
 
-  <div className="relative group overflow-hidden rounded-3xl bg-[#CFA882] h-[500px]">
-    <img
-      src="/cream.jpg"
-      alt=""
-      className="group-hover:scale-110 ease-in-out transition-transform duration-300 h-full w-full object-cover"
-    />
-     <div className="inset-0 bg-black/30 absolute"></div>
-    <div className="absolute right-8 top-20 text-right text-white">
-      <h2>Use code "NATURAL30" for</h2>
-      <h1 className="text-8xl font-black leading-none">
-        30%
-        <br />
-        OFF
-      </h1>
+</div>
 
-      <p className="mt-2 font-bold text-lg">Natural Skincare Collection</p>
+</section>
 
-      <button className="mt-5 rounded-full hover:scale-90 duration-300 transition text-xl bg-white/30 backdrop-blur-md bg-[#7A5C8D] px-6 py-2 font-semibold">
-        Buy Now
+{/* Best Sellers */}
+
+<section className="bg-[#FCFAF7] py-24">
+
+  <div className="max-w-8xl mx-auto px-8">
+
+    {/* Heading */}
+
+    <div className="flex justify-between items-end mb-14">
+
+      <div>
+
+        <p className="uppercase tracking-[0.35em] text-sm text-[#7C8B73]">
+          Customer Favorites
+        </p>
+
+        <h1 className="mt-4 text-5xl font-light text-[#3E2E24]">
+          Best Sellers
+        </h1>
+
+        <p className="mt-5 text-lg text-[#6E6258] max-w-xl">
+          Discover our most-loved pieces, chosen by thousands of customers
+          for their timeless quality and exceptional craftsmanship.
+        </p>
+
+      </div>
+
+      <button
+        onClick={() => navigate("/shop")}
+        className="group flex items-center gap-3 rounded-full border border-[#D9CDC1] px-7 py-3 text-[#5B4A3F] transition-all duration-300 hover:bg-[#5B4A3F] hover:text-white"
+      >
+        View All
+
+        <FaArrowRightLong className="transition-transform duration-300 group-hover:translate-x-1" />
+
       </button>
+
     </div>
+
+    {/* Swiper */}
+
+    <Swiper
+      modules={[Navigation]}
+      navigation
+      slidesPerView={4}
+      spaceBetween={24}
+      className="pb-8"
+    >
+
+      {product.map((item) => (
+
+        <SwiperSlide key={item.id}>
+
+          <ProductCard product={item} />
+
+        </SwiperSlide>
+
+      ))}
+
+    </Swiper>
+
   </div>
+
+</section>
+{/* Discount Section */}
+
+<section className="bg-[#FCFAF7] py-20">
+
+  <div className="mx-auto px-8">
+
+    <div className="grid lg:grid-cols-2 gap-8">
+
+      {/* Left Card */}
+
+    <div className="relative overflow-hidden rounded-[25px] transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+
+  {/* Background */}
+  <div className="relative h-[600px] bg-[url('/frag.jpg')] bg-cover bg-center">
+
+    {/* Overlay */}
+    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20"></div>
+
+    {/* Content */}
+    <div className="relative z-10 flex h-full flex-col justify-center p-20 text-white">
+
+      <p className="uppercase tracking-[0.4em] text-lg text-yellow-200">
+        Limited Time Offer
+      </p>
+
+      <h2 className="mt-3 text-6xl font-bold leading-tight">
+        Get
+        <span className="text-yellow-400"> 30% OFF</span>
+        <br />
+        Your First Order
+      </h2>
+
+      <p className="mt-3 max-w-md text-lg leading-8 text-white/80">
+        Experience our signature collection crafted with timeless
+        elegance. Elevate your lifestyle with exclusive designs
+        made for modern living.
+      </p>
+
+
+      {/* CTA */}
+      <button className="mt-5 w-fit rounded-full bg-white px-8 py-4 font-medium text-[#241A15] transition duration-300 hover:scale-105">
+        Shop Collection →
+      </button>
+
+      {/* Small Note */}
+      <p className="mt-6 text-sm tracking-wide text-white/60">
+        Offer valid until August 31 • Terms & Conditions Apply
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+      {/* Right Card */}
+
+    <div className="relative overflow-hidden rounded-[25px] transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+
+  {/* Background Image */}
+  <div className="relative h-[600px] bg-[url('/beauty.jpg')] bg-cover bg-center">
+
+    {/* Overlay */}
+    <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/70 via-black/40 to-black/20"></div>
+
+    {/* Content */}
+    <div className="relative z-10 flex h-full flex-col justify-center p-20 text-white">
+
+      <p className="uppercase tracking-[0.4em] text-sm text-yellow-200">
+        Exclusive Coupon
+      </p>
+
+      <h2 className="mt-3 text-6xl font-bold leading-tight">
+        Save More
+        <br />
+        Every Order
+      </h2>
+
+      {/* Coupon */}
+      <div className="mt-5 inline-flex w-fit items-center rounded-2xl border border-white/20 bg-white/10 px-6 py-3 backdrop-blur-xl">
+
+        <span className="text-3xl font-bold text-white">
+          SAGE30
+        </span>
+
+      </div>
+
+      <p className="mt-5  text-lg leading-8 text-white/80">
+        Apply this exclusive code during checkout and enjoy
+        instant savings on our handcrafted premium collection.
+      </p>
+
+      {/* Benefits */}
+    
+
+      {/* Button */}
+      <button onClick={()=> {return toast.success("coupon copied")}} className="mt-8 w-fit rounded-full border border-white bg-white/10 px-8 py-4 backdrop-blur-md transition duration-300 hover:bg-white hover:text-black">
+        Copy Coupon →
+      </button>
+
+      <p className="mt-6 text-sm text-white/60">
+        Valid until August 31 • One use per customer
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+    </div>
+
+  </div>
+
 </section>
 
 {/* contact-us */}

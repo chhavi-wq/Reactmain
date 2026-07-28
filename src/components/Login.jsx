@@ -19,7 +19,6 @@ const Login=()=>{
   }
 
   const handleSubmit = async(e)=>{
-    console.log("handled")
     e.preventDefault();
 
     if(!formData.email || !formData.password){
@@ -76,14 +75,19 @@ const Login=()=>{
     })
     
     const data = await response.json();
-    const token=data.token
-console.log(token);
-localStorage.setItem("token",token)
+//     const token=data.token
+// console.log(token);
+// localStorage.setItem("token",token)
     console.log(response.status);
     console.log(data);
 
    if (response.ok) {
   toast.success(data.message);
+  localStorage.setItem("token",data.token)
+  localStorage.setItem("role",data.role)
+  console.log(localStorage.getItem("role"))
+  console.log(localStorage.getItem("token"))
+  console.log(data.token)
 
   localStorage.setItem(
     "currentUser",
@@ -110,94 +114,114 @@ localStorage.setItem("token",token)
       <ToastContainer />
     </div>
 
-    <div className="min-h-screen bg-[#3E2723] flex justify-center items-center">
-      <div className="bg-white w-[90%] md:w-[450px] rounded-xl shadow-lg p-8">
-        <h1 className="text-4xl font-bold text-center mb-2">
-          {signUp ? "Sign Up" : "Login"}
-        </h1>
+ <div className="min-h-screen bg-[#4C6657] flex items-center justify-center px-6 py-10">
+  <div className="bg-[#FFFCF8] w-[90%] md:w-[450px] rounded-[28px] border border-[#E7E0D8] shadow-lg p-6">
 
-        <p className="text-center text-gray-500 mb-6">
-          {signUp
-            ? "Create your account"
-            : "Login to your account"}
-        </p>
+    <div className="text-center mb-6">
+      <p className="text-xs uppercase tracking-[5px] text-[#7A8B7A]">
+        SAGE
+      </p>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+      <h1 className="mt-2 text-3xl font-light text-[#23332B]">
+        {signUp ? "Create Account" : "Welcome Back"}
+      </h1>
 
-          {signUp && (
-            <div>
-              <label className="font-semibold">Name</label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChanges}
-                className="w-full border rounded-lg p-3 mt-1"
-                placeholder="Enter your name"
-              />
-            </div>
-          )}
-
-          <div>
-            <label className="font-semibold">Email</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChanges}
-              className="w-full border rounded-lg p-3 mt-1"
-              placeholder="Enter your email"
-            />
-          </div>
-
-          <div>
-            <label className="font-semibold">Password</label>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChanges}
-              className="w-full border rounded-lg p-3 mt-1"
-              placeholder="Enter your password"
-            />
-          </div>
-
-          {signUp && (
-            <div>
-              <label className="font-semibold">Confirm Password</label>
-              <input
-                type="password"
-                name="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleChanges}
-                className="w-full border rounded-lg p-3 mt-1"
-                placeholder="Confirm password"
-              />
-            </div>
-          )}
-
-          <button
-            type="submit"
-            className="w-full bg-[#3E2723] text-white py-3 rounded-lg hover:bg-[#5D4037]"
-          >
-            {signUp ? "Sign Up" : "Login"}
-          </button>
-        </form>
-
-        <p className="text-center mt-5">
-          {signUp
-            ? "Already have an account?"
-            : "Don't have an account?"}
-
-          <span
-            className="text-blue-600 cursor-pointer ml-2"
-            onClick={() => setSignup(!signUp)}
-          >
-            {signUp ? "Login" : "Sign Up"}
-          </span>
-        </p>
-      </div>
+      <p className="mt-2 text-sm text-[#7C7C7C]">
+        {signUp
+          ? "Create your account"
+          : "Sign in to your account"}
+      </p>
     </div>
+
+    <form onSubmit={handleSubmit} className="space-y-3">
+
+      {signUp && (
+        <div>
+          <label className="block text-sm font-medium text-[#23332B] mb-1">
+            Full Name
+          </label>
+
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChanges}
+            placeholder="Enter your name"
+            className="w-full rounded-full border border-[#DDD5CB] px-5 py-3 outline-none transition focus:border-[#32473D]"
+          />
+        </div>
+      )}
+
+      <div>
+        <label className="block text-sm font-medium text-[#23332B] mb-1">
+          Email Address
+        </label>
+
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChanges}
+          placeholder="Enter your email"
+          className="w-full rounded-full border border-[#DDD5CB] px-5 py-3 outline-none transition focus:border-[#32473D]"
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-[#23332B] mb-1">
+          Password
+        </label>
+
+        <input
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChanges}
+          placeholder="Enter your password"
+          className="w-full rounded-full border border-[#DDD5CB] px-5 py-3 outline-none transition focus:border-[#32473D]"
+        />
+      </div>
+
+      {signUp && (
+        <div>
+          <label className="block text-sm font-medium text-[#23332B] mb-1">
+            Confirm Password
+          </label>
+
+          <input
+            type="password"
+            name="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleChanges}
+            placeholder="Confirm password"
+            className="w-full rounded-full border border-[#DDD5CB] px-5 py-3 outline-none transition focus:border-[#32473D]"
+          />
+        </div>
+      )}
+
+      <button
+        type="submit"
+        className="w-full rounded-full bg-[#32473D] py-3 text-white font-medium transition duration-300 hover:bg-[#23332B]"
+      >
+        {signUp ? "Create Account" : "Login"}
+      </button>
+    </form>
+
+    <p className="mt-6 text-center text-sm text-[#7C7C7C]">
+      {signUp
+        ? "Already have an account?"
+        : "Don't have an account?"}
+
+      <span
+        onClick={() => setSignup(!signUp)}
+        className="ml-2 cursor-pointer font-medium text-[#32473D] hover:text-[#23332B]"
+      >
+        {signUp ? "Login" : "Sign In"}
+      </span>
+    </p>
+
+  </div>
+</div>
   </>
 );
 

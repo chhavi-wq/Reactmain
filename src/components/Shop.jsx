@@ -7,38 +7,80 @@ const Shop = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="mt-20 px-6">
-  <div className="relative h-[500px] rounded-3xl overflow-hidden">
+   <section className="pt-35 px-10 bg-[#faf6f2] lg:px-20">
+  <div className="relative overflow-hidden rounded-[40px] h-[600px] shadow-2xl">
+
     <img
       src="/banner.jpg"
-      alt="Banner"
+      alt="Summer Collection"
       className="w-full h-full object-cover"
     />
 
-    <div className="absolute inset-0 bg-black/40 flex flex-col justify-center px-16">
-      <h1 className="text-6xl font-bold text-white">
-        Summer Collection
-      </h1>
+    {/* Dark Gradient Overlay */}
+    <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-transparent"></div>
 
-      <p className="text-white text-xl mt-4 max-w-lg">
-        Discover the latest trends and premium essentials.
-      </p>
+    {/* Content */}
+    <div className="absolute inset-0 flex items-center px-16 lg:px-24">
 
-      <button className="mt-8 w-fit bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-200">
-        Shop Now
-      </button>
+      <div className="max-w-xl">
+
+        <p className="uppercase tracking-[8px] text-[#D6E2D0] text-sm font-medium mb-4">
+          New Season • 2026
+        </p>
+
+        <h1 className="text-6xl lg:text-7xl font-serif font-bold leading-tight text-white">
+          Discover
+          <br />
+          Timeless Beauty
+        </h1>
+
+        <p className="mt-8 text-lg leading-8 text-gray-200 max-w-lg">
+          Elevate your everyday routine with thoughtfully curated
+          products designed for effortless elegance and lasting quality.
+        </p>
+
+        <div className="flex gap-5 mt-10">
+
+          <button className="rounded-full bg-[#40879b] px-10 py-4 text-white font-semibold transition duration-300 hover:bg-[#3a7a8c] hover:scale-105">
+            Shop Collection
+          </button>
+
+          <button className="rounded-full border border-white/40 bg-white/10 backdrop-blur-md px-10 py-4 text-white font-semibold transition duration-300 hover:bg-white hover:text-[#384A37]">
+            Explore More
+          </button>
+
+        </div>
+
+      </div>
+
     </div>
+
   </div>
 </section>
 
       {/* Products Section */}
-     <section className="px-6 pb-20">
-  <div className="flex justify-center font-mono mt-20 items-center text-center mb-8">
-    <h2 className="text-6xl font-bold">Featured Products</h2>
+   <section className="px-10 lg:px-20 py-24 bg-[#F8F5F0]">
 
+ <div className="flex flex-col items-center text-center mb-16">
+
+  <span className="uppercase tracking-[8px] text-[#B38B59] text-sm">
+    Exclusive Collection
+  </span>
+
+  <h2 className="mt-4 text-6xl font-serif font-bold text-[#111111]">
+    Featured Products
+  </h2>
+
+  <p className="mt-5 text-gray-500 max-w-xl">
+    Carefully selected products designed with quality and elegance in mind.
+  </p>
+
+</div>
+
+  <div className="mt-10">
+    <Api />
   </div>
 
-  <Api />
 </section>
     </>
   );
