@@ -109,7 +109,7 @@ const Apidetail = () => {
 
       {/* Price */}
       <h1 className="text-5xl font-bold mt-5 text-[#384A37]">
-        ₹{Math.floor(data.price * 100)}
+        ₹{Math.floor(data.price * 100).toLocaleString("en-IN")}
       </h1>
 
       {/* Stock */}

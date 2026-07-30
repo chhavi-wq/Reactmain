@@ -1,12 +1,36 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
+import { useContext, useState } from "react";
+import  { ThemeContext } from "../ThemeContext.jsx"
 
 const Navbar = () => {
   const navigate = useNavigate();
-
+const { darkMode, toggleTheme } = useContext(ThemeContext);
+const[visible,setVisible] = useState(false);
   // Get current user safely
   const token = localStorage.getItem("token");
-
+ const [users, setUsers] = useState([]);
+  const getUsers = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/api/admin/users", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+  
+        const data = await response.json();
+  
+        if (response.ok) {
+          setUsers(data.user);
+        } else {
+          toast.error(data.message);
+        }
+      } catch {
+        toast.error("Server Error");
+      }
+    };
   // Get cart items safely
   const cartitem = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -62,9 +86,20 @@ const Navbar = () => {
                 Cart ({count})
               </li>
             </Link>
+            <Link to="/orders">
+              <li className="hover:scale-110 duration-200 transition">
+                My Orders
+              </li>
+            </Link>
           </div>
 
           <div className="flex text-center items-center gap-5">
+            <button
+  onClick={toggleTheme}
+  className="text-white text-2xl rounded-lg"
+>
+  {darkMode ? "☀️" : "🌙"}
+</button>
               <Link to="/admin">
               <li className="cursor-pointer hover:scale-110 duration-200 transition font-medium list-none"
               >
@@ -86,12 +121,19 @@ const Navbar = () => {
               </Link>
             )}
 
-            <li className="text-3xl cursor-pointer hover:scale-110 transition list-none">
-              <FaUserCircle />
-            </li>
-            <li>
-
-            </li>
+            <li
+        onClick={() => setVisible(!visible)}
+        className="text-3xl relative cursor-pointer hover:scale-110 transition list-none">
+        <FaUserCircle />
+        </li>
+        {visible && (
+          <div className="absolute right-0 top-full bg-white  mt-10 shadow-lg">
+          {users.map((user)=>
+            <h1 key={user._id}>{user.name}</h1>
+          )}
+         </div>
+        )}
+      
 
           </div>
         </ul>

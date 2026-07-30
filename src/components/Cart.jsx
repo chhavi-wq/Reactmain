@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import Navbar from "./Navbar";
+import {ToastContainer, toast} from "react-toastify";
 import {
   addToCart,
   clearCart,
@@ -21,7 +22,7 @@ const Cart = () => {
   const navigate = useNavigate();
 const placeOrder = async () => {
   try {
-    console.log("Place Order Clicked");
+
     const response = await fetch("http://localhost:3000/api/orders", {
       method: "POST",
       headers: {
@@ -43,11 +44,11 @@ const placeOrder = async () => {
     const data = await response.json();
 
     if (response.ok) {
-      alert(data.message);
+      toast.success(data.message)
  dispatch(clearCart());
       navigate("/orders");
     } else {
-      alert(data.message);
+      toast.error(data.message)
     }
   } catch (err) {
     console.log(err);
@@ -139,7 +140,7 @@ const placeOrder = async () => {
             </p>
 
             <h3 className="mt-4 text-2xl font-semibold text-[#32473D]">
-              ₹{Math.floor(item.price*100)}
+              ₹{Math.floor(item.price*100).toLocaleString("en-IN")}
             </h3>
           </div>
 
@@ -200,7 +201,7 @@ const placeOrder = async () => {
       <span>Subtotal</span>
 
       <span className="font-medium text-[#23332B]">
-        ₹{Math.floor(total)}
+        ₹{Math.floor(total).toLocaleString("en-IN")}
       </span>
     </div>
 
@@ -216,7 +217,7 @@ const placeOrder = async () => {
       <span>Tax</span>
 
       <span className="font-medium text-[#23332B]">
-        $0
+        ₹0
       </span>
     </div>
 
@@ -227,7 +228,7 @@ const placeOrder = async () => {
       </span>
 
       <span className="text-3xl font-semibold text-[#32473D]">
-        ₹{Math.floor(total)}
+        ₹{Math.floor(total).toLocaleString("en-IN")}
       </span>
 
     </div>

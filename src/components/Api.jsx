@@ -390,11 +390,11 @@ const Api = () => {
         <div className="mt-6 flex items-end gap-3">
 
           <h2 className="text-3xl font-bold text-[#384A37]">
-            ₹{Math.floor(item.price * 100)}
+            ₹{Math.floor(item.price * 100).toLocaleString("en-IN")}
           </h2>
 
           <span className="text-gray-400 line-through">
-            ₹{Math.floor((item.price * 100) * 1.2)}
+            ₹{Math.floor((item.price * 100) * 1.2).toLocaleString("en-IN")}
           </span>
 
         </div>

@@ -30,7 +30,7 @@ const [orders, setOrders] = useState([]);
       toast.error("Server Error");
     }
   };
-
+console.log(users[1])
   // Delete user
   const deleteUser = async (id) => {
     try {
@@ -56,6 +56,33 @@ const [orders, setOrders] = useState([]);
       toast.error("Server Error");
     }
   };
+
+//deleteOrder
+
+  const deleteOrder = async (id) => {
+  try {
+    const response = await fetch(
+      `http://localhost:3000/api/admin/orders/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+
+    const data = await response.json();
+
+    if (response.ok) {
+      toast.success(data.message);
+      getOrders(); // Refresh orders
+    } else {
+      toast.error(data.message);
+    }
+  } catch (err) {
+    toast.error("Server Error");
+  }
+};
 
   // Search user
   const searchUser = async (value) => {
@@ -146,127 +173,203 @@ const updateStatus = async (id, status) => {
   return (
     <>
     <Navbar />
-    <div className="min-h-screen bg-gray-100 p-8">
 
-      <h1 className="text-4xl font-bold mt-20 text-center mb-8">
-        Admin Dashboard
-      </h1>
+    <div className="min-h-screen bg-[#F6EFE8] p-8">
 
-      <div className="flex justify-center mb-8">
-        <input
-          type="text"
-          placeholder="Search user..."
-          value={search}
-          onChange={(e) => searchUser(e.target.value)}
-          className="border border-gray-300 rounded-lg px-4 py-3 w-[400px]"
-        />
-      </div>
+    <h1 className="text-4xl font-bold text-[#3E2723] text-center mt-20 mb-10">
+      Admin Dashboard
+    </h1>
 
-      <div className="bg-white shadow-lg rounded-xl overflow-hidden">
 
-        <table className="w-full">
+    <div className="space-y-6">
 
-          <thead className="bg-[#264653] text-white">
-            <tr>
-              <th className="p-4">Name</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
+    {users.map((user)=>{
 
-          <tbody>
+    const userOrders = orders.filter(
+      (order)=> order.user?._id === user._id
+    );
 
-            {users.map((user) => (
-              <tr
-                key={user._id}
-                className="border-b text-center hover:bg-gray-50"
-              >
-                <td className="p-4">{user.name}</td>
 
-                <td>{user.email}</td>
+    return (
 
-                <td>{user.role}</td>
+    <div
+    key={user._id}
+    className="bg-white rounded-2xl shadow-lg overflow-hidden border border-[#e2dfd6]"
+    >
 
-                <td>
-                  <button
-                    onClick={() => deleteUser(user._id)}
-                    className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
 
-          </tbody>
+    {/* User Header */}
 
-        </table>
+    <div className="bg-[#3F5B4B] text-white px-6 py-4 flex justify-between items-center">
 
-      </div>
+    <div> <h2 className="text-2xl font-semibold">  {user.name} </h2>
+    <p className="text-sm opacity-80"> {user.email} </p>
+
+    </div>  <span className="bg-white text-[#3F5B4B] px-4 py-1 rounded-full font-medium">   {user.role} </span>  </div>
+
+
+
+    <div className="grid md:grid-cols-3 gap-6 p-6">
+
+
+    {/* User Data */}
+ <div className="bg-[#F6EFE8] rounded-xl p-5"> <h3 className="text-xl font-bold text-[#3E2723] mb-4">
+    User Details
+    </h3>
+
+
+    <p>
+    Name:
+    <span className="font-semibold">
+    {" "}{user.name}
+    </span>
+    </p>
+
+
+    <p>
+    Email: <span className="font-semibold">
+    {" "}{user.email} </span>
+    </p>
+
+
+    <p>
+    Status:
+    <span className="font-semibold">
+    {" "}{user.isVerified ? "Verified":"Not Verified"}
+    </span>
+    </p>
+
+
+    <button
+    onClick={()=>deleteUser(user._id)}
+    className="mt-5 bg-red-600 text-white px-5 py-2 rounded-lg hover:bg-red-700"
+    >
+    Delete User
+    </button>
+
+
     </div>
-    <div className="bg-white shadow-lg rounded-xl overflow-hidden mt-10">
 
-  <h2 className="text-3xl font-bold text-center py-6">
+
+
+
+    {/* Orders */}
+
+    <div className="md:col-span-2">
+
+
+    <h3 className="text-xl font-bold text-[#3E2723] mb-4">
     Orders
-  </h2>
+    </h3>
 
-  <table className="w-full">
 
-    <thead className="bg-[#264653] text-white">
-      <tr>
-        <th className="p-4">Customer</th>
-        <th>Total</th>
-        <th>Products</th>
-        <th>Status</th>
-        <th>Update</th>
-      </tr>
-    </thead>
+    {
+    userOrders.length === 0 ?
 
-    <tbody>
+    <p className="text-gray-500">
+    No orders yet
+    </p>
 
-      {orders.map((order) => (
-        <tr
-          key={order._id}
-          className="border-b text-center"
-        >
-          <td>{order.user.name}</td>
 
-          <td>₹{order.totalAmount}</td>
-          <td>
-  {order.products.map((item) => (
-    <div key={item.productId}>
-      {item.title} × {item.quantity}
+    :
+
+    userOrders.map((order)=>(
+
+
+    <div
+    key={order._id}
+    className="border rounded-xl p-4 mb-4 bg-[#FFFAF5]"
+    >
+
+
+    <div className="flex justify-between mb-3">
+
+    <p className="font-semibold">
+    Order ID: {order._id.slice(-6)}
+    </p>
+
+
+    <p className="font-bold text-[#3F5B4B]">
+    ₹{Number(order.totalAmount).toLocaleString("en-IN")}
+    </p>
+
     </div>
-  ))}
-</td>
 
-          <td>{order.status}</td>
 
-          <td>
-            <select
-              value={order.status}
-              onChange={(e) =>
-                updateStatus(order._id, e.target.value)
-              }
-              className="border rounded px-2 py-1"
-            >
-              <option value="Pending">Pending</option>
-              <option value="Shipped">Shipped</option>
-              <option value="Delivered">Delivered</option>
-              <option value="Cancelled">Cancelled</option>
-            </select>
-          </td>
-        </tr>
-      ))}
 
-    </tbody>
+    <div className="mb-3">
 
-  </table>
+    {
+    order.products.map((item)=>(
+    <p key={item.productId}>
+    {item.title} × {item.quantity}
+    </p>
+    ))
+    }
 
-</div>
+    </div>
+
+
+
+    <div className="flex justify-between items-center">
+
+
+    <select
+    value={order.status}
+    onChange={(e)=>
+    updateStatus(order._id,e.target.value)
+    }
+    className="border rounded-lg px-6 py-2"
+    >
+
+    <option>Pending</option>
+    <option>Shipped</option>
+    <option>Delivered</option>
+    <option>Cancelled</option>
+
+    </select>
+
+
+
+    <button
+    onClick={()=>deleteOrder(order._id)}
+    className="bg-red-600 text-white px-4 py-2 rounded-lg"
+    >
+    Delete Order
+    </button>
+
+
+    </div>
+
+
+    </div>
+
+
+    ))
+
+    }
+
+
+    </div>
+
+
+    </div>
+
+
+    </div>
+
+
+    )
+
+    })}
+
+
+    </div>
+
+
+    </div>
+
     </>
-    
   );
   
 };

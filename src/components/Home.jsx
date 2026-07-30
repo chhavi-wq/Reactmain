@@ -308,7 +308,7 @@ const benefits = [{
           <div className="mt-4 flex items-center justify-between">
 
             <h3 className="text-2xl font-light text-white">
-              ₹{Math.floor(grocery.price * 100)}
+              ₹{Math.floor(grocery.price * 100).toLocaleString("en-IN")}
             </h3>
 
             <span className="rounded-full bg-green-900 px-4 py-2 text-xs text-white">
@@ -414,7 +414,7 @@ const benefits = [{
             <div className="mt-4 flex items-center justify-between">
 
               <p className="text-2xl text-[#5B4A3F]">
-                ₹{Math.floor(addCartProduct.price * 100)}
+                ₹{Math.floor(addCartProduct.price * 100).toLocaleString("en-IN")}
               </p>
 
               <span className="rounded-full bg-[#5B4A3F] px-4 py-2 text-sm text-white">
@@ -555,7 +555,7 @@ const benefits = [{
           </p>
 
           <h3 className="text-3xl font-light text-white">
-            ₹{Math.floor(featuredProducts.price * 100)}
+            ₹{Math.floor(featuredProducts.price * 100).toLocaleString("en-IN")}
           </h3>
         </div>
 
