@@ -1,51 +1,76 @@
 import Api from "./Api.jsx";
 import Navbar from "./Navbar.jsx";
+import { useContext } from "react";
+import { ThemeContext } from "../ThemeContext.jsx";
 
 const Shop = () => {
+  const {darkMode,toogleTheme} = useContext(ThemeContext);
   return (
     <>
       <Navbar />
 
       {/* Hero Section */}
-   <section className="pt-35 px-10 bg-[#faf6f2] lg:px-20">
-  <div className="relative overflow-hidden rounded-[40px] h-[600px] shadow-2xl">
+  <section
+  className={`pt-35 px-10 lg:px-20 transition-colors duration-500 ${
+    darkMode ? "bg-[#111512]" : "bg-[#faf6f2]"
+  }`}
+>
+  <div className="relative h-[600px] overflow-hidden rounded-[40px] shadow-2xl">
 
+    {/* Background Image */}
     <img
       src="/banner.jpg"
       alt="Summer Collection"
-      className="w-full h-full object-cover"
+      className="h-full w-full object-cover"
     />
 
     {/* Dark Gradient Overlay */}
-    <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-transparent"></div>
+    <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-transparent" />
+  
+    {/* ================= 01 LABEL ================= */}
+
+    <div className="absolute right-10 top-10 flex items-center gap-3 text-white/70">
+
+      <span className="h-px w-10 bg-white/30" />
+
+      <span className="text-xs tracking-[0.35em]">
+        01
+      </span>
+
+    </div>
+
 
     {/* Content */}
     <div className="absolute inset-0 flex items-center px-16 lg:px-24">
 
       <div className="max-w-xl">
 
-        <p className="uppercase tracking-[8px] text-[#D6E2D0] text-sm font-medium mb-4">
+        <p className="mb-4 text-sm font-medium uppercase tracking-[8px] text-[#D6E2D0]">
           New Season • 2026
         </p>
 
-        <h1 className="text-6xl lg:text-7xl font-serif font-bold leading-tight text-white">
+        <h1
+          className={`text-6xl font-serif font-bold leading-tight lg:text-7xl ${
+            darkMode ? "text-[#F5F1E8]" : "text-white"
+          }`}
+        >
           Discover
           <br />
           Timeless Beauty
         </h1>
 
-        <p className="mt-8 text-lg leading-8 text-gray-200 max-w-lg">
+        <p className="mt-8 max-w-lg text-lg leading-8 text-gray-200">
           Elevate your everyday routine with thoughtfully curated
           products designed for effortless elegance and lasting quality.
         </p>
 
-        <div className="flex gap-5 mt-10">
+        <div className="mt-10 flex gap-5">
 
-          <button className="rounded-full bg-[#40879b] px-10 py-4 text-white font-semibold transition duration-300 hover:bg-[#3a7a8c] hover:scale-105">
+          <button className="rounded-full bg-[#40879b] px-10 py-4 font-semibold text-white transition duration-300 hover:scale-105 hover:bg-[#3a7a8c]">
             Shop Collection
           </button>
 
-          <button className="rounded-full border border-white/40 bg-white/10 backdrop-blur-md px-10 py-4 text-white font-semibold transition duration-300 hover:bg-white hover:text-[#384A37]">
+          <button className="rounded-full border border-white/40 bg-white/10 px-10 py-4 font-semibold text-white backdrop-blur-md transition duration-300 hover:bg-white hover:text-[#384A37]">
             Explore More
           </button>
 
@@ -59,25 +84,116 @@ const Shop = () => {
 </section>
 
       {/* Products Section */}
-   <section className="px-10 lg:px-20 py-24 bg-[#F8F5F0]">
+ <section
+  className={`relative px-10 py-24 transition-colors duration-500 lg:px-20 ${
+    darkMode
+      ? "bg-[#111512]"
+      : "bg-[#F8F5F0]"
+  }`}
+>
 
- <div className="flex flex-col items-center text-center mb-16">
+  {/* Subtle concentric circles */}
+  <div className="pointer-events-none absolute -left-48 -top-48 h-[500px] w-[500px]">
 
-  <span className="uppercase tracking-[8px] text-[#B38B59] text-sm">
-    Exclusive Collection
-  </span>
+    <div
+      className={`absolute inset-0 rounded-full border ${
+        darkMode
+          ? "border-[#8FA494]/[0.05]"
+          : "border-[#32473D]/[0.05]"
+      }`}
+    />
 
-  <h2 className="mt-4 text-6xl font-serif font-bold text-[#111111]">
-    Featured Products
-  </h2>
+    <div
+      className={`absolute inset-[70px] rounded-full border ${
+        darkMode
+          ? "border-[#8FA494]/[0.04]"
+          : "border-[#32473D]/[0.04]"
+      }`}
+    />
 
-  <p className="mt-5 text-gray-500 max-w-xl">
-    Carefully selected products designed with quality and elegance in mind.
-  </p>
+    <div
+      className={`absolute inset-[140px] rounded-full border ${
+        darkMode
+          ? "border-[#8FA494]/[0.03]"
+          : "border-[#32473D]/[0.03]"
+      }`}
+    />
 
-</div>
+  </div>
 
-  <div className="mt-10">
+
+  {/* Small section number */}
+  <div className="relative z-10 mb-8 flex items-center justify-center gap-3">
+
+    <span
+      className={`h-px w-10 ${
+        darkMode
+          ? "bg-[#78917C]/40"
+          : "bg-[#B38B59]/40"
+      }`}
+    />
+
+    <span
+      className={`text-xs tracking-[0.35em] ${
+        darkMode
+          ? "text-[#78917C]"
+          : "text-[#B38B59]"
+      }`}
+    >
+      02
+    </span>
+
+    <span
+      className={`h-px w-10 ${
+        darkMode
+          ? "bg-[#78917C]/40"
+          : "bg-[#B38B59]/40"
+      }`}
+    />
+
+  </div>
+
+
+  {/* Heading */}
+  <div className="relative z-10 mb-16 flex flex-col items-center text-center">
+
+    <span
+      className={`text-sm uppercase tracking-[8px] ${
+        darkMode
+          ? "text-[#8FA494]"
+          : "text-[#B38B59]"
+      }`}
+    >
+      Exclusive Collection
+    </span>
+
+
+    <h2
+      className={`mt-4 text-6xl font-serif font-bold ${
+        darkMode
+          ? "text-[#F0EEE7]"
+          : "text-[#111111]"
+      }`}
+    >
+      Featured Products
+    </h2>
+
+
+    <p
+      className={`mt-5 max-w-xl ${
+        darkMode
+          ? "text-[#A9ADA7]"
+          : "text-gray-500"
+      }`}
+    >
+      Carefully selected products designed with quality and elegance in mind.
+    </p>
+
+  </div>
+
+
+  {/* Products */}
+  <div className="relative z-10 mt-10">
     <Api />
   </div>
 
