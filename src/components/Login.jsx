@@ -31,82 +31,97 @@ const Login=()=>{
       if(formData.password !== formData.confirmPassword){
         return toast.error("password doesn't match")
       }
-       try{
-      const response = await fetch("https://reactbackend-hg62.onrender.com/api/sign",{
-        method:"POST",
-        headers:{
-          "Content-type":"application/json"
-        },
-        body:JSON.stringify({
-          name: formData.name,
-          email : formData.email,
-          password : formData.password
-        }),
-      });
+     try {
+      const response = await fetch(
+        "https://reactbackend-hg62.onrender.com/api/sign",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            password: formData.password,
+          }),
+        }
+      );
 
-const data = await response.json();
+      const data = await response.json();
 
-console.log("STATUS:", response.status);
-console.log("RESPONSE:", data);
+      console.log("SIGNUP STATUS:", response.status);
+      console.log("SIGNUP RESPONSE:", data);
 
-if (response.ok) {
-  navigate("/verifyotp", {
-    state: {
-      email: formData.email
+      if (response.ok) {
+        toast.success("Signup successful");
+
+        navigate("/verifyotp", {
+          state: {
+            email: formData.email,
+          },
+        });
+
+        return;
+      }
+
+      toast.error(data.message);
+      return;
+
+    } catch (error) {
+      console.error(error);
+      toast.error("Server error");
+      return;
     }
-  });
-  toast.success("signup successfull")
-  return;
-} else {
-  toast.error(data.message);
-}
- 
-    }
-    catch{
-      toast.error("server error")
-    }
+  
+
   }
 
 
-  try{
-    const response = await fetch("https://reactbackend-hg62.onrender.com/api/login",{
-      method:"POST",
-      headers:{
-        "Content-type":"application/json"
-      },
-      body:JSON.stringify({
-        email:formData.email,
-        password:formData.password
-      })
-    })
-    
+ try {
+    const response = await fetch(
+      "https://reactbackend-hg62.onrender.com/api/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+        }),
+      }
+    );
+
     const data = await response.json();
 
-   if (response.ok) {
-  localStorage.setItem("token",data.token)
-  localStorage.setItem("role",data.role)
-  console.log(localStorage.getItem("role"))
-  console.log(localStorage.getItem("token"))
-  console.log(data.token)
+    console.log("LOGIN STATUS:", response.status);
+    console.log("LOGIN RESPONSE:", data);
 
-  localStorage.setItem(
-    "currentUser",
-    JSON.stringify({
-      email: formData.email,
-    })
-  );
+    if (response.ok) {
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("role", data.role);
 
-  navigate("/");
-   toast.success(data.message);
-  return;
-}
-    else{
-      toast.error(data.message)
+      localStorage.setItem(
+        "currentUser",
+        JSON.stringify({
+          email: formData.email,
+        })
+      );
+
+      toast.success(data.message);
+
+      navigate("/");
+
+      return;
     }
+
+    toast.error(data.message);
+
+  } catch (error) {
+    console.error(error);
+    toast.error("Server error");
   }
-  catch{
-      toast.error("Server error");
-  }
+
     }
 
     return (
