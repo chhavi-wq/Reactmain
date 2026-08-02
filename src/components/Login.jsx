@@ -45,16 +45,18 @@ const Login=()=>{
       });
 
       const data = await response.json();
-      if(response.ok){
-        navigate("/verifyOtp",
-          {state: {email:formData.email}}
-        );
-         toast.success(data.message)
-        return
-      }
-      else{
-        toast.error(data.message)
-      }
+      if (response.ok) {
+  console.log("SIGNUP SUCCESS");
+  console.log("Going to verify OTP");
+
+  navigate("/verifyOtp", {
+    state: {
+      email: formData.email
+    }
+  });
+
+  return;
+}
     }
     catch{
       toast.error("server error")
