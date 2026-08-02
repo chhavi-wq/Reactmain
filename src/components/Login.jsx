@@ -55,6 +55,7 @@ if (response.ok) {
       email: formData.email
     }
   });
+  toast.success("signup successfull")
   return;
 } else {
   toast.error(data.message);
