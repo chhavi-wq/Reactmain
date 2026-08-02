@@ -46,10 +46,10 @@ const Login=()=>{
 
       const data = await response.json();
       if(response.ok){
-        toast.success(data.message)
         navigate("/verifyOtp",
           {state: {email:formData.email}}
         );
+         toast.success(data.message)
         return
       }
       else{
@@ -75,14 +75,8 @@ const Login=()=>{
     })
     
     const data = await response.json();
-//     const token=data.token
-// console.log(token);
-// localStorage.setItem("token",token)
-    console.log(response.status);
-    console.log(data);
 
    if (response.ok) {
-  toast.success(data.message);
   localStorage.setItem("token",data.token)
   localStorage.setItem("role",data.role)
   console.log(localStorage.getItem("role"))
@@ -97,6 +91,7 @@ const Login=()=>{
   );
 
   navigate("/");
+   toast.success(data.message);
   return;
 }
     else{
