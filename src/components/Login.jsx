@@ -50,7 +50,7 @@ console.log("STATUS:", response.status);
 console.log("RESPONSE:", data);
 
 if (response.ok) {
-  navigate("/verifyOtp", {
+  navigate("/verifyotp", {
     state: {
       email: formData.email
     }
