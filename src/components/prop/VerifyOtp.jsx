@@ -11,7 +11,7 @@ const VerifyOtp = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const email = location.state.email;
+  const email = location.state?.email;
 
   const handleSubmit = async(e) => {
     e.preventDefault();
