@@ -32,7 +32,7 @@ const Login=()=>{
         return toast.error("password doesn't match")
       }
        try{
-      const response = await fetch("http://localhost:3000/api/sign",{
+      const response = await fetch("https://reactbackend-hg62.onrender.com/api/sign",{
         method:"POST",
         headers:{
           "Content-type":"application/json"
@@ -63,7 +63,7 @@ const Login=()=>{
 
 
   try{
-    const response = await fetch("http://localhost:3000/api/login",{
+    const response = await fetch("https://reactbackend-hg62.onrender.com/api/login",{
       method:"POST",
       headers:{
         "Content-type":"application/json"

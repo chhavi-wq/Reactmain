@@ -12,7 +12,7 @@ const Orders = () => {
   const { darkMode, toggleTheme } = useContext(ThemeContext);
 
   const fetchOrders = async () => {
-    const response = await fetch("http://localhost:3000/api/orders", {
+    const response = await fetch("https://reactbackend-hg62.onrender.com/api/orders", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },

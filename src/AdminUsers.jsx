@@ -12,7 +12,7 @@ const Admin = () => {
   // Get all users
   const getUsers = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/admin/users", {
+      const response = await fetch("https://reactbackend-hg62.onrender.com/api/admin/users", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -63,7 +63,7 @@ const Admin = () => {
   const deleteOrder = async (id) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/api/admin/orders/${id}`,
+        `https://reactbackend-hg62.onrender.com/api/admin/orders/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -96,7 +96,7 @@ const Admin = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/admin/search?query=${value}`,
+        `https://reactbackend-hg62.onrender.com/api/admin/search?query=${value}`,
         {
           method: "GET",
           headers: {
@@ -125,7 +125,7 @@ const Admin = () => {
   const getOrders = async () => {
     console.log("orders");
     try {
-      const response = await fetch("http://localhost:3000/api/admin/orders", {
+      const response = await fetch("https://reactbackend-hg62.onrender.com/api/admin/orders", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -145,7 +145,7 @@ const Admin = () => {
   const updateStatus = async (id, status) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/api/admin/orders/${id}`,
+        `https://reactbackend-hg62.onrender.com/api/admin/orders/${id}`,
         {
           method: "PUT",
           headers: {
