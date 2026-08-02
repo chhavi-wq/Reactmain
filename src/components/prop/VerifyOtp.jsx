@@ -19,7 +19,7 @@ const VerifyOtp = () => {
     console.log("OTP:", otp);
 
     try{
-      const response = await fetch("http://localhost:3000/api/verify",{
+      const response = await fetch("https://reactbackend-hg62.onrender.com/api/verify",{
         method:"POST",
         headers:{
           "Content-type":"application/json"
@@ -74,7 +74,7 @@ const VerifyOtp = () => {
   };
 const handleResend= async () => {
   try {
-    const response = await fetch("http://localhost:3000/api/resend", {
+    const response = await fetch("https://reactbackend-hg62.onrender.com/api/resend", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
