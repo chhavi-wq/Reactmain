@@ -142,150 +142,163 @@ const Home = () => {
   return (
     <>
       <Navbar />
-     <div
-  className={`mx-auto ${
-    darkMode
-      ? "bg-[#121814]"
-      : "bg-[#FCFAF7]"
-  }`}
->
-        {/* hero-page */}
-        <div className="mx-auto ">
+      <div
+        className={`min-h-screen w-full${
+          darkMode ? "bg-[#121814]" : "bg-[#FCFAF7]"
+        }`}
+      >
+        <div className="mx-auto">
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
             navigation
             pagination={{ clickable: true }}
             autoplay={{ delay: 3000 }}
             loop
-            className="h-screen"
+            className="min-h-[700px] md:min-h-[600px] lg:min-h-screen"
           >
             <SwiperSlide>
-              <div
-                className={`flex min-h-screen transition-colors duration-300 ${
-                  darkMode ? "bg-[#141916]" : "bg-[#F8F5F0]"
-                }`}
-              >
-                <div className="flex w-1/2 flex-col justify-center px-20">
-                  <h1
-                    className={`mt-6 text-7xl font-light leading-tight ${
-                      darkMode ? "text-[#F0EEE7]" : "text-[#3E2E24]"
-                    }`}
-                  >
-                    Furniture that <br />
-                    <span className="font-bold">Feels Like Home </span>
-                  </h1>
+  <div
+    className={`relative flex lg:min-h-screen min-h-screen flex-col transition-colors duration-300 lg:flex-row ${
+      darkMode ? "bg-[#141916]" : "bg-[#F8F5F0]"
+    }`}
+  >
 
-                  <p
-                    className={`mt-8 max-w-lg text-md leading-8 ${
-                      darkMode ? "text-[#A9ADA7]" : "text-[#5F544C]"
-                    }`}
-                  >
-                    Discover thoughtfully crafted furniture that combines
-                    timeless design, exceptional comfort, and lasting quality
-                    for every corner of your home.
-                  </p>
 
-                  <button
-                    onClick={() => navigate("/shop")}
-                    className={`mt-10 flex w-fit items-center gap-3 rounded-full px-8 py-4 text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
-                      darkMode
-                        ? "bg-[#4E6B57] hover:bg-[#3F5948]"
-                        : "bg-[#5B4A3F] hover:bg-[#43362E]"
-                    }`}
-                  >
-                    Explore Collection
-                    <GrLinkNext />
-                  </button>
+    <div className="order-1 h-[40vh] w-full overflow-hidden lg:order-2 lg:h-screen lg:w-1/2">
+      <img
+        src="/furniture.jpeg"
+        alt="Furniture"
+        className="h-full w-full object-cover"
+      />
+    </div>
 
-                  <div className="mt-10 flex items-center gap-6">
-                    <div
-                      className={`rounded-2xl border px-6 py-4 shadow-sm ${
-                        darkMode
-                          ? "border-[#2A332D] bg-[#181D1A]"
-                          : "border-[#DDD2C6] bg-[#FCFAF7]"
-                      }`}
-                    >
-                      <p
-                        className={`text-2xl font-light ${
-                          darkMode ? "text-[#F0EEE7]" : "text-[#3E2E24]"
-                        }`}
-                      >
-                        500K+
-                      </p>
+   <div className="order-2 flex w-full flex-col justify-center px-6 py-3 sm:px-10 lg:order-1 lg:w-1/2 lg:!px-19 lg:py-0">
+  
+<h1
+  className={`mt-6 text-4xl font-light leading-tight sm:text-5xl md:text-6xl lg:!text-[80px] ${
+    darkMode ? "text-[#F0EEE7]" : "text-[#3E2E24]"
+  }`}
+>
+  Furniture that <br />
+  <span className="font-bold">Feels Like Home</span>
+</h1>
+  <p
+    className={`mt-6 max-w-lg text-sm leading-7 sm:text-base sm:leading-8 lg:mt-8 ${
+      darkMode ? "text-[#A9ADA7]" : "text-[#5F544C]"
+    }`}
+  
+      >
+        Discover thoughtfully crafted furniture that combines
+        timeless design, exceptional comfort, and lasting quality
+        for every corner of your home.
+      </p>
 
-                      <p
-                        className={`text-sm ${
-                          darkMode ? "text-[#A9ADA7]" : "text-[#7B7067]"
-                        }`}
-                      >
-                        Happy Customers
-                      </p>
-                    </div>
+      <button
+        onClick={() => navigate("/shop")}
+        className={`mt-8 flex w-fit items-center gap-3 rounded-full px-6 py-3 text-sm text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:px-8 sm:py-4 sm:text-base ${
+          darkMode
+            ? "bg-[#4E6B57] hover:bg-[#3F5948]"
+            : "bg-[#5B4A3F] hover:bg-[#43362E]"
+        }`}
+      >
+        Explore Collection
+        <GrLinkNext />
+      </button>
 
-                    <div
-                      className={`rounded-2xl border px-6 py-4 shadow-sm ${
-                        darkMode
-                          ? "border-[#2A332D] bg-[#181D1A]"
-                          : "border-[#DDD2C6] bg-[#FCFAF7]"
-                      }`}
-                    >
-                      <p
-                        className={`text-2xl font-light ${
-                          darkMode ? "text-[#F0EEE7]" : "text-[#3E2E24]"
-                        }`}
-                      >
-                        4.9★
-                      </p>
+      <div className="mt-8 flex flex-wrap items-center gap-4 sm:gap-6">
 
-                      <p
-                        className={`text-sm ${
-                          darkMode ? "text-[#A9ADA7]" : "text-[#7B7067]"
-                        }`}
-                      >
-                        Customer Rating
-                      </p>
-                    </div>
-                  </div>
-                  <span
-                    className={`text-[13px] absolute bottom-8 uppercase tracking-[4px] ${
-                      darkMode ? "text-white/40" : "text-black/60"
-                    }`}
-                  >
-                    02 / Furntiure Collection
-                  </span>
-                  <span className="uppercase tracking-[4px] absolute top-1/2 text-white -rotate-[90deg] -right-14 text-[13px]">
-                    Comfortable Furniture ever
-                  </span>
-                  <div className="pointer-events-none absolute -left-32 -top-32">
-                    {/* Outer circle */}
-                    <div
-                      className={`h-[500px] w-[500px] rounded-full border ${
-                        darkMode ? "border-white/[0.14]" : "border-black/[0.10]"
-                      }`}
-                    />
+        <div
+          className={`rounded-2xl border px-4 py-3 shadow-sm sm:px-6 sm:py-4 ${
+            darkMode
+              ? "border-[#2A332D] bg-[#181D1A]"
+              : "border-[#DDD2C6] bg-[#FCFAF7]"
+          }`}
+        >
+          <p
+            className={`text-xl font-light sm:text-2xl ${
+              darkMode ? "text-[#F0EEE7]" : "text-[#3E2E24]"
+            }`}
+          >
+            500K+
+          </p>
 
-                    {/* Inner circle */}
-                    <div
-                      className={`absolute left-[75px] top-[75px] h-[350px] w-[350px] rounded-full border ${
-                        darkMode ? "border-white/[0.14]" : "border-black/[0.10]"
-                      }`}
-                    />
-                  </div>
-                </div>
+          <p
+            className={`text-xs sm:text-sm ${
+              darkMode ? "text-[#A9ADA7]" : "text-[#7B7067]"
+            }`}
+          >
+            Happy Customers
+          </p>
+        </div>
 
-                <div className="w-1/2 overflow-hidden">
-                  <img
-                    src="/furniture.jpeg"
-                    alt="Furniture"
-                    className="h-screen w-full object-cover"
-                  />
-                </div>
-              </div>
-            </SwiperSlide>
+        <div
+          className={`rounded-2xl border px-4 py-3 shadow-sm sm:px-6 sm:py-4 ${
+            darkMode
+              ? "border-[#2A332D] bg-[#181D1A]"
+              : "border-[#DDD2C6] bg-[#FCFAF7]"
+          }`}
+        >
+          <p
+            className={`text-xl font-light sm:text-2xl ${
+              darkMode ? "text-[#F0EEE7]" : "text-[#3E2E24]"
+            }`}
+          >
+            4.9★
+          </p>
+
+          <p
+            className={`text-xs sm:text-sm ${
+              darkMode ? "text-[#A9ADA7]" : "text-[#7B7067]"
+            }`}
+          >
+            Customer Rating
+          </p>
+        </div>
+
+      </div>
+
+   
+      <span
+        className={`mt-8 text-[10px] uppercase tracking-[3px] sm:mt-10 md:mt-10 sm:text-[13px] sm:tracking-[4px] lg:absolute lg:bottom-8 ${
+          darkMode ? "text-white/40" : "text-black/60"
+        }`}
+      >
+        02 / Furniture Collection
+      </span>
+
+      <span className="absolute right-[-55px] top-1/2 hidden -rotate-90 text-[13px] uppercase tracking-[4px] text-white lg:block">
+        Comfortable Furniture ever
+      </span>
+
+
+      <div className="pointer-events-none absolute lg:-left-42 lg:-top-32 hidden lg:block">
+
+        <div
+          className={`h-[500px] w-[500px] rounded-full border ${
+            darkMode
+              ? "border-white/[0.14]"
+              : "border-black/[0.10]"
+          }`}
+        />
+
+        <div
+          className={`absolute left-[75px] top-[75px] h-[350px] w-[350px] rounded-full border ${
+            darkMode
+              ? "border-white/[0.14]"
+              : "border-black/[0.10]"
+          }`}
+        />
+
+      </div>
+
+    </div>
+
+  </div>
+</SwiperSlide>
 
             <SwiperSlide>
               <div
-                className={`relative h-screen overflow-hidden bg-cover bg-center ${
+                className={`relative lg:!h-screen flex lg:flex-row flex-col min-h-screen overflow-hidden bg-cover bg-center ${
                   darkMode ? "bg-[#111412]" : "bg-[#F8F5F0]"
                 }`}
                 style={{ backgroundImage: "url('/groceries.jpg')" }}
@@ -321,9 +334,9 @@ const Home = () => {
       }`}
                 />
 
-                <div className="relative z-10 flex h-full items-center px-20">
+                <div className="relative z-10 flex w-full flex h-full items-center px-8 py-22 lg:!py-0 lg:!px-20">
                   <div className="max-w-xl">
-                    <div className="flex items-center gap-4">
+                    <div className="flex hidden lg:!flex items-center gap-4">
                       <div
                         className={`h-px w-10 ${
                           darkMode ? "bg-[#78917C]" : "bg-white/70"
@@ -340,7 +353,7 @@ const Home = () => {
                     </div>
 
                     <h1
-                      className={`mt-6 text-7xl font-semibold leading-[1.05] ${
+                      className={`lg:!mt-6 lg:!text-7xl text-4xl lg:!py-0 py-2 font-semibold leading-[1.05] ${
                         darkMode ? "text-[#F2EEE6]" : "text-white"
                       }`}
                     >
@@ -350,7 +363,7 @@ const Home = () => {
                     </h1>
 
                     <p
-                      className={`mt-6 max-w-lg text-lg leading-8 ${
+                      className={`lg:!mt-6 mt-3 max-w-lg lg:!text-lg text-sm leading-5 lg:!leading-8 ${
                         darkMode ? "text-[#B8C0BA]" : "text-white/90"
                       }`}
                     >
@@ -361,7 +374,7 @@ const Home = () => {
 
                     <button
                       onClick={() => navigate("/shop")}
-                      className={`mt-9 flex items-center gap-3 rounded-full px-8 py-4
+                      className={`lg:!mt-9 mt-4 flex items-center text-sm gap-3 rounded-full lg:!px-8 py-2 px-6 lg:!py-4
           text-white transition-all duration-300
           hover:-translate-y-1 hover:shadow-2xl ${
             darkMode
@@ -373,7 +386,7 @@ const Home = () => {
                       <FaCartShopping />
                     </button>
 
-                    <div className="mt-12 flex items-center gap-8">
+                    <div className="mt-12 hidden lg:flex flex items-center gap-8">
                       <div>
                         <h3
                           className={`text-3xl font-light ${
@@ -418,7 +431,7 @@ const Home = () => {
                     </div>
 
                     <div
-                      className={`mt-8 flex items-center gap-3 text-sm ${
+                      className={`mt-8 hidden lg:!flex flex items-center gap-3 text-sm ${
                         darkMode ? "text-[#A9ADA7]" : "text-white/70"
                       }`}
                     >
@@ -428,32 +441,43 @@ const Home = () => {
                   </div>
                 </div>
 
-                <div className="absolute bottom-12 right-40 z-30">
+                <div className="items-center flex justify-center w-full z-30">
                   {grocery && (
                     <Link to={`/apis/${grocery.id}`}>
                       <div
                         className={`
-              group w-80 rounded-[32px] border p-6
-              backdrop-blur-2xl
-              shadow-[0_25px_80px_rgba(0,0,0,0.30)]
-              transition-all duration-500
-              hover:-translate-y-3
-              hover:scale-[1.02]
-              ${
-                darkMode
-                  ? "border-white/10 bg-[#181D1A]/75"
-                  : "border-white/30 bg-white/75"
-              }
-            `}
+                          group lg:!w-[400px] w-[300px] rounded-[32px] border p-6
+                          backdrop-blur-2xl lg:!-translate-y-0 -translate-y-15
+                          shadow-[0_25px_80px_rgba(0,0,0,0.20)]
+                          transition-all duration-500
+                          hover:-translate-y-18
+                          hover:shadow-[0_35px_90px_rgba(0,0,0,0.28)]
+                          ${
+                            darkMode
+                              ? "border-white/10 bg-[#181D1A]/80"
+                              : "border-[#DDE3DC] bg-white/80"
+                          }
+                        `}
                       >
+                     
                         <div className="flex items-center justify-between">
-                          <p
-                            className={`text-xs uppercase tracking-[0.25em] ${
-                              darkMode ? "text-[#9FB2A2]" : "text-[#607064]"
-                            }`}
-                          >
-                            Featured Product
-                          </p>
+                          <div>
+                            <p
+                              className={`text-[10px] font-medium uppercase tracking-[0.28em] ${
+                                darkMode ? "text-[#9FB2A2]" : "text-[#68776C]"
+                              }`}
+                            >
+                              Featured Product
+                            </p>
+
+                            <p
+                              className={`mt-1 lg:!text-[13px] text-[10px] ${
+                                darkMode ? "text-[#718276]" : "text-[#9AA39B]"
+                              }`}
+                            >
+                              From our organic collection
+                            </p>
+                          </div>
 
                           <span
                             className={`h-2 w-2 rounded-full ${
@@ -462,23 +486,33 @@ const Home = () => {
                           />
                         </div>
 
+                       
                         <div
-                          className={`mx-auto mt-5 flex h-52 w-52
-              items-center justify-center rounded-full transition-all duration-500
-              group-hover:scale-105 ${
-                darkMode ? "bg-[#27352B]" : "bg-[#EEF1E9]"
-              }`}
+                          className={`
+                            relative mx-auto mt-3 lg:!mt-6 flex lg:!h-52 h-40 w-40 lg:!w-52
+                            items-center justify-center rounded-full
+                            transition-all duration-500 
+                            group-hover:scale-[1.04]
+                            ${darkMode ? "bg-[#27352B]" : "bg-[#EEF1E9]"}
+                          `}
                         >
+                          <div
+                            className={`absolute inset-4 rounded-full border ${
+                              darkMode ? "border-white/5" : "border-white/70"
+                            }`}
+                          />
+
                           <img
                             src={grocery.images[0]}
                             alt={grocery.title}
-                            className="h-44 w-44 object-contain"
+                            className="relative lg:!h-44 lg:!w-44 h-38 w-38 object-contain transition-transform duration-500 group-hover:scale-105"
                           />
                         </div>
 
-                        <div className="mt-5">
+                     
+                        <div className="mt-6">
                           <p
-                            className={`text-sm ${
+                            className={`text-xs font-medium uppercase tracking-[0.18em] ${
                               darkMode ? "text-[#8FA494]" : "text-[#718075]"
                             }`}
                           >
@@ -486,49 +520,67 @@ const Home = () => {
                           </p>
 
                           <h2
-                            className={`mt-2 text-2xl font-light line-clamp-1 ${
+                            className={`mt-2 lg:!text-[25px] text-[17px] font-light leading-tight line-clamp-1 ${
                               darkMode ? "text-[#F0EEE7]" : "text-[#23332B]"
                             }`}
                           >
                             {grocery.title}
                           </h2>
 
-                          <div className="mt-4 flex items-center justify-between">
-                            <h3
-                              className={`text-2xl font-light ${
-                                darkMode ? "text-[#F0EEE7]" : "text-[#23332B]"
-                              }`}
-                            >
-                              ₹
-                              {Math.floor(grocery.price * 100).toLocaleString(
-                                "en-IN",
-                              )}
-                            </h3>
+                          <p
+                            className={`mt-2 lg:!text-sm  text-xs leading-relaxed ${
+                              darkMode ? "text-[#8C9B90]" : "text-[#7D857E]"
+                            }`}
+                          >
+                            A thoughtfully selected product designed to bring
+                            simplicity, quality, and a natural touch to your
+                            everyday.
+                          </p>
+
+                          <div className="mt-5 flex items-center justify-between">
+                            <div>
+                              <p
+                                className={`lg:!text-[15px] text-[10px] uppercase tracking-widest ${
+                                  darkMode ? "text-[#718276]" : "text-[#9AA39B]"
+                                }`}
+                              >
+                                Price
+                              </p>
+
+                              <h3
+                                className={`mt-1 lg:!text-2xl text-sm font-light ${
+                                  darkMode ? "text-[#F0EEE7]" : "text-[#23332B]"
+                                }`}
+                              >
+                                ₹
+                                {Math.floor(grocery.price * 100).toLocaleString(
+                                  "en-IN",
+                                )}
+                              </h3>
+                            </div>
 
                             <span
-                              className={`rounded-full px-4 py-2 text-xs text-white transition-all duration-300 ${
-                                darkMode
-                                  ? "bg-[#4E6B57] group-hover:bg-[#3F5948]"
-                                  : "bg-[#4E6B57] group-hover:bg-[#32473D]"
-                              }`}
+                              className={`
+                                flex items-center gap-2 rounded-full
+                                px-5 py-2.5 text-xs font-medium text-white
+                                transition-all duration-300
+                                ${
+                                  darkMode
+                                    ? "bg-[#4E6B57] group-hover:bg-[#3F5948]"
+                                    : "bg-[#4E6B57] group-hover:bg-[#32473D]"
+                                }
+                              `}
                             >
                               View
+                              <span className="text-sm transition-transform duration-300 group-hover:translate-x-1">
+                                →
+                              </span>
                             </span>
                           </div>
                         </div>
                       </div>
                     </Link>
                   )}
-                </div>
-
-                <div className="absolute right-8 top-1/2 z-20 -translate-y-1/2">
-                  <p
-                    className={`rotate-90 text-[10px] uppercase tracking-[5px] ${
-                      darkMode ? "text-white/40" : "text-white/70"
-                    }`}
-                  >
-                    Fresh Daily
-                  </p>
                 </div>
 
                 <div className="absolute bottom-8 left-20 z-20 flex items-center gap-3">
@@ -551,10 +603,9 @@ const Home = () => {
 
             <SwiperSlide>
               <div
-                className={`relative flex min-h-screen bg-cover bg-center ${
+                className={`relative flex lg:!flex-row flex-col lg:min-h-screen min-h-screen bg-[url('/skin.jpg')] bg-cover bg-center ${
                   darkMode ? "bg-[#111412]" : "bg-[#F8F5F0]"
                 }`}
-                style={{ backgroundImage: "url('/skin.jpg')" }}
               >
                 <div
                   className={`absolute inset-0 ${
@@ -564,196 +615,251 @@ const Home = () => {
                   }`}
                 />
 
-                <div className="pointer-events-none absolute left-[100px] top-1/2 z-0 -translate-y-1/2 -rotate-[18deg]"></div>
+<div className="relative z-10 flex flex-col justify-center px-5 lg:py-0 py-15 lg:!px-20">
 
-                <div className="relative z-10 flex w-1/2 flex-col justify-center px-20">
-                  <span
-                    className={`w-fit rounded-full border px-10 py-2 text-sm tracking-wide backdrop-blur-md ${
-                      darkMode
-                        ? "border-white/10 bg-white/10 text-[#D5DED7]"
-                        : "border-white/30 bg-white/40 text-[#5B4A3F]"
-                    }`}
-                  >
-                    ✨ Botanical Skincare
-                  </span>
 
-                  <div className="mt-12 flex items-center gap-10">
-                    <div>
-                      <h2
-                        className={`text-3xl font-light ${
-                          darkMode ? "text-[#F0EEE7]" : "text-[#3E2E24]"
-                        }`}
-                      >
-                        4.9★
-                      </h2>
+  <span
+    className={`w-fit lg:!mt-0 mt-5 rounded-full border px-5 py-2 text-[9px] lg:!text-xs uppercase tracking-[0.2em] backdrop-blur-md ${
+      darkMode
+        ? "border-white/10 bg-white/5 text-[#A8C0AD]"
+        : "border-white/30 bg-white/40 text-[#8A6A50]"
+    }`}
+  >
+    ✦ Botanical Skincare
+  </span>
 
-                      <p
-                        className={`text-sm ${
-                          darkMode ? "text-[#A9ADA7]" : "text-[#6F655D]"
-                        }`}
-                      >
-                        Average Rating
-                      </p>
-                    </div>
+  
+  <h1
+    className={`lg:!mt-7 mt-5 lg:text-6xl text-4xl font-light leading-[0.95] tracking-tight lg:!text-[80px] ${
+      darkMode ? "text-[#F2EEE6]" : "text-[#3E2E24]"
+    }`}
+  >
+    Nourish
+    <br />
+    <span className="font-bold">Your Skin</span>
+  </h1>
 
+
+  <p
+    className={`lg:!mt-6 max-w-lg lg:!max-w-xl  mt-4 text-sm leading-5 lg:!text-lg lg:!leading-8 ${
+      darkMode ? "text-[#B7BDB8]" : "text-[#6F655D]"
+    }`}
+  >
+    Discover luxurious skincare crafted with botanical extracts,
+    designed to restore, protect and reveal your natural glow.
+  </p>
+
+
+  <button
+    onClick={() => navigate("/shop")}
+    className={`group lg:!mt-8 mt-5 flex w-fit items-center gap-3 rounded-full px-7 py-3.5 text-sm text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl lg:px-8 lg:py-4 lg:text-base ${
+      darkMode
+        ? "bg-[#4E6B57] hover:bg-[#3F5948]"
+        : "bg-[#5B4A3F] hover:bg-[#43362E]"
+    }`}
+  >
+    Explore Collection
+    <span className="transition-transform duration-300 group-hover:translate-x-1">
+      <GrLinkNext />
+    </span>
+  </button>
+
+
+  <div className="mt-11 hidden lg:!flex flex items-center gap-8">
+
+   
+    <div>
+      <h2
+        className={`font-light text-4xl ${
+          darkMode ? "text-[#F0EEE7]" : "text-[#3E2E24]"
+        }`}
+      >
+        4.9★
+      </h2>
+
+      <p
+        className={`mt-1 text-[15px]  uppercase tracking-wider ${
+          darkMode ? "text-[#929B95]" : "text-[#7B7067]"
+        }`}
+      >
+        Average Rating
+      </p>
+    </div>
+
+    <div
+      className={`h-13 w-px ${
+        darkMode ? "bg-white/10" : "bg-[#CFC5BA]"
+      }`}
+    />
+
+    
+    <div>
+      <h2
+        className={`font-light text-4xl ${
+          darkMode ? "text-[#F0EEE7]" : "text-[#3E2E24]"
+        }`}
+      >
+        25K+
+      </h2>
+
+      <p
+        className={`mt-1 text-[15px] uppercase tracking-wider ${
+          darkMode ? "text-[#929B95]" : "text-[#7B7067]"
+        }`}
+      >
+        Happy Customers
+      </p>
+    </div>
+
+    <div
+      className={`h-13 w-px ${
+        darkMode ? "bg-white/10" : "bg-[#CFC5BA]"
+      }`}
+    />
+
+
+    <div>
+      <h2
+        className={` font-light text-4xl ${
+          darkMode ? "text-[#F0EEE7]" : "text-[#3E2E24]"
+        }`}
+      >
+        100%
+      </h2>
+
+      <p
+        className={`mt-1 text-[15px] uppercase tracking-wider ${
+          darkMode ? "text-[#929B95]" : "text-[#7B7067]"
+        }`}
+      >
+        Botanical Formula
+      </p>
+    </div>
+
+  </div>
+</div>
+
+              <div className="relative -translate-y-7 lg:-right-34 lg:-translate-y-0 z-30 flex items-center justify-center">
+                {addCartProduct && (
+                  <Link to={`/apis/${addCartProduct.id}`}>
                     <div
-                      className={`h-12 w-px ${
-                        darkMode ? "bg-white/15" : "bg-[#CFC5BA]"
-                      }`}
-                    />
-
-                    <div>
-                      <h2
-                        className={`text-3xl font-light ${
-                          darkMode ? "text-[#F0EEE7]" : "text-[#3E2E24]"
+                      className={`
+                        group relative lg:!w-[400px] w-[300px] rounded-[32px] border p-6
+                        backdrop-blur-2xl
+                        shadow-[0_25px_80px_rgba(0,0,0,0.30)]
+                        transition-all duration-500
+                        hover:-translate-y-3
+                        hover:scale-[1.02]
+                        ${
+                          darkMode
+                            ? "border-white/10 bg-[#181D1A]/75"
+                            : "border-white/30 bg-white/40"
+                        }
+                      `}
+                    >
+                    
+                      <span
+                        className={`absolute right-5 top-5 rounded-full px-3 py-1 text-[9px] uppercase tracking-wider ${
+                          darkMode
+                            ? "bg-[#4E6B57]/40 text-[#A8C0AD]"
+                            : "bg-[#D6B17B]/30 text-[#8A6A50]"
                         }`}
                       >
-                        25K+
-                      </h2>
+                        Featured
+                      </span>
 
-                      <p
-                        className={`text-sm ${
-                          darkMode ? "text-[#A9ADA7]" : "text-[#6F655D]"
-                        }`}
-                      >
-                        Happy Customers
-                      </p>
-                    </div>
-
-                    <div
-                      className={`h-12 w-px ${
-                        darkMode ? "bg-white/15" : "bg-[#CFC5BA]"
-                      }`}
-                    />
-
-                    <div>
-                      <h2
-                        className={`text-3xl font-light ${
-                          darkMode ? "text-[#F0EEE7]" : "text-[#3E2E24]"
-                        }`}
-                      >
-                        100%
-                      </h2>
-
-                      <p
-                        className={`text-sm ${
-                          darkMode ? "text-[#A9ADA7]" : "text-[#6F655D]"
-                        }`}
-                      >
-                        Botanical Formula
-                      </p>
-                    </div>
-                  </div>
-
-                  <h1
-                    className={`mt-6 text-7xl font-light leading-tight ${
-                      darkMode ? "text-[#F2EEE6]" : "text-[#3E2E24]"
-                    }`}
-                  >
-                    Nourish
-                    <br />
-                    <span className="font-normal">Your Skin</span>
-                  </h1>
-
-                  <p
-                    className={`mt-8 max-w-lg text-lg leading-8 ${
-                      darkMode ? "text-[#B7BDB8]" : "text-[#5F544C]"
-                    }`}
-                  >
-                    Discover luxurious skincare crafted with botanical extracts,
-                    designed to restore, protect and reveal your natural glow.
-                  </p>
-
-                  <button
-                    onClick={() => navigate("/shop")}
-                    className={`mt-10 flex w-fit items-center gap-3 rounded-full px-8 py-4 text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
-                      darkMode
-                        ? "bg-[#4E6B57] hover:bg-[#3F5948]"
-                        : "bg-[#5B4A3F] hover:bg-[#43362E]"
-                    }`}
-                  >
-                    Explore Collection
-                    <GrLinkNext />
-                  </button>
-                </div>
-
-                <div className="absolute bottom-20 right-60 z-30">
-                  {addCartProduct && (
-                    <Link to={`/apis/${addCartProduct.id}`}>
+                
                       <div
-                        className={`
-              group w-80 rounded-[30px] border p-6
-              backdrop-blur-2xl shadow-[0_25px_80px_rgba(0,0,0,0.30)]
-              transition-all duration-500
-              hover:-translate-y-3
-              hover:scale-[1.02]
-              ${
-                darkMode
-                  ? "border-white/10 bg-[#181D1A]/75"
-                  : "border-white/30 bg-white/40"
-              }
-            `}
+                        className={`mx-auto flex lg:!h-[250px] lg:!w-[250px] h-[150px] w-[150px] items-center justify-center rounded-full ${
+                          darkMode ? "bg-[#242C27]" : "bg-white/30"
+                        }`}
                       >
-                        <div
-                          className={`mx-auto flex h-48 w-48 items-center justify-center rounded-full ${
-                            darkMode ? "bg-[#242C27]" : "bg-white/30"
-                          }`}
-                        >
-                          <img
-                            src={addCartProduct.images[0]}
-                            alt={addCartProduct.title}
-                            className="h-40 w-40 object-contain transition duration-500 group-hover:scale-110"
-                          />
-                        </div>
-
-                        <h2
-                          className={`mt-5 text-2xl font-light line-clamp-1 ${
-                            darkMode ? "text-[#F0EEE7]" : "text-[#3E2E24]"
-                          }`}
-                        >
-                          {addCartProduct.title}
-                        </h2>
-
-                        <div className="mt-4 flex items-center justify-between">
-                          <p
-                            className={`text-2xl ${
-                              darkMode ? "text-[#A8C0AD]" : "text-[#5B4A3F]"
-                            }`}
-                          >
-                            ₹
-                            {Math.floor(
-                              addCartProduct.price * 100,
-                            ).toLocaleString("en-IN")}
-                          </p>
-
-                          <span
-                            className={`rounded-full px-4 py-2 text-sm text-white ${
-                              darkMode ? "bg-[#4E6B57]" : "bg-[#5B4A3F]"
-                            }`}
-                          >
-                            View
-                          </span>
-                        </div>
+                        <img
+                          src={addCartProduct.images[0]}
+                          alt={addCartProduct.title}
+                          className="lg:!h-44 lg:!w-44 h-35 w-35 object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.35)] transition duration-500 group-hover:scale-110"
+                        />
                       </div>
-                    </Link>
-                  )}
-                </div>
 
-                <div className="absolute right-8 top-1/2 z-20 -translate-y-1/2">
-                  <p
-                    className={`rotate-90 text-[15px] uppercase tracking-[5px] ${
-                      darkMode ? "text-white/35" : "text-[#3E2E24]/50"
-                    }`}
-                  >
-                    Natural Beauty
-                  </p>
-                </div>
+
+<div className="mt-5">
+  <p
+    className={`text-[9px] uppercase tracking-[0.3em] ${
+      darkMode ? "text-[#A8C0AD]" : "text-[#8A6A50]"
+    }`}
+  >
+    Signature Selection
+  </p>
+
+  <h2
+    className={`mt-2 line-clamp-1 text-2xl font-light tracking-wide ${
+      darkMode ? "text-[#F0EEE7]" : "text-[#3E2E24]"
+    }`}
+  >
+    {addCartProduct.title}
+  </h2>
+
+  <p
+    className={`mt-1 lg:!text-sm text-xs ${
+      darkMode ? "text-[#929B95]" : "text-[#81746B]"
+    }`}
+  >
+    Thoughtfully selected for timeless style & everyday elegance.
+  </p>
+</div>
+
+
+<div className="mt-5 flex items-end justify-between gap-4 border-t pt-4">
+  <div>
+    <p
+      className={`text-[9px] uppercase tracking-[0.2em] ${
+        darkMode ? "text-[#929B95]" : "text-[#8A7A70]"
+      }`}
+    >
+      Starting From
+    </p>
+
+    <p
+      className={`mt-1 lg:!text-2xl text-xl font-light tracking-wide ${
+        darkMode ? "text-[#A8C0AD]" : "text-[#5B4A3F]"
+      }`}
+    >
+      ₹
+      {Math.floor(
+        addCartProduct.price * 100
+      ).toLocaleString("en-IN")}
+    </p>
+  </div>
+
+  <span
+    className={`group/view flex items-center gap-2 rounded-full px-5 py-2.5 text-sm text-white transition-all duration-300 ${
+      darkMode
+        ? "bg-[#4E6B57] hover:bg-[#3F5948]"
+        : "bg-[#5B4A3F] hover:bg-[#43362E]"
+    }`}
+  >
+    View
+    <span className="transition-transform duration-300 group-hover/view:translate-x-1">
+      →
+    </span>
+  </span>
+</div>
+
+
+
+                     
+                    </div>
+                  </Link>
+                )}
+              </div>
+
+
               </div>
             </SwiperSlide>
 
             <SwiperSlide>
               <div
-                className={`relative h-screen overflow-hidden bg-cover bg-center ${
+                className={`relative min-h-screen flex flex-row overflow-hidden lg:min-h-screen bg-cover bg-center ${
                   darkMode ? "bg-[#111412]" : "bg-[#F8F5F0]"
                 }`}
                 style={{ backgroundImage: "url('/perfume.jpg')" }}
@@ -764,275 +870,272 @@ const Home = () => {
                   }`}
                 />
 
+            <div
+              className={`absolute inset-0 ${
+                darkMode
+                  ? "bg-gradient-to-r from-[#111412]/95 via-[#111412]/50 to-transparent"
+                  : "bg-gradient-to-r from-[#15110F]/75 via-[#15110F]/30 to-transparent"
+              }`}
+            />
+
+            <div
+              className={`absolute inset-0 ${
+                darkMode
+                  ? "bg-gradient-to-t from-[#111412]/70 to-transparent"
+                  : "bg-gradient-to-t from-[#15110F]/40 to-transparent"
+              }`}
+            />
+
+            <div className="relative z-20 lg:flex-row flex flex-col h-full lg:py-0 py-20 px-4 items-center lg:!px-20">
+              <div>
                 <div
-                  className={`absolute inset-0 ${
+                  className={`inline-flex items-center rounded-full lg:mt-0 mt-2 border px-5 py-2 backdrop-blur-md ${
                     darkMode
-                      ? "bg-gradient-to-r from-[#111412]/95 via-[#111412]/50 to-transparent"
-                      : "bg-gradient-to-r from-[#15110F]/75 via-[#15110F]/30 to-transparent"
+                      ? "border-white/10 bg-white/10"
+                      : "border-white/20 bg-white/10"
                   }`}
-                />
-
-                <div
-                  className={`absolute inset-0 ${
-                    darkMode
-                      ? "bg-gradient-to-t from-[#111412]/70 to-transparent"
-                      : "bg-gradient-to-t from-[#15110F]/40 to-transparent"
-                  }`}
-                />
-
-                <div className="pointer-events-none absolute -right-20 top-1/2 z-0 -translate-y-1/2 -rotate-[18deg]"></div>
-
-                <div className="relative z-20 flex h-full items-center justify-between px-20">
-                  <div>
-                    <div
-                      className={`inline-flex items-center rounded-full border px-5 py-2 backdrop-blur-md ${
-                        darkMode
-                          ? "border-white/10 bg-white/10"
-                          : "border-white/20 bg-white/10"
-                      }`}
-                    >
-                      <span
-                        className={`text-xs uppercase tracking-[0.35em] ${
-                          darkMode ? "text-[#A8C0AD]" : "text-[#D6B17B]"
-                        }`}
-                      >
-                        NEW COLLECTION 2026
-                      </span>
-                    </div>
-
-                    <h1
-                      className={`mt-8 text-7xl font-bold leading-[0.9] ${
-                        darkMode ? "text-[#F2EEE6]" : "text-white"
-                      }`}
-                    >
-                      Elegance
-                      <br />
-                      <span className="font-light">In Every Scent</span>
-                    </h1>
-
-                    <p
-                      className={`mt-6 py-3 text-xl ${
-                        darkMode ? "text-[#B9C0BB]" : "text-[#DDD5CB]"
-                      }`}
-                    >
-                      Discover timeless fragrances crafted from the world's
-                      finest ingredients, <br />
-                      designed to leave a signature that lingers long after
-                      you've left the room.
-                    </p>
-
-                    <button
-                      onClick={() => navigate("/shop")}
-                      className={`group mt-12 flex items-center gap-4 rounded-full border px-8 py-4 backdrop-blur-xl transition-all duration-300 ${
-                        darkMode
-                          ? "border-white/15 bg-white/10 text-[#F0EEE7] hover:bg-[#4E6B57] hover:text-white"
-                          : "border-white/20 bg-white/10 text-white hover:bg-white hover:text-black"
-                      }`}
-                    >
-                      <span>Explore Collection</span>
-
-                      <span className="text-xl transition group-hover:translate-x-2">
-                        →
-                      </span>
-                    </button>
-
-                    <div className="mt-10 flex gap-14">
-                      <div>
-                        <h2
-                          className={`text-4xl font-light ${
-                            darkMode ? "text-[#F0EEE7]" : "text-white"
-                          }`}
-                        >
-                          4.9★
-                        </h2>
-
-                        <p
-                          className={`mt-2 text-xs uppercase tracking-[0.25em] ${
-                            darkMode ? "text-[#9FA9A1]" : "text-[#C8BAA6]"
-                          }`}
-                        >
-                          Rating
-                        </p>
-                      </div>
-
-                      <div
-                        className={`h-14 w-px ${
-                          darkMode ? "bg-white/15" : "bg-white/20"
-                        }`}
-                      />
-
-                      <div>
-                        <h2
-                          className={`text-4xl font-light ${
-                            darkMode ? "text-[#F0EEE7]" : "text-white"
-                          }`}
-                        >
-                          120+
-                        </h2>
-
-                        <p
-                          className={`mt-2 text-xs uppercase tracking-[0.25em] ${
-                            darkMode ? "text-[#9FA9A1]" : "text-[#C8BAA6]"
-                          }`}
-                        >
-                          Fragrances
-                        </p>
-                      </div>
-
-                      <div
-                        className={`h-14 w-px ${
-                          darkMode ? "bg-white/15" : "bg-white/20"
-                        }`}
-                      />
-
-                      <div>
-                        <h2
-                          className={`text-4xl font-light ${
-                            darkMode ? "text-[#F0EEE7]" : "text-white"
-                          }`}
-                        >
-                          50K+
-                        </h2>
-
-                        <p
-                          className={`mt-2 text-xs uppercase tracking-[0.25em] ${
-                            darkMode ? "text-[#9FA9A1]" : "text-[#C8BAA6]"
-                          }`}
-                        >
-                          Happy Clients
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="relative flex w-[420px] flex-col items-end">
-                    {featuredProducts && (
-                      <Link to={`/apis/${featuredProducts.id}`}>
-                        <div
-                          className={`
-                group relative mt-40 w-[360px]
-                rounded-[40px]
-                border
-                px-8 pb-8 pt-36
-                backdrop-blur-2xl
-                shadow-[0_25px_80px_rgba(0,0,0,0.45)]
-                transition duration-500
-                hover:-translate-y-3
-                hover:scale-[1.02]
-                ${
-                  darkMode
-                    ? "border-white/10 bg-[#181D1A]/75"
-                    : "border-white/20 bg-white/10"
-                }
-              `}
-                        >
-                          <div
-                            className={`absolute left-1/2 top-[-70px] flex h-52 w-52 -translate-x-1/2 items-center justify-center rounded-full ${
-                              darkMode ? "bg-[#252E28]/80" : "bg-white/10"
-                            }`}
-                          >
-                            <img
-                              src={featuredProducts.images[0]}
-                              alt={featuredProducts.title}
-                              className="h-56 object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.45)] transition duration-500 group-hover:scale-110"
-                            />
-                          </div>
-
-                          <p
-                            className={`text-center text-xs uppercase tracking-[0.3em] ${
-                              darkMode ? "text-[#A8C0AD]" : "text-[#D6B17B]"
-                            }`}
-                          >
-                            Signature Pick
-                          </p>
-
-                          <h2
-                            className={`mt-5 line-clamp-1 text-center text-2xl font-light ${
-                              darkMode ? "text-[#F0EEE7]" : "text-white"
-                            }`}
-                          >
-                            {featuredProducts.title}
-                          </h2>
-
-                          <div className="mt-8 flex items-center justify-between">
-                            <div>
-                              <p
-                                className={`text-sm ${
-                                  darkMode ? "text-[#929B95]" : "text-[#CFC2B5]"
-                                }`}
-                              >
-                                Starting From
-                              </p>
-
-                              <h3
-                                className={`text-3xl font-light ${
-                                  darkMode ? "text-[#F0EEE7]" : "text-white"
-                                }`}
-                              >
-                                ₹
-                                {Math.floor(
-                                  featuredProducts.price * 100,
-                                ).toLocaleString("en-IN")}
-                              </h3>
-                            </div>
-
-                            <button
-                              className={`rounded-full border px-6 py-3 transition ${
-                                darkMode
-                                  ? "border-white/15 bg-[#4E6B57] text-white hover:bg-[#3F5948]"
-                                  : "border-white/20 bg-white/10 text-white hover:bg-white hover:text-black"
-                              }`}
-                            >
-                              View →
-                            </button>
-                          </div>
-                        </div>
-                      </Link>
-                    )}
-                  </div>
-                </div>
-
-                <div className="absolute right-8 top-1/2 z-20 -translate-y-1/2">
-                  <p
-                    className={`rotate-90 text-[10px] uppercase tracking-[5px] ${
-                      darkMode ? "text-white/35" : "text-white/60"
+                >
+                  <span
+                    className={`lg:text-xs text-[8px] uppercase tracking-[0.35em] ${
+                      darkMode ? "text-[#A8C0AD]" : "text-[#D6B17B]"
                     }`}
                   >
-                    Signature Fragrance
-                  </p>
+                    NEW COLLECTION 2026
+                  </span>
                 </div>
 
-                <div className="absolute bottom-8 left-20 z-20 flex items-center gap-3">
+                <h1
+                  className={`mt-8 text-4xl sm:text-5xl md:text-6xl lg:!text-7xl font-bold leading-[0.9] ${
+                    darkMode ? "text-[#F2EEE6]" : "text-white"
+                  }`}
+                >
+                  Elegance
+                  <br />
+                  <span className="font-light">In Every Scent</span>
+                </h1>
+
+                <p
+                  className={`mt-6 lg:!mt-10 w-[45vh] md:w-[55vh] lg:w-[100vh] md:text-sm lg:!text-lg text-sm ${
+                    darkMode ? "text-[#B9C0BB]" : "text-[#DDD5CB]"
+                  }`}
+                >
+                  Discover timeless fragrances crafted from the world's
+                  finest ingredients, 
+                  designed to leave a signature that lingers long after
+                  you've left the room.
+                </p>
+
+                <button
+                  onClick={() => navigate("/shop")}
+                  className={`group mt-8 lg:!my-12 flex items-center text-sm lg:!text-xl gap-4 rounded-full border px-4 py-2 lg:px-8 lg:py-4 backdrop-blur-xl transition-all duration-300 ${
+                    darkMode
+                      ? "border-white/15 bg-white/10 text-[#F0EEE7] hover:bg-[#4E6B57] hover:text-white"
+                      : "border-white/20 bg-white/10 text-white hover:bg-white hover:text-black"
+                  }`}
+                >
+                  <span>Explore Collection</span>
+
+                  <span className="text-xl transition group-hover:translate-x-2">
+                    →
+                  </span>
+                </button>
+
+                <div className="mt-10 lg:flex hidden flex gap-5 lg:gap-14">
+                  <div>
+                    <h2
+                      className={`lg:!text-4xl text-xl font-light ${
+                        darkMode ? "text-[#F0EEE7]" : "text-white"
+                      }`}
+                    >
+                      4.9★
+                    </h2>
+
+                    <p
+                      className={`mt-2 lg:!text-xs text-[10px] uppercase tracking-[0.25em] ${
+                        darkMode ? "text-[#9FA9A1]" : "text-[#C8BAA6]"
+                      }`}
+                    >
+                      Rating
+                    </p>
+                  </div>
+
                   <div
-                    className={`h-px w-10 ${
-                      darkMode ? "bg-white/20" : "bg-white/40"
+                    className={`h-14 w-px ${
+                      darkMode ? "bg-white/15" : "bg-white/20"
                     }`}
                   />
 
-                  <span
-                    className={`text-[10px] uppercase tracking-[4px] ${
-                      darkMode ? "text-white/40" : "text-white/60"
+                  <div>
+                    <h2
+                      className={`lg:!text-4xl text-xl font-light ${
+                        darkMode ? "text-[#F0EEE7]" : "text-white"
+                      }`}
+                    >
+                      120+
+                    </h2>
+
+                    <p
+                      className={`mt-2 lg:!text-xs text-[10px] uppercase tracking-[0.25em] ${
+                        darkMode ? "text-[#9FA9A1]" : "text-[#C8BAA6]"
+                      }`}
+                    >
+                      Fragrances
+                    </p>
+                  </div>
+
+                  <div
+                    className={`h-14 w-px ${
+                      darkMode ? "bg-white/15" : "bg-white/20"
                     }`}
-                  >
-                    02 / Signature Collection
-                  </span>
+                  />
+
+                  <div>
+                    <h2
+                      className={`lg:!text-4xl text-xl font-light ${
+                        darkMode ? "text-[#F0EEE7]" : "text-white"
+                      }`}
+                    >
+                      50K+
+                    </h2>
+
+                    <p
+                      className={`mt-2 lg:!text-xs text-[10px] uppercase tracking-[0.25em] ${
+                        darkMode ? "text-[#9FA9A1]" : "text-[#C8BAA6]"
+                      }`}
+                    >
+                      Happy Clients
+                    </p>
+                  </div>
                 </div>
               </div>
-            </SwiperSlide>
+
+              <div className="relative flex lg:w-[420px] w-[350px] flex-col items-end">
+                {featuredProducts && (
+                  <Link to={`/apis/${featuredProducts.id}`}>
+                    <div
+                      className={`
+            group relative lg:mt-40 mt-25 lg:w-[360px] w-[320px]
+            rounded-[40px]
+            border lg:mr-0 mr-6
+            lg:px-8 px-4 pb-8 lg:pt-36 pt-25
+            backdrop-blur-2xl
+            shadow-[0_25px_80px_rgba(0,0,0,0.45)]
+            transition duration-500
+            hover:-translate-y-3
+            hover:scale-[1.02]
+            ${
+              darkMode
+                ? "border-white/10 bg-[#181D1A]/75"
+                : "border-white/20 bg-white/10"
+            }
+          `}
+                    >
+                      <div
+                        className={`absolute left-1/2 top-[-70px] flex lg:!h-52 lg:!w-52 h-40 w-40 -translate-x-1/2 items-center justify-center rounded-full ${
+                          darkMode ? "bg-[#252E28]/80" : "bg-white/10"
+                        }`}
+                      >
+                        <img
+                          src={featuredProducts.images[0]}
+                          alt={featuredProducts.title}
+                          className="lg:!h-46 h-30 object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.45)] transition duration-500 group-hover:scale-110"
+                        />
+                      </div>
+
+                      <p
+                        className={`text-center text-xs uppercase tracking-[0.3em] ${
+                          darkMode ? "text-[#A8C0AD]" : "text-[#D6B17B]"
+                        }`}
+                      >
+                        Signature Pick
+                      </p>
+
+                      <h2
+                        className={`mt-5 line-clamp-1 text-center text-2xl font-light ${
+                          darkMode ? "text-[#F0EEE7]" : "text-white"
+                        }`}
+                      >
+                        {featuredProducts.title}
+                      </h2>
+
+                      <div className="lg:!mt-8 mt-6 flex items-center justify-between">
+                        <div>
+                          <p
+                            className={`text-sm ${
+                              darkMode ? "text-[#929B95]" : "text-[#CFC2B5]"
+                            }`}
+                          >
+                            Starting From
+                          </p>
+
+                          <h3
+                            className={`lg:text-3xl text-xl font-light ${
+                              darkMode ? "text-[#F0EEE7]" : "text-white"
+                            }`}
+                          >
+                            ₹
+                            {Math.floor(
+                              featuredProducts.price * 100,
+                            ).toLocaleString("en-IN")}
+                          </h3>
+                        </div>
+
+                        <button
+                          className={`rounded-full border px-6 py-3 transition ${
+                            darkMode
+                              ? "border-white/15 bg-[#4E6B57] text-white hover:bg-[#3F5948]"
+                              : "border-white/20 bg-white/10 text-white hover:bg-white hover:text-black"
+                          }`}
+                        >
+                          View →
+                        </button>
+                      </div>
+                    </div>
+                  </Link>
+                )}
+              </div>
+            </div>
+
+            <div className="absolute right-10 hidden lg:block top-120 z-20 -translate-y-1/2">
+              <p
+                className={`rotate-90 text-[10px] uppercase tracking-[5px] ${
+                  darkMode ? "text-white/35" : "text-white/60"
+                }`}
+              >
+                Signature Fragrance
+              </p>
+            </div>
+
+            <div className="absolute bottom-8 left-15  z-20 flex items-center gap-3">
+              <div
+                className={`h-px w-10 ${
+                  darkMode ? "bg-white/20" : "bg-white/40"
+                }`}
+              />
+
+              <span
+                className={`lg:!text-[10px]  text-[8px] uppercase tracking-[4px] ${
+                  darkMode ? "text-white/40" : "text-white/60"
+                }`}
+              >
+                02 / Signature Collection
+              </span>
+            </div>
+          </div>
+        </SwiperSlide>
           </Swiper>
-         
         </div>
 
         {/* benefits */}
         <section
-          className={`relative overflow-hidden py-28 ${
+          className={`relative overflow-hidden py-25 lg:!py-28 ${
             darkMode ? "bg-[#141916]" : "bg-[#FCFAF7]"
           }`}
         >
-           <div className="flex absolute right-5 flex-col top-10 items-center gap-2 text-xs uppercase tracking-[0.3em] text-[#7C8B73]">
-  <span>Scroll to explore</span>
-  <span className="text-lg">↓</span>
-</div>
+          <div className="flex absolute right-5 flex-col top-2 lg:!top-10 items-center text-[10px] gap-2 lg:!text-xs uppercase tracking-[0.3em] text-[#7C8B73]">
+            <span>Scroll to explore</span>
+            <span className="text-md lg:!text-lg">↓</span>
+          </div>
           <div className="pointer-events-none absolute -right-40 -top-40">
             <div
               className={`h-[600px] w-[600px] border border-dotted rounded-full border ${
@@ -1063,7 +1166,7 @@ const Home = () => {
           <div className="relative z-10">
             <div className="mx-auto mb-16 max-w-3xl text-center">
               <p
-                className={`text-sm uppercase tracking-[0.35em] ${
+                className={`lg:!text-sm text-sm uppercase tracking-[0.35em] ${
                   darkMode ? "text-[#8FA494]" : "text-[#7C8B73]"
                 }`}
               >
@@ -1071,7 +1174,7 @@ const Home = () => {
               </p>
 
               <h2
-                className={`mt-5 text-5xl font-light ${
+                className={`mt-5 text-3xl lg:!text-5xl font-light ${
                   darkMode ? "text-[#F0EEE7]" : "text-[#3E2E24]"
                 }`}
               >
@@ -1081,7 +1184,7 @@ const Home = () => {
               </h2>
 
               <p
-                className={`mt-6 text-lg leading-8 ${
+                className={`lg:!mt-6 px-3 !lg:px-0 mt-3 text-md lg:!text-lg leading-5 lg:!leading-8 ${
                   darkMode ? "text-[#A9ADA7]" : "text-[#6E6258]"
                 }`}
               >
@@ -1090,67 +1193,67 @@ const Home = () => {
               </p>
             </div>
 
-            <div className="mx-auto grid max-w-7xl gap-8 px-8 md:grid-cols-2 lg:grid-cols-4">
-              {benefits.map((item, index) => (
-                <div
-                  key={index}
-                  className={`group rounded-[32px] border p-10 transition-all duration-500
-          hover:-translate-y-2 hover:shadow-2xl ${
-            darkMode
-              ? "border-[#2A332D] bg-[#1B211D] hover:border-[#4E6B57]"
-              : "border-[#E8DED3] bg-[#FFFCF8] hover:border-[#CDBAA6] hover:shadow-xl"
-          }`}
-                >
-                  <div
-                    className={`flex h-16 w-16 items-center justify-center rounded-2xl text-3xl transition duration-300 ${
-                      darkMode
-                        ? "bg-[#252E28] text-[#8FA494] group-hover:bg-[#4E6B57] group-hover:text-white"
-                        : "bg-[#F5EFE7] text-[#7C8B73] group-hover:bg-[#5B4A3F] group-hover:text-white"
-                    }`}
-                  >
-                    {item.icons}
-                  </div>
-
-                  <h2
-                    className={`mt-8 text-2xl font-light ${
-                      darkMode ? "text-[#F0EEE7]" : "text-[#3E2E24]"
-                    }`}
-                  >
-                    {item.about}
-                  </h2>
-
-                  <div
-                    className={`mt-4 h-px w-12 ${
-                      darkMode ? "bg-[#4E6B57]" : "bg-[#D8CEC3]"
-                    }`}
-                  />
-
-                  <p
-                    className={`mt-5 leading-8 ${
-                      darkMode ? "text-[#A9ADA7]" : "text-[#6F655D]"
-                    }`}
-                  >
-                    {item.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-                    <div className="flex absolute left-5 -bottom-16 items-center gap-3">
-        <span className="flex h-8 font-mono w-8 items-center justify-center rounded-full border border-[#CFC7BB] text-xs text-[#6F806A]">
-          02
-        </span>
-
-        <span className="text-sm uppercase font-mono tracking-[0.25em] text-[#6F806A]">
-          WHY CHOOSE SAGE
-        </span>
+           <div className="mx-auto grid max-w-7xl grid-cols-2 gap-5 px-4 sm:grid-cols-2 sm:gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-7 lg:px-8">
+  {benefits.map((item, index) => (
+    <div
+      key={index}
+      className={`group rounded-[28px] border p-3 lg:!p-6 transition-all duration-500 lg:p-7
+        hover:-translate-y-2 hover:shadow-2xl ${
+          darkMode
+            ? "border-[#2A332D] bg-[#1B211D] hover:border-[#4E6B57]"
+            : "border-[#E8DED3] bg-[#FFFCF8] hover:border-[#CDBAA6] hover:shadow-xl"
+        }`}
+    >
+      <div
+        className={`flex h-14 w-14 items-center justify-center rounded-2xl text-2xl transition duration-300 ${
+          darkMode
+            ? "bg-[#252E28] text-[#8FA494] group-hover:bg-[#4E6B57] group-hover:text-white"
+            : "bg-[#F5EFE7] text-[#7C8B73] group-hover:bg-[#5B4A3F] group-hover:text-white"
+        }`}
+      >
+        {item.icons}
       </div>
+
+      <h2
+        className={`mt-6 text-xl font-light ${
+          darkMode ? "text-[#F0EEE7]" : "text-[#3E2E24]"
+        }`}
+      >
+        {item.about}
+      </h2>
+
+      <div
+        className={`mt-4 h-px w-10 ${
+          darkMode ? "bg-[#4E6B57]" : "bg-[#D8CEC3]"
+        }`}
+      />
+
+      <p
+        className={`mt-4 text-xs lg:!text-sm leading-5 lg:!leading-7 ${
+          darkMode ? "text-[#A9ADA7]" : "text-[#6F655D]"
+        }`}
+      >
+        {item.description}
+      </p>
+    </div>
+  ))}
+</div>
+            <div className="flex absolute left-5 -bottom-16 items-center gap-3">
+              <span className="flex h-8 font-mono w-8 items-center justify-center rounded-full border border-[#CFC7BB] text-[10px] lg:!text-xs text-[#6F806A]">
+                02
+              </span>
+
+              <span className="lg:!text-sm text-xs uppercase font-mono tracking-[0.25em] text-[#6F806A]">
+                WHY CHOOSE SAGE
+              </span>
+            </div>
           </div>
         </section>
 
         {/* shop-by-category */}
 
         <section
-          className={`relative overflow-hidden mb-40 ${
+          className={`relative overflow-hidden ${
             darkMode ? "bg-[#141916]" : "bg-[#FCFAF7]"
           }`}
         >
@@ -1177,7 +1280,7 @@ const Home = () => {
             </p>
 
             <h1
-              className={`mt-5 text-5xl font-light ${
+              className={`lg:!mt-5 mt-3 lg:!text-5xl text-3xl md:!text-4xl  font-light ${
                 darkMode ? "text-[#F0EEE7]" : "text-[#3E2E24]"
               }`}
             >
@@ -1185,7 +1288,7 @@ const Home = () => {
             </h1>
 
             <p
-              className={`mt-6 text-lg leading-8 ${
+              className={`lg:!mt-6  mt-5 lg:!text-lg text-md px-7 lg:!px-0 leading-5 lg:!leading-8 ${
                 darkMode ? "text-[#A9ADA7]" : "text-[#6E6258]"
               }`}
             >
@@ -1194,7 +1297,7 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="relative z-10 grid max-w-8xl mx-auto gap-8 px-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="relative z-10 grid grid-cols-2 lg:!mb-40 mb-15 max-w-8xl mx-auto gap-6 lg:!gap-8 px-8 md:grid-cols-2 lg:grid-cols-4">
             {collections.map((item) => (
               <div
                 key={item.id}
@@ -1208,7 +1311,7 @@ const Home = () => {
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="h-80 w-full object-cover transition duration-700 group-hover:scale-110"
+                    className="lg:!h-80 h-40 w-full object-cover transition duration-700 group-hover:scale-110"
                   />
 
                   <div
@@ -1228,9 +1331,9 @@ const Home = () => {
 
                 {/* CONTENT */}
 
-                <div className="p-7">
+                <div className="lg:!p-7 p-5">
                   <h2
-                    className={`text-2xl font-light ${
+                    className={`lg:!text-2xl text-lg font-light ${
                       darkMode ? "text-[#F0EEE7]" : "text-[#3E2E24]"
                     }`}
                   >
@@ -1261,74 +1364,75 @@ const Home = () => {
         {/* discount */}
 
         <section
-          className={`my-20 overflow-hidden ${
+          className={`flex lg:!flex-row lg:!mt-0  flex-col overflow-hidden ${
             darkMode ? "bg-[#151B17]" : "bg-[#E8E2D8]"
           }`}
         >
-          <div className="flex items-center">
+         
             {/* Left Content */}
-            <div className="w-[45%] px-20">
-              <p
-                className={`mb-10 mt-10 max-w-sm text-xl italic leading-8 ${
-                  darkMode ? "text-[#AAB5AC]" : "text-[#6E6258]"
-                }`}
-              >
-                “Lighting shapes the atmosphere before a single word is spoken.”
-              </p>
+            <div className="order-2 flex h-full w-full flex-col items-start justify-center px-6 py-10 sm:px-10 lg:!w-[45%] lg:!px-15 lg:!py-15">
+  <p
+    className={`mb-6 mt-6 max-w-sm text-sm italic leading-6 sm:mb-8 sm:mt-8 sm:text-base lg:mb-10 lg:mt-10 lg:!text-xl lg:!leading-8 ${
+      darkMode ? "text-[#AAB5AC]" : "text-[#6E6258]"
+    }`}
+  >
+    “Lighting shapes the atmosphere before a single word is spoken.”
+  </p>
 
-              <p
-                className={`uppercase tracking-[0.35em] text-sm ${
-                  darkMode ? "text-[#8FA494]" : "text-[#7C8B73]"
-                }`}
-              >
-                Inspired Living
-              </p>
+  <p
+    className={`uppercase tracking-[0.25em] text-xs sm:text-sm lg:tracking-[0.35em] ${
+      darkMode ? "text-[#8FA494]" : "text-[#7C8B73]"
+    }`}
+  >
+    Inspired Living
+  </p>
 
-              <h1
-                className={`mt-5 text-6xl font-light tracking-tight ${
-                  darkMode ? "text-[#F0EEE7]" : "text-[#3E2E24]"
-                }`}
-              >
-                Enlighten
-                <br />
-                Your Home
-              </h1>
+  <h1
+    className={`mt-4 text-4xl font-light tracking-tight sm:text-5xl lg:mt-5 lg:text-6xl ${
+      darkMode ? "text-[#F0EEE7]" : "text-[#3E2E24]"
+    }`}
+  >
+    Enlighten
+    <br />
+    <span className="font-bold">Your Home</span>
+  </h1>
 
-              <p
-                className={`mt-8 text-lg leading-8 max-w-xl ${
-                  darkMode ? "text-[#AEB5AF]" : "text-[#6E6258]"
-                }`}
-              >
-                Bring warmth and sophistication into every room with timeless
-                lighting pieces that blend modern elegance with everyday
-                comfort.
-              </p>
+  <p
+    className={`mt-4 max-w-xl text-sm leading-6 sm:text-base lg:mt-5 lg:text-lg lg:leading-6 ${
+      darkMode ? "text-[#AEB5AF]" : "text-[#6E6258]"
+    }`}
+  >
+    Bring warmth and sophistication into every room with timeless lighting
+    pieces that blend modern elegance with everyday comfort.
+  </p>
 
-              <button
-                onClick={() => navigate("/shop")}
-                className={`mt-8 rounded-full px-8 py-4 transition-all duration-300 ${
-                  darkMode
-                    ? "bg-[#4E6B57] text-[#F5F3ED] hover:bg-[#617D69] hover:shadow-[0_10px_30px_rgba(78,107,87,0.25)]"
-                    : "bg-[#536650] text-white hover:bg-[#435342] hover:shadow-lg"
-                }`}
-              >
-                Explore Collection
-              </button>
-            </div>
+  <button
+    onClick={() => navigate("/shop")}
+    className={`group mt-6 rounded-full px-6 py-3 text-sm transition-all duration-300 hover:-translate-y-1 sm:mt-8 sm:px-8 sm:py-4 sm:text-base ${
+      darkMode
+        ? "bg-[#4E6B57] text-[#F5F3ED] hover:bg-[#617D69] hover:shadow-[0_10px_30px_rgba(78,107,87,0.25)]"
+        : "bg-[#536650] text-white hover:bg-[#435342] hover:shadow-lg"
+    }`}
+  >
+    Explore Collection
+    <span className="ml-2 inline-block transition-all duration-300 group-hover:translate-x-1">
+      →
+    </span>
+  </button>
+</div>
 
             {/* Right Image */}
-            <div className="w-[55%] relative">
+            <div className="lg:!w-[55%] order-1 relative">
               <img
                 src="/interior.jpg"
                 alt="Interior"
-                className="h-[650px] w-full object-cover"
+                className="lg:!h-[650px] h-[400px] w-full object-cover"
               />
               <p className="absolute -right-5 top-1/2 font-mono -translate-y-1/2 z-80 rotate-90 text-sm tracking-[0.4em] text-black/60">
-  SAGE LIVING
-</p>
+                SAGE LIVING
+              </p>
             </div>
-          
-          </div>
+        
         </section>
 
         {/* Best Sellers */}
@@ -1338,7 +1442,7 @@ const Home = () => {
             darkMode ? "bg-[#121814]" : "bg-[#FCFAF7]"
           }`}
         >
-     <div className="pointer-events-none absolute -right-60 top-10">
+          <div className="pointer-events-none absolute -right-60 top-10">
             <div
               className={`h-[600px] w-[600px] border border-dotted rounded-full border ${
                 darkMode ? "border-white/[0.35]" : "border-[#32473D]/[0.35]"
@@ -1349,9 +1453,8 @@ const Home = () => {
                 darkMode ? "border-white/[0.35]" : "border-[#32473D]/[0.35]"
               }`}
             />
-
           </div>
-          
+
           <div className="mx-auto max-w-8xl px-8">
             {/* Heading */}
             <div className="mb-14 flex items-end justify-between">
@@ -1569,97 +1672,88 @@ const Home = () => {
         </section>
 
         {/* footer */}
-        <footer className="bg-[#1F1F1F] text-white">
-          <div className="max-w-7xl mx-auto px-8 py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-            <div>
-              <h2 className="text-5xl font-serif tracking-wider">SAGE</h2>
+      <footer className="bg-[#1F1F1F] text-white">
+  <section className="mx-auto grid max-w-7xl grid-cols-2 gap-10 px-6 py-10 lg:!py-14 sm:px-8 lg:grid-cols-4 lg:gap-12 lg:py-20">
 
-              <p className="mt-6 text-gray-400 leading-7">
-                Discover premium beauty, stylish furniture, everyday groceries,
-                fragrances, and more—all in one place.
-              </p>
+    {/* Brand */}
+    <article className="col-span-2 lg:col-span-1">
+      <h2 className="font-serif text-5xl tracking-wider sm:text-5xl">
+        SAGE
+      </h2>
 
-              <div className="flex gap-4 mt-8">
-                <a
-                  href="#"
-                  className="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#D6B89D] transition"
-                >
-                  <FaFacebookF />
-                </a>
+      <p className="mt-5 max-w-sm leading-7 text-gray-400">
+        Discover premium beauty, stylish furniture, everyday groceries,
+        fragrances, and more—all in one place.
+      </p>
 
-                <a
-                  href="#"
-                  className="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#D6B89D] transition"
-                >
-                  <FaInstagram />
-                </a>
+      <nav className="mt-7 flex gap-3" aria-label="Social media">
+        <a className="flex h-12 w-12 text-2xl items-center justify-center rounded-full bg-white/10 transition hover:bg-[#D6B89D]">
+          <FaFacebookF />
+        </a>
 
-                <a
-                  href="#"
-                  className="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#D6B89D] transition"
-                >
-                  <FaTwitter />
-                </a>
+        <a className="flex h-12 w-12 text-2xl items-center justify-center rounded-full bg-white/10 transition hover:bg-[#D6B89D]">
+          <FaInstagram />
+        </a>
 
-                <a
-                  href="#"
-                  className="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#D6B89D] transition"
-                >
-                  <FaPinterestP />
-                </a>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-6">Shop</h3>
+        <a className="flex h-12 w-12 text-2xl items-center justify-center rounded-full bg-white/10 transition hover:bg-[#D6B89D]">
+          <FaTwitter />
+        </a>
 
-              <ul className="space-y-4 text-gray-400">
-                <li className="hover:text-white cursor-pointer">Beauty</li>
-                <li className="hover:text-white cursor-pointer">Furniture</li>
-                <li className="hover:text-white cursor-pointer">Groceries</li>
-                <li className="hover:text-white cursor-pointer">Fragrances</li>
-              </ul>
-            </div>
+        <a className="flex h-12 w-12 text-2xl items-center justify-center rounded-full bg-white/10 transition hover:bg-[#D6B89D]">
+          <FaPinterestP />
+        </a>
+      </nav>
+    </article>
+<div className="flex flex-row !gap-10 lg:!gap-24">
+    {/* Shop */}
+    <nav>
+      <h3 className="mb-5 lg:!text-2xl text-xl font-semibold">Shop</h3>
+      <ul className="space-y-3 text-gray-400">
+        <li>Beauty</li>
+        <li>Furniture</li>
+        <li>Groceries</li>
+        <li>Fragrances</li>
+      </ul>
+    </nav>
 
-            <div>
-              <h3 className="text-xl font-semibold mb-6">Company</h3>
+    {/* Company */}
+    <nav>
+      <h3 className="mb-5 lg:!text-2xl text-xl font-semibold">Company</h3>
+      <ul className="space-y-3 text-gray-400">
+        <li>About Us</li>
+        <li>Our Story</li>
+        <li>Careers</li>
+        <li>Blog</li>
+        <li>FAQs</li>
+      </ul>
+    </nav>
 
-              <ul className="space-y-4 text-gray-400">
-                <li className="hover:text-white cursor-pointer">About Us</li>
-                <li className="hover:text-white cursor-pointer">Our Story</li>
-                <li className="hover:text-white cursor-pointer">Careers</li>
-                <li className="hover:text-white cursor-pointer">Blog</li>
-                <li className="hover:text-white cursor-pointer">FAQs</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-6">Support</h3>
+    {/* Support */}
+    <nav>
+      <h3 className="mb-5  lg:!text-2xl text-xl  font-semibold">Support</h3>
+      <ul className="space-y-3 text-gray-400">
+        <li>Contact Us</li>
+        <li>Shipping</li>
+        <li>Returns</li>
+        <li>Privacy Policy</li>
+        <li>Terms & Conditions</li>
+      </ul>
+    </nav>
+</div>
+  </section>
 
-              <ul className="space-y-4 text-gray-400">
-                <li className="hover:text-white cursor-pointer">Contact Us</li>
-                <li className="hover:text-white cursor-pointer">Shipping</li>
-                <li className="hover:text-white cursor-pointer">Returns</li>
-                <li className="hover:text-white cursor-pointer">
-                  Privacy Policy
-                </li>
-                <li className="hover:text-white cursor-pointer">
-                  Terms & Conditions
-                </li>
-              </ul>
-            </div>
-          </div>
+  <div className="border-t lg:!mb-0 mb-12 lg:!py-0 border-white/10">
+    <div className="mx-auto flex max-w-7xl flex-col  items-center justify-between gap-4 px-6 py-5 text-sm text-gray-400 sm:px-8 md:flex-row">
+      <p>© 2026 SAGE. All rights reserved.</p>
 
-          <div className="border-t border-white/10">
-            <div className="max-w-7xl mx-auto px-8 py-6 flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
-              <p>© 2026 SAGE. All rights reserved.</p>
-
-              <div className="flex gap-6 mt-4 md:mt-0">
-                <p className="hover:text-white cursor-pointer">Privacy</p>
-                <p className="hover:text-white cursor-pointer">Terms</p>
-                <p className="hover:text-white cursor-pointer">Cookies</p>
-              </div>
-            </div>
-          </div>
-        </footer>
+      <nav className="flex gap-5">
+        <span>Privacy</span>
+        <span>Terms</span>
+        <span>Cookies</span>
+      </nav>
+    </div>
+  </div>
+</footer>
       </div>
     </>
   );
