@@ -407,7 +407,7 @@ const Orders = () => {
                   </div>
 
 
-                  <p className="text-xl font-semibold text-[#78917C]">
+                  <p className="lg:!text-xl text-lg font-semibold text-[#78917C]">
                     ₹
                     {Math.floor(item.price * 100).toLocaleString("en-IN")}
                   </p>
@@ -467,7 +467,7 @@ const Orders = () => {
                 </p>
 
                 <h2
-                  className={`text-3xl font-bold ${
+                  className={`lg:!text-3xl text-xl font-bold ${
                     darkMode
                       ? "text-[#F0EEE7]"
                       : "text-[#2F2A26]"

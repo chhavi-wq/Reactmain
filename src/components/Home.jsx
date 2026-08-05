@@ -154,17 +154,17 @@ const Home = () => {
             pagination={{ clickable: true }}
             autoplay={{ delay: 3000 }}
             loop
-            className="min-h-[700px] md:min-h-[600px] lg:min-h-screen"
+            className="min-h-screen md:min-h-[600px] lg:min-h-screen"
           >
             <SwiperSlide>
   <div
-    className={`relative flex lg:min-h-screen min-h-screen flex-col transition-colors duration-300 lg:flex-row ${
+    className={`relative flex lg:!h-screen min-h-screen flex-col transition-colors duration-300 lg:flex-row ${
       darkMode ? "bg-[#141916]" : "bg-[#F8F5F0]"
     }`}
   >
 
 
-    <div className="order-1 h-[40vh] w-full overflow-hidden lg:order-2 lg:h-screen lg:w-1/2">
+    <div className="order-1 h-[40vh] sm:h-[50vh] w-full overflow-hidden lg:order-2 lg:!h-screen lg:w-1/2">
       <img
         src="/furniture.jpeg"
         alt="Furniture"
@@ -175,7 +175,7 @@ const Home = () => {
    <div className="order-2 flex w-full flex-col justify-center px-6 py-3 sm:px-10 lg:order-1 lg:w-1/2 lg:!px-19 lg:py-0">
   
 <h1
-  className={`mt-6 text-4xl font-light leading-tight sm:text-5xl md:text-6xl lg:!text-[80px] ${
+  className={`mt-6 text-4xl font-light leading-tight sm:text-5xl md:text-6xl lg:!text-7xl ${
     darkMode ? "text-[#F0EEE7]" : "text-[#3E2E24]"
   }`}
 >
@@ -1502,49 +1502,59 @@ const Home = () => {
 
             {/* Swiper */}
             <Swiper
-              modules={[Navigation]}
-              navigation
-              slidesPerView={4}
-              spaceBetween={24}
-              className="pb-8"
-            >
-              {product.map((item) => (
-                <SwiperSlide key={item.id}>
-                  <ProductCard product={item} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+  modules={[Navigation]}
+  navigation
+  slidesPerView={2}
+  spaceBetween={12}
+  className="w-full pb-8"
+  breakpoints={{
+    640: {
+      slidesPerView:! 3,
+      spaceBetween: 16,
+    },
+    1024: {
+      slidesPerView: 5,
+      spaceBetween: 24,
+    },
+  }}
+>
+  {product.map((item) => (
+    <SwiperSlide key={item.id} className="h-auto">
+      <ProductCard product={item} />
+    </SwiperSlide>
+  ))}
+</Swiper>
           </div>
         </section>
 
         <section
-          className={`py-20 transition-colors duration-500 ${
+          className={`lg:!py-20 py-0 transition-colors duration-500 ${
             darkMode ? "bg-[#121814]" : "bg-[#FCFAF7]"
           }`}
         >
-          <div className="mx-auto px-8">
+          <div className="lg:!mx-auto px-5 lg:!px-8">
             <div className="grid gap-8 lg:grid-cols-2">
               {/* ================= LEFT CARD ================= */}
 
               <div className="group relative overflow-hidden rounded-[30px] border border-transparent transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
-                <div className="relative h-[600px] bg-[url('/frag.jpg')] bg-cover bg-center transition duration-700 group-hover:scale-[1.01]">
+                <div className="relative lg:!h-[600px] h-[400px] bg-[url('/frag.jpg')] bg-cover bg-center transition duration-700 group-hover:scale-[1.01]">
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#111713]/90 via-[#182019]/45 to-black/10" />
 
                   {/* Content */}
-                  <div className="relative z-10 flex h-full flex-col justify-center p-20 text-white">
-                    <p className="uppercase tracking-[0.4em] text-sm font-medium text-[#B3C1B5]">
+                  <div className="relative z-10 flex h-full flex-col justify-center p-8 lg:!p-20 text-white">
+                    <p className="uppercase tracking-[0.4em] text-sm font-medium text-gray-500">
                       Limited Time Offer
                     </p>
 
-                    <h2 className="mt-4 text-6xl font-light leading-tight tracking-tight">
+                    <h2 className="mt-4 lg:!text-6xl text-3xl font-light leading-tight tracking-tight">
                       Get
                       <span className="text-[#A8BEAD]"> 30% OFF</span>
                       <br />
                       Your First Order
                     </h2>
 
-                    <p className="mt-5 max-w-md text-lg leading-8 text-white/75">
+                    <p className="lg:!mt-5 mt-2 max-w-md lg:!text-lg text-sm leading-6 lg:!leading-8 text-white/75">
                       Experience our signature collection crafted with timeless
                       elegance. Elevate your lifestyle with exclusive designs
                       made for modern living.
@@ -1553,7 +1563,7 @@ const Home = () => {
                     {/* CTA */}
                     <button
                       onClick={() => navigate("/shop")}
-                      className="mt-7 w-fit rounded-full bg-[#F5F3ED] px-8 py-4 font-medium text-[#34483B] transition-all duration-300 hover:scale-105 hover:bg-[#DDE5DE] hover:shadow-xl"
+                      className="lg:!mt-7 mt-5 w-fit rounded-full bg-[#F5F3ED] lg:!px-8 px-6 py-2 lg:!py-4 font-medium text-[#34483B] transition-all duration-300 hover:scale-105 hover:bg-[#DDE5DE] hover:shadow-xl"
                     >
                       Shop Collection →
                     </button>
@@ -1569,30 +1579,30 @@ const Home = () => {
               {/* ================= RIGHT CARD ================= */}
 
               <div className="group relative overflow-hidden rounded-[30px] border border-transparent transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
-                <div className="relative h-[600px] bg-[url('/beauty.jpg')] bg-cover bg-center transition duration-700 group-hover:scale-[1.01]">
+                <div className="relative lg:!h-[600px] h-[400px] bg-[url('/beauty.jpg')] bg-cover bg-center transition duration-700 group-hover:scale-[1.01]">
                   {/* Overlay */}
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#111713]/90 via-[#182019]/45 to-black/10" />
 
                   {/* Content */}
-                  <div className="relative z-10 flex h-full flex-col justify-center p-20 text-white">
+                  <div className="relative z-10 flex h-full flex-col justify-center lg:!p-20 p-8 text-white">
                     <p className="uppercase tracking-[0.4em] text-sm font-medium text-[#B3C1B5]">
                       Exclusive Coupon
                     </p>
 
-                    <h2 className="mt-4 text-6xl font-light leading-tight tracking-tight">
+                    <h2 className="mt-4 lg:!text-6xl text-3xl font-light leading-tight tracking-tight">
                       Save More
                       <br />
                       Every Order
                     </h2>
 
                     {/* Coupon */}
-                    <div className="mt-6 inline-flex w-fit items-center rounded-2xl border border-[#DCE5DE]/20 bg-[#314338]/40 px-7 py-3 backdrop-blur-xl">
-                      <span className="text-3xl font-semibold tracking-widest text-[#EDF2ED]">
+                    <div className="mt-6 inline-flex w-fit hidden lg:!inline-flex items-center rounded-2xl border border-[#DCE5DE]/20 bg-[#314338]/40 px-7 py-3 backdrop-blur-xl">
+                      <span className="text-3xl font-semibold hidden lg:!flex tracking-widest text-[#EDF2ED]">
                         SAGE30
                       </span>
                     </div>
 
-                    <p className="mt-5 max-w-lg text-lg leading-8 text-white/75">
+                    <p className="mt-5 max-w-lg lg:!text-lg text-md lg:!leading-8 leading-6 text-white/75">
                       Apply this exclusive code during checkout and enjoy
                       instant savings on our handcrafted premium collection.
                     </p>
@@ -1602,7 +1612,7 @@ const Home = () => {
                       onClick={() => {
                         return toast.success("coupon copied");
                       }}
-                      className="mt-8 w-fit rounded-full border border-[#DCE5DE]/50 bg-[#314338]/40 px-8 py-4 text-[#F3F5F1] backdrop-blur-md transition-all duration-300 hover:border-[#F3F5F1] hover:bg-[#F3F5F1] hover:text-[#34483B]"
+                      className="lg:!mt-8 mt-6 w-fit rounded-full border border-[#DCE5DE]/50 bg-[#314338]/40 lg:!px-8 lg:!py-4 px-5 py-2 text-[#F3F5F1] backdrop-blur-md transition-all duration-300 hover:border-[#F3F5F1] hover:bg-[#F3F5F1] hover:text-[#34483B]"
                     >
                       Copy Coupon →
                     </button>

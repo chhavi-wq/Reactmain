@@ -45,276 +45,299 @@ const Apidetail = () => {
     <>
       <Navbar />
 
-      <div
-        className={`min-h-screen px-20 py-35 transition-colors duration-300 ${
-          darkMode ? "bg-[#141916] text-[#E0E6E1]" : "bg-[#F8F5F0]"
+    <div
+  className={`min-h-screen px-4 sm:px-6 md:px-10 lg:!px-12 py-24 sm:py-28 lg:!py-32 transition-colors duration-300 ${
+    darkMode ? "bg-[#141916] text-[#E0E6E1]" : "bg-[#F8F5F0]"
+  }`}
+>
+  {/* ================= PREVIOUS ================= */}
+  <button
+    className={`absolute left-2 sm:left-4 lg:!left-6 top-1/2 -translate-y-1/2 z-10
+      p-2 sm:p-3 lg:!p-4 rounded-full shadow-md transition text-2xl sm:text-3xl lg:!text-5xl ${
+        darkMode
+          ? "bg-[#1B211D] text-[#C8D3CA] border border-[#354238] hover:bg-[#5F745B] hover:text-white"
+          : "bg-white hover:bg-[#5F745B] hover:text-white"
+      }`}
+    onClick={() => navigate(`/apis/${Number(id) - 1}`)}
+  >
+    <GrFormPrevious />
+  </button>
+
+  {/* ================= NEXT ================= */}
+  <button
+    className={`absolute right-2 sm:right-4 lg:right-6 top-1/2 -translate-y-1/2 z-10
+      p-2 sm:p-3 lg:!p-4 rounded-full shadow-md transition text-2xl sm:text-3xl lg:!text-5xl ${
+        darkMode
+          ? "bg-[#1B211D] text-[#C8D3CA] border border-[#354238] hover:bg-[#5F745B] hover:text-white"
+          : "bg-white hover:bg-[#5F745B] hover:text-white"
+      }`}
+    onClick={() => navigate(`/apis/${Number(id) + 1}`)}
+  >
+    <GrFormNext />
+  </button>
+
+  {/* ================= PRODUCT ================= */}
+  <div className="mx-auto flex max-w-6xl flex-col gap-10 sm:gap-12 lg:!flex-row lg:!items-start lg:!gap-12">
+
+    {/* ================= PRODUCT IMAGE ================= */}
+    <div
+      className={`w-full overflow-hidden rounded-[28px] sm:rounded-[32px] lg:!w-[48%] lg:rounded-[40px] shadow-lg transition-colors duration-300 ${
+        darkMode
+          ? "bg-[#1B211D] border border-[#354238]"
+          : "bg-white border border-[#D6E2D0]"
+      }`}
+    >
+      <img
+        className="h-[300px] w-full object-contain sm:h-[450px] md:h-[500px] lg:!h-[600px]"
+        src={data.images[0]}
+        alt={data.title}
+      />
+    </div>
+
+    {/* ================= PRODUCT DETAILS ================= */}
+    <div className="w-full lg:!w-[52%]">
+
+      {/* Category */}
+      <p
+        className={`uppercase tracking-[3px] sm:tracking-[5px] text-xs sm:text-sm ${
+          darkMode ? "text-[#8FA58F]" : "text-[#7A7A7A]"
         }`}
       >
-        {/* Previous */}
-        <button
-          className={`absolute left-5 top-[50%] text-5xl p-4 rounded-full shadow-md transition ${
-            darkMode
-              ? "bg-[#1B211D] text-[#C8D3CA] border border-[#354238] hover:bg-[#5F745B] hover:text-white"
-              : "bg-white hover:bg-[#5F745B] hover:text-white"
-          }`}
-          onClick={() => navigate(`/apis/${Number(id) - 1}`)}
-        >
-          <GrFormPrevious />
-        </button>
+        {data.category}
+      </p>
 
-        {/* Next */}
-        <button
-          className={`absolute right-5 top-[50%] text-5xl p-4 rounded-full shadow-md transition ${
-            darkMode
-              ? "bg-[#1B211D] text-[#C8D3CA] border border-[#354238] hover:bg-[#5F745B] hover:text-white"
-              : "bg-white hover:bg-[#5F745B] hover:text-white"
-          }`}
-          onClick={() => navigate(`/apis/${Number(id) + 1}`)}
-        >
-          <GrFormNext />
-        </button>
+      {/* Title */}
+      <h2
+        className={`mt-3 text-2xl sm:text-3xl md:text-4xl font-medium leading-tight ${
+          darkMode ? "text-[#E3E9E4]" : "text-gray-900"
+        }`}
+      >
+        {data.title}
+      </h2>
 
-        <div className="flex gap-20">
-          {/* ================= PRODUCT IMAGE ================= */}
-          <div
-            className={`w-[600px] h-[700px] rounded-[40px] shadow-lg overflow-hidden transition-colors duration-300 ${
-              darkMode
-                ? "bg-[#1B211D] border border-[#354238]"
-                : "bg-white border border-[#D6E2D0]"
-            }`}
-          >
-            <img
-              className="w-full h-[600px] object-cover"
-              src={data.images[0]}
-              alt=""
+      {/* ================= RATING ================= */}
+      <div className="mt-4 flex flex-wrap items-center gap-2 sm:gap-3">
+        <div className="flex text-sm sm:text-base text-yellow-500">
+          {Array.from({ length: 5 }).map((_, index) => (
+            <FontAwesomeIcon
+              key={index}
+              icon={faStar}
+              className={
+                index < Math.round(data.rating)
+                  ? "text-yellow-500"
+                  : darkMode
+                    ? "text-[#4B554E]"
+                    : "text-gray-300"
+              }
             />
-          </div>
-
-          {/* ================= PRODUCT DETAILS ================= */}
-          <div className="w-1/2">
-            {/* Category */}
-            <p
-              className={`uppercase tracking-[5px] text-sm ${
-                darkMode ? "text-[#8FA58F]" : "text-[#7A7A7A]"
-              }`}
-            >
-              {data.category}
-            </p>
-
-            {/* Title */}
-            <h2
-              className={`text-3xl font-medium mt-3 ${
-                darkMode ? "text-[#E3E9E4]" : "text-gray-900"
-              }`}
-            >
-              {data.title}
-            </h2>
-
-            {/* ================= RATING ================= */}
-            <div className="flex items-center gap-3 mt-5">
-              <div className="flex text-yellow-500">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <FontAwesomeIcon
-                    key={index}
-                    icon={faStar}
-                    className={
-                      index < Math.round(data.rating)
-                        ? "text-yellow-500"
-                        : darkMode
-                          ? "text-[#4B554E]"
-                          : "text-gray-300"
-                    }
-                  />
-                ))}
-              </div>
-
-              <span className={darkMode ? "text-[#929D95]" : "text-gray-500"}>
-                {data.rating} / 5
-              </span>
-            </div>
-
-            {/* Description */}
-            <p
-              className={`mt-8 text-lg leading-8 w-[90%] ${
-                darkMode ? "text-[#AEB8B1]" : "text-gray-600"
-              }`}
-            >
-              {data.description}
-            </p>
-
-            {/* ================= PRICE ================= */}
-            <h1
-              className={`text-5xl font-bold mt-5 ${
-                darkMode ? "text-[#C7D6C9]" : "text-[#384A37]"
-              }`}
-            >
-              ₹{Math.floor(data.price * 100).toLocaleString("en-IN")}
-            </h1>
-
-            {/* ================= STOCK ================= */}
-            <div className="mt-6">
-              <span
-                className={`px-4 py-2 rounded-full font-semibold ${
-                  data.availabilityStatus === "Low Stock"
-                    ? "bg-red-500/20 text-red-400 border border-red-500/30"
-                    : darkMode
-                      ? "bg-[#33443A] text-[#AFC2B2] border border-[#4A5B50]"
-                      : "bg-[#E8EFE4] text-[#5F745B]"
-                }`}
-              >
-                {data.availabilityStatus}
-              </span>
-            </div>
-
-            {/* ================= PRODUCT INFO ================= */}
-            <div
-              className={`mt-10 border-t pt-3 space-y-4 ${
-                darkMode ? "border-[#354238]" : "border-gray-200"
-              }`}
-            >
-              <div className="flex justify-between">
-                <span className={darkMode ? "text-[#89958D]" : "text-gray-500"}>
-                  Stock
-                </span>
-
-                <span
-                  className={
-                    darkMode ? "font-medium text-[#D2DAD4]" : "font-medium"
-                  }
-                >
-                  {data.stock} Units
-                </span>
-              </div>
-
-              <div className="flex justify-between">
-                <span className={darkMode ? "text-[#89958D]" : "text-gray-500"}>
-                  Shipping
-                </span>
-
-                <span
-                  className={
-                    darkMode ? "font-medium text-[#D2DAD4]" : "font-medium"
-                  }
-                >
-                  {data.shippingInformation}
-                </span>
-              </div>
-
-              <div className="flex justify-between">
-                <span className={darkMode ? "text-[#89958D]" : "text-gray-500"}>
-                  Minimum Order
-                </span>
-
-                <span
-                  className={
-                    darkMode ? "font-medium text-[#D2DAD4]" : "font-medium"
-                  }
-                >
-                  {data.minimumOrderQuantity}
-                </span>
-              </div>
-            </div>
-
-            {/* ================= TAGS ================= */}
-            <div className="flex flex-wrap gap-3 mt-8">
-              {data.tags.map((tag, index) => (
-                <span
-                  key={index}
-                  className={`px-4 py-2 rounded-full text-sm ${
-                    darkMode
-                      ? "bg-[#29362E] text-[#AFC2B2] border border-[#3B4B41]"
-                      : "bg-[#E8EFE4] text-[#5F745B]"
-                  }`}
-                >
-                  #{tag}
-                </span>
-              ))}
-            </div>
-
-            {/* ================= BUTTONS ================= */}
-            <div className="flex gap-6 mt-5">
-              {/* Buy Now */}
-              <button
-                className={`px-12 py-4 border-2 rounded-full text-lg font-semibold transition ${
-                  darkMode
-                    ? "border-[#697D6D] text-[#C7D2C9] hover:bg-[#4E6B57] hover:border-[#4E6B57] hover:text-white"
-                    : "border-[#384A37] text-[#384A37] hover:bg-[#384A37] hover:text-white"
-                }`}
-              >
-                Buy Now
-              </button>
-
-              {/* Add to Basket */}
-              <button
-                onClick={() => handleclick(data)}
-                className={`px-12 py-4 rounded-full text-lg font-semibold text-white transition ${
-                  darkMode
-                    ? "bg-[#4E6B57] hover:bg-[#637F69]"
-                    : "bg-[#5F745B] hover:bg-[#4B5F48]"
-                }`}
-              >
-                Add to Basket
-              </button>
-            </div>
-          </div>
+          ))}
         </div>
 
-        {/* ================= REVIEWS ================= */}
-        <div className="mt-24">
-          <h2
-            className={`text-4xl font-bold mb-10 ${
-              darkMode ? "text-[#B8C9BA]" : "text-[#384A37]"
+        <span
+          className={`text-sm sm:text-base ${
+            darkMode ? "text-[#929D95]" : "text-gray-500"
+          }`}
+        >
+          {data.rating} / 5
+        </span>
+      </div>
+
+      {/* ================= DESCRIPTION ================= */}
+      <p
+        className={`mt-6 sm:mt-8 text-sm sm:text-base md:text-lg lg:!max-w-7xl leading-7 sm:leading-8 max-w-6xl ${
+          darkMode ? "text-[#AEB8B1]" : "text-gray-600"
+        }`}
+      >
+        {data.description}
+      </p>
+
+      {/* ================= PRICE ================= */}
+      <h1
+        className={`mt-5 text-3xl sm:text-4xl md:text-5xl font-bold ${
+          darkMode ? "text-[#C7D6C9]" : "text-[#384A37]"
+        }`}
+      >
+        ₹{Math.floor(data.price * 100).toLocaleString("en-IN")}
+      </h1>
+
+      {/* ================= STOCK ================= */}
+      <div className="mt-5 sm:mt-6">
+        <span
+          className={`inline-block rounded-full px-3 sm:px-4 py-2 text-sm sm:text-base font-semibold ${
+            data.availabilityStatus === "Low Stock"
+              ? "bg-red-500/20 text-red-400 border border-red-500/30"
+              : darkMode
+                ? "bg-[#33443A] text-[#AFC2B2] border border-[#4A5B50]"
+                : "bg-[#E8EFE4] text-[#5F745B]"
+          }`}
+        >
+          {data.availabilityStatus}
+        </span>
+      </div>
+
+      {/* ================= PRODUCT INFO ================= */}
+      <div
+        className={`mt-8 sm:mt-10 border-t pt-4 space-y-4 ${
+          darkMode ? "border-[#354238]" : "border-gray-200"
+        }`}
+      >
+        <div className="flex items-start justify-between gap-4">
+          <span
+            className={`text-sm sm:text-base ${
+              darkMode ? "text-[#89958D]" : "text-gray-500"
             }`}
           >
-            Customer Reviews
-          </h2>
+            Stock
+          </span>
 
-          <div className="grid grid-cols-3 gap-8">
-            {data.reviews.map((review, index) => (
-              <div
-                key={index}
-                className={`rounded-3xl p-8 shadow-sm transition-colors duration-300 ${
-                  darkMode ? "bg-[#1B211D] border border-[#354238]" : "bg-white"
-                }`}
-              >
-                {/* Reviewer */}
-                <h3
-                  className={`font-semibold text-xl ${
-                    darkMode ? "text-[#DDE5DE]" : "text-gray-900"
-                  }`}
-                >
-                  {review.reviewerName}
-                </h3>
+          <span
+            className={`text-right text-sm sm:text-base ${
+              darkMode ? "font-medium text-[#D2DAD4]" : "font-medium"
+            }`}
+          >
+            {data.stock} Units
+          </span>
+        </div>
 
-                {/* Email */}
-                <p
-                  className={`mt-1 ${
-                    darkMode ? "text-[#7F8B83]" : "text-gray-500"
-                  }`}
-                >
-                  {review.reviewerEmail}
-                </p>
+        <div className="flex items-start justify-between gap-4">
+          <span
+            className={`text-sm sm:text-base ${
+              darkMode ? "text-[#89958D]" : "text-gray-500"
+            }`}
+          >
+            Shipping
+          </span>
 
-                {/* Review Stars */}
-                <div className="flex text-yellow-500 mt-4">
-                  {Array.from({ length: review.rating }).map((_, i) => (
-                    <FontAwesomeIcon key={i} icon={faStar} />
-                  ))}
-                </div>
+          <span
+            className={`text-right text-sm sm:text-base ${
+              darkMode ? "font-medium text-[#D2DAD4]" : "font-medium"
+            }`}
+          >
+            {data.shippingInformation}
+          </span>
+        </div>
 
-                {/* Review */}
-                <p
-                  className={`mt-5 leading-7 ${
-                    darkMode ? "text-[#AEB8B1]" : "text-gray-600"
-                  }`}
-                >
-                  {review.comment}
-                </p>
-              </div>
-            ))}
-          </div>
+        <div className="flex items-start justify-between gap-4">
+          <span
+            className={`text-sm sm:text-base ${
+              darkMode ? "text-[#89958D]" : "text-gray-500"
+            }`}
+          >
+            Minimum Order
+          </span>
+
+          <span
+            className={`text-right text-sm sm:text-base ${
+              darkMode ? "font-medium text-[#D2DAD4]" : "font-medium"
+            }`}
+          >
+            {data.minimumOrderQuantity}
+          </span>
         </div>
       </div>
+
+      {/* ================= TAGS ================= */}
+      <div className="mt-6 sm:mt-8 flex flex-wrap gap-2 sm:gap-3">
+        {data.tags.map((tag, index) => (
+          <span
+            key={index}
+            className={`rounded-full px-3 sm:px-4 py-2 text-xs sm:text-sm ${
+              darkMode
+                ? "bg-[#29362E] text-[#AFC2B2] border border-[#3B4B41]"
+                : "bg-[#E8EFE4] text-[#5F745B]"
+            }`}
+          >
+            #{tag}
+          </span>
+        ))}
+      </div>
+
+      {/* ================= BUTTONS ================= */}
+      <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6">
+        {/* Buy Now */}
+        <button
+          className={`w-full sm:w-auto px-8 sm:px-10 lg:!px-12 py-3 sm:py-4 border-2 rounded-full text-base sm:text-lg font-semibold transition ${
+            darkMode
+              ? "border-[#697D6D] text-[#C7D2C9] hover:bg-[#4E6B57] hover:border-[#4E6B57] hover:text-white"
+              : "border-[#384A37] text-[#384A37] hover:bg-[#384A37] hover:text-white"
+          }`}
+        >
+          Buy Now
+        </button>
+
+        {/* Add to Basket */}
+        <button
+          onClick={() => handleclick(data)}
+          className={`w-full sm:w-auto px-8 sm:px-10 lg:!px-12 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold text-white transition ${
+            darkMode
+              ? "bg-[#4E6B57] hover:bg-[#637F69]"
+              : "bg-[#5F745B] hover:bg-[#4B5F48]"
+          }`}
+        >
+          Add to Basket
+        </button>
+      </div>
+    </div>
+  </div>
+
+  {/* ================= REVIEWS ================= */}
+  <div className="mx-auto mt-16 sm:mt-20 lg:!mt-24 max-w-6xl">
+    <h2
+      className={`mb-8 sm:mb-10 text-2xl sm:text-3xl lg:!text-4xl font-bold ${
+        darkMode ? "text-[#B8C9BA]" : "text-[#384A37]"
+      }`}
+    >
+      Customer Reviews
+    </h2>
+
+    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:!grid-cols-3 sm:gap-6 lg:!gap-8">
+      {data.reviews.map((review, index) => (
+        <div
+          key={index}
+          className={`rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:!p-8 shadow-sm transition-colors duration-300 ${
+            darkMode
+              ? "bg-[#1B211D] border border-[#354238]"
+              : "bg-white"
+          }`}
+        >
+          {/* Reviewer */}
+          <h3
+            className={`text-lg sm:text-xl font-semibold ${
+              darkMode ? "text-[#DDE5DE]" : "text-gray-900"
+            }`}
+          >
+            {review.reviewerName}
+          </h3>
+
+          {/* Email */}
+          <p
+            className={`mt-1 text-sm sm:text-base ${
+              darkMode ? "text-[#7F8B83]" : "text-gray-500"
+            }`}
+          >
+            {review.reviewerEmail}
+          </p>
+
+          {/* Review Stars */}
+          <div className="mt-3 sm:mt-4 flex text-sm sm:text-base text-yellow-500">
+            {Array.from({ length: review.rating }).map((_, i) => (
+              <FontAwesomeIcon key={i} icon={faStar} />
+            ))}
+          </div>
+
+          {/* Review */}
+          <p
+            className={`mt-4 sm:mt-5 text-sm sm:text-base leading-7 ${
+              darkMode ? "text-[#AEB8B1]" : "text-gray-600"
+            }`}
+          >
+            {review.comment}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
     </>
   );
 };

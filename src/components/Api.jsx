@@ -6,13 +6,14 @@ import { SearchContext } from "../SearchProvider";
 import { FaSearch } from "react-icons/fa";
 import { addToCart } from "../redux/slice/cartslice";
 import { useDispatch } from "react-redux";
-
+import { GiHamburgerMenu } from "react-icons/gi";
 import { ThemeContext } from "../ThemeContext";
 const Api = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState("all");
   const dispatch = useDispatch();
+  const[filterOpen,setFilterOpen] = useState(false);
   const { darkMode, toggleTheme } = useContext(ThemeContext);
 
   const { search, setSearch } = useContext(SearchContext);
@@ -68,275 +69,265 @@ const Api = () => {
 
   return (
     <>
-      <div className="flex flex-row gap-4 items-start overflow-visible">
+      <div className="flex flex-row gap-10 overflow-visible">
         {/* ================= FILTER SIDEBAR ================= */}
-        <div className="w-72 sticky top-15 self-start h-fit">
+        <div className="sticky hidden lg:flex top-15 self-start lg:h-fit mb-6 ">
+  <div
+    className={`rounded-2xl w-52 lg:!w-62 border shadow-xl p-4 sm:p-5 lg:p-6 space-y-6 lg:space-y-8 transition-colors duration-300 ${
+      darkMode
+        ? "bg-[#1B211D] border-[#344139]"
+        : "bg-white border-blue-100"
+    }`}
+  >
+    {/* Filter Header */}
+    <div className="mb-6 flex items-center gap-1">
+      <div className="flex w-full items-center justify-between">
+        <h1
+          className={`text-2xl cursor pointer sm:text-3xl font-extrabold tracking-wide ${
+            darkMode ? "text-[#A8C0AE]" : "text-[#0f4554]"
+          }`}
+        >
+          Filters
+        </h1>
+
+        <button
+          onClick={() => {
+            setBrand("all");
+            setCategory("all");
+            setRating("all");
+            setPrice("all");
+            setStock("all");
+          }}
+          className={`cursor-pointer whitespace-nowrap lg:!whitespace-nowrap rounded-xl border px-3 py-2 text-sm text-white transition duration-300 hover:scale-105 ${
+            darkMode
+              ? "border-[#4E6B57] bg-[#3F5948] hover:bg-[#5A765F]"
+              : "bg-gray-500 hover:bg-gray-600"
+          }`}
+        >
+          Clear All
+        </button>
+      </div>
+    </div>
+
+    {/* ================= RATING ================= */}
+    <div>
+      <h2
+        className={`text-lg sm:text-xl font-bold border-b pb-2 ${
+          darkMode
+            ? "text-[#A8C0AE] border-[#344139]"
+            : "text-[#0f4554] border-blue-100"
+        }`}
+      >
+        Rating
+      </h2>
+
+      {[4, 3, 2].map((item) => (
+        <label
+          key={item}
+          className={`flex items-center gap-3 cursor-pointer rounded-lg px-3 py-2 transition ${
+            darkMode ? "hover:bg-[#273129]" : "hover:bg-blue-50"
+          }`}
+        >
+          <input
+            type="checkbox"
+            className="hidden"
+            checked={rating === item}
+            onChange={() => setRating(rating === item ? "all" : item)}
+          />
+
           <div
-            className={`rounded-2xl shadow-xl border p-6 space-y-8  transition-colors duration-300 ${
-              darkMode
-                ? "bg-[#1B211D] border-[#344139]"
-                : "bg-white border-blue-100"
+            className={`w-4 h-4 sm:w-5 sm:h-5 rounded-md border-2 flex items-center justify-center transition ${
+              rating === item
+                ? darkMode
+                  ? "bg-[#5F745B] border-[#5F745B] text-white shadow"
+                  : "bg-blue-600 border-blue-600 text-white shadow"
+                : darkMode
+                ? "border-[#536257] bg-[#222A25]"
+                : "border-gray-300 bg-white"
             }`}
           >
-            {/* Filter Header */}
-            <div className="mb-6 flexitems-center gap-1">
-              <div>
-                <h1
-                  className={`text-3xl font-extrabold tracking-wide ${
-                    darkMode ? "text-[#A8C0AE]" : "text-[#0f4554]"
-                  }`}
-                >
-                  Filters
-                </h1>
-
-                <p
-                  className={`text-sm ${
-                    darkMode ? "text-[#9FA59F]" : "text-gray-500"
-                  }`}
-                >
-                  Find your perfect product
-                </p>
-
-                <button
-                  onClick={() => {
-                    setBrand("all");
-                    setCategory("all");
-                    setRating("all");
-                    setPrice("all");
-                    setStock("all");
-                  }}
-                  className={`mt-2 cursor-pointer rounded-xl border px-3 py-1 text-sm text-white transition duration-300 hover:scale-105 ${
-                    darkMode
-                      ? "border-[#4E6B57] bg-[#3F5948] hover:bg-[#5A765F]"
-                      : "bg-gray-500 hover:bg-gray-600"
-                  }`}
-                >
-                  Clear All
-                </button>
-              </div>
-            </div>
-
-            {/* ================= RATING ================= */}
-            <div className="space-y-2">
-              <h2
-                className={`text-xl font-bold border-b pb-1 ${
-                  darkMode
-                    ? "text-[#A8C0AE] border-[#344139]"
-                    : "text-[#0f4554] border-blue-100"
-                }`}
-              >
-                Rating
-              </h2>
-
-              {[4, 3, 2].map((item) => (
-                <label
-                  key={item}
-                  className={`flex items-center gap-3 cursor-pointer rounded-lg px-3 transition ${
-                    darkMode ? "hover:bg-[#273129]" : "hover:bg-blue-50"
-                  }`}
-                >
-                  <input
-                    type="checkbox"
-                    className="hidden"
-                    checked={rating === item}
-                    onChange={() => setRating(rating === item ? "all" : item)}
-                  />
-
-                  <div
-                    className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition ${
-                      rating === item
-                        ? darkMode
-                          ? "bg-[#5F745B] border-[#5F745B] text-white shadow"
-                          : "bg-blue-600 border-blue-600 text-white shadow"
-                        : darkMode
-                          ? "border-[#536257] bg-[#222A25]"
-                          : "border-gray-300 bg-white"
-                    }`}
-                  >
-                    {rating === item && (
-                      <span className="text-xs font-bold">✓</span>
-                    )}
-                  </div>
-
-                  <span className="text-lg text-yellow-500">
-                    {"★".repeat(item)}
-                    <span
-                      className={darkMode ? "text-[#59635C]" : "text-gray-300"}
-                    >
-                      {"☆".repeat(5 - item)}
-                    </span>
-                  </span>
-                </label>
-              ))}
-            </div>
-
-            {/* ================= PRICE ================= */}
-            <div className="space-y-2">
-              <h2
-                className={`text-xl font-bold border-b pb-1 ${
-                  darkMode
-                    ? "text-[#A8C0AE] border-[#344139]"
-                    : "text-[#0f4554] border-blue-100"
-                }`}
-              >
-                Price
-              </h2>
-
-              {priceRanges.map((item) => (
-                <label
-                  key={item.value}
-                  className={`flex items-center gap-3 cursor-pointer rounded-lg px-3 transition ${
-                    darkMode ? "hover:bg-[#273129]" : "hover:bg-blue-50"
-                  }`}
-                >
-                  <input
-                    type="checkbox"
-                    className="hidden"
-                    checked={price === item.value}
-                    onChange={() =>
-                      setPrice(price === item.value ? "all" : item.value)
-                    }
-                  />
-
-                  <div
-                    className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition ${
-                      price === item.value
-                        ? darkMode
-                          ? "bg-[#5F745B] border-[#5F745B] text-white shadow"
-                          : "bg-blue-600 border-blue-600 text-white shadow"
-                        : darkMode
-                          ? "border-[#536257] bg-[#222A25]"
-                          : "border-gray-300 bg-white"
-                    }`}
-                  >
-                    {price === item.value && (
-                      <span className="text-xs font-bold">✓</span>
-                    )}
-                  </div>
-
-                  <span
-                    className={`font-medium ${
-                      darkMode ? "text-[#D1D8D2]" : "text-gray-700"
-                    }`}
-                  >
-                    {item.label}
-                  </span>
-                </label>
-              ))}
-            </div>
-
-            {/* ================= STOCK ================= */}
-            <div className="space-y-2">
-              <h2
-                className={`text-xl font-bold border-b pb-1 ${
-                  darkMode
-                    ? "text-[#A8C0AE] border-[#344139]"
-                    : "text-[#0f4554] border-blue-100"
-                }`}
-              >
-                Stock
-              </h2>
-
-              {["In Stock", "Low Stock"].map((item) => (
-                <label
-                  key={item}
-                  className={`flex items-center gap-3 cursor-pointer rounded-lg px-3 transition ${
-                    darkMode ? "hover:bg-[#273129]" : "hover:bg-blue-50"
-                  }`}
-                >
-                  <input
-                    type="checkbox"
-                    className="hidden"
-                    checked={stock === item}
-                    onChange={() => setStock(stock === item ? "all" : item)}
-                  />
-
-                  <div
-                    className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition ${
-                      stock === item
-                        ? darkMode
-                          ? "bg-[#5F745B] border-[#5F745B] text-white shadow"
-                          : "bg-blue-600 border-blue-600 text-white shadow"
-                        : darkMode
-                          ? "border-[#536257] bg-[#222A25]"
-                          : "border-gray-300 bg-white"
-                    }`}
-                  >
-                    {stock === item && (
-                      <span className="text-xs font-bold">✓</span>
-                    )}
-                  </div>
-
-                  <span
-                    className={`font-medium ${
-                      darkMode ? "text-[#D1D8D2]" : "text-gray-700"
-                    }`}
-                  >
-                    {item}
-                  </span>
-                </label>
-              ))}
-            </div>
-
-            {/* ================= TOP BRANDS ================= */}
-            <div className="space-y-2">
-              <h2
-                className={`text-xl font-bold border-b pb-1 ${
-                  darkMode
-                    ? "text-[#A8C0AE] border-[#344139]"
-                    : "text-[#0f4554] border-blue-100"
-                }`}
-              >
-                Top Brands
-              </h2>
-
-              {["Chanel", "Dior", "Calvin Klein", "Gucci"].map((item) => (
-                <label
-                  key={item}
-                  className={`flex items-center gap-3 cursor-pointer rounded-lg px-3 transition ${
-                    darkMode ? "hover:bg-[#273129]" : "hover:bg-blue-50"
-                  }`}
-                >
-                  <input
-                    type="checkbox"
-                    className="hidden"
-                    checked={brand === item}
-                    onChange={() => setBrand(brand === item ? "all" : item)}
-                  />
-
-                  <div
-                    className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition ${
-                      brand === item
-                        ? darkMode
-                          ? "bg-[#5F745B] border-[#5F745B] text-white shadow"
-                          : "bg-blue-600 border-blue-600 text-white shadow"
-                        : darkMode
-                          ? "border-[#536257] bg-[#222A25]"
-                          : "border-gray-300 bg-white"
-                    }`}
-                  >
-                    {brand === item && (
-                      <span className="text-xs font-bold">✓</span>
-                    )}
-                  </div>
-
-                  <span
-                    className={`font-medium ${
-                      darkMode ? "text-[#D1D8D2]" : "text-gray-700"
-                    }`}
-                  >
-                    {item}
-                  </span>
-                </label>
-              ))}
-            </div>
+            {rating === item && (
+              <span className="text-[10px] sm:text-xs font-bold">✓</span>
+            )}
           </div>
-        </div>
+
+          <span className="text-base sm:text-lg text-yellow-500">
+            {"★".repeat(item)}
+            <span className={darkMode ? "text-[#59635C]" : "text-gray-300"}>
+              {"☆".repeat(5 - item)}
+            </span>
+          </span>
+        </label>
+      ))}
+    </div>
+
+    {/* ================= PRICE ================= */}
+    <div>
+      <h2
+        className={`text-lg sm:text-xl font-bold border-b pb-2 ${
+          darkMode
+            ? "text-[#A8C0AE] border-[#344139]"
+            : "text-[#0f4554] border-blue-100"
+        }`}
+      >
+        Price
+      </h2>
+
+      {priceRanges.map((item) => (
+        <label
+          key={item.value}
+          className={`flex items-center gap-3 cursor-pointer rounded-lg px-3 py-2 transition ${
+            darkMode ? "hover:bg-[#273129]" : "hover:bg-blue-50"
+          }`}
+        >
+          <input
+            type="checkbox"
+            className="hidden"
+            checked={price === item.value}
+            onChange={() =>
+              setPrice(price === item.value ? "all" : item.value)
+            }
+          />
+
+          <div
+            className={`w-4 h-4 sm:w-5 sm:h-5 rounded-md border-2 flex items-center justify-center transition ${
+              price === item.value
+                ? darkMode
+                  ? "bg-[#5F745B] border-[#5F745B] text-white shadow"
+                  : "bg-blue-600 border-blue-600 text-white shadow"
+                : darkMode
+                ? "border-[#536257] bg-[#222A25]"
+                : "border-gray-300 bg-white"
+            }`}
+          >
+            {price === item.value && (
+              <span className="text-[10px] sm:text-xs font-bold">✓</span>
+            )}
+          </div>
+
+          <span
+            className={`text-sm sm:text-base font-medium ${
+              darkMode ? "text-[#D1D8D2]" : "text-gray-700"
+            }`}
+          >
+            {item.label}
+          </span>
+        </label>
+      ))}
+    </div>
+
+    {/* ================= STOCK ================= */}
+    <div>
+      <h2
+        className={`text-lg sm:text-xl font-bold border-b pb-2 ${
+          darkMode
+            ? "text-[#A8C0AE] border-[#344139]"
+            : "text-[#0f4554] border-blue-100"
+        }`}
+      >
+        Stock
+      </h2>
+
+      {["In Stock", "Low Stock"].map((item) => (
+        <label
+          key={item}
+          className={`flex items-center gap-3 cursor-pointer rounded-lg px-3 py-2 transition ${
+            darkMode ? "hover:bg-[#273129]" : "hover:bg-blue-50"
+          }`}
+        >
+          <input
+            type="checkbox"
+            className="hidden"
+            checked={stock === item}
+            onChange={() => setStock(stock === item ? "all" : item)}
+          />
+
+          <div
+            className={`w-4 h-4 sm:w-5 sm:h-5 rounded-md border-2 flex items-center justify-center transition ${
+              stock === item
+                ? darkMode
+                  ? "bg-[#5F745B] border-[#5F745B] text-white shadow"
+                  : "bg-blue-600 border-blue-600 text-white shadow"
+                : darkMode
+                ? "border-[#536257] bg-[#222A25]"
+                : "border-gray-300 bg-white"
+            }`}
+          >
+            {stock === item && (
+              <span className="text-[10px] sm:text-xs font-bold">✓</span>
+            )}
+          </div>
+
+          <span
+            className={`text-sm sm:text-base font-medium ${
+              darkMode ? "text-[#D1D8D2]" : "text-gray-700"
+            }`}
+          >
+            {item}
+          </span>
+        </label>
+      ))}
+    </div>
+
+    {/* ================= TOP BRANDS ================= */}
+    <div>
+      <h2
+        className={`text-lg sm:text-xl font-bold border-b pb-2 ${
+          darkMode
+            ? "text-[#A8C0AE] border-[#344139]"
+            : "text-[#0f4554] border-blue-100"
+        }`}
+      >
+        Top Brands
+      </h2>
+
+      {["Chanel", "Dior", "Calvin Klein", "Gucci"].map((item) => (
+        <label
+          key={item}
+          className={`flex items-center gap-3 cursor-pointer rounded-lg px-3 py-2 transition ${
+            darkMode ? "hover:bg-[#273129]" : "hover:bg-blue-50"
+          }`}
+        >
+          <input
+            type="checkbox"
+            className="hidden"
+            checked={brand === item}
+            onChange={() => setBrand(brand === item ? "all" : item)}
+          />
+
+          <div
+            className={`w-4 h-4 sm:w-5 sm:h-5 rounded-md border-2 flex items-center justify-center transition ${
+              brand === item
+                ? darkMode
+                  ? "bg-[#5F745B] border-[#5F745B] text-white shadow"
+                  : "bg-blue-600 border-blue-600 text-white shadow"
+                : darkMode
+                ? "border-[#536257] bg-[#222A25]"
+                : "border-gray-300 bg-white"
+            }`}
+          >
+            {brand === item && (
+              <span className="text-[10px] sm:text-xs font-bold">✓</span>
+            )}
+          </div>
+
+          <span
+            className={`text-sm sm:text-base font-medium ${
+              darkMode ? "text-[#D1D8D2]" : "text-gray-700"
+            }`}
+          >
+            {item}
+          </span>
+        </label>
+      ))}
+    </div>
+  </div>
+</div>
 
         {/* ================= PRODUCTS AREA ================= */}
-        <div className="max-w-7xl mx-auto px-6 py-10 flex-1">
+        <div className="w-full mx-auto  px-1 lg:!py-10 py-1 flex flex-col">
           {/* ================= SEARCH ================= */}
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-5 mb-16">
+          <div className="flex flex-row lg:flex-row items-center justify-center gap-5 mb-8 lg:!mb-16">
             <div className="relative w-full max-w-xl">
               <FaSearch
                 className={`absolute left-5 top-1/2 -translate-y-1/2 text-lg ${
@@ -347,18 +338,18 @@ const Api = () => {
               <input
                 type="text"
                 value={search}
-                placeholder="Search premium products..."
+                placeholder="Search products..."
                 onChange={(e) => setSearch(e.target.value)}
-                className={`w-full rounded-full py-4 pl-14 pr-6 outline-none shadow-md transition duration-300 ${
+                className={`w-full rounded-full lg:!py-4 py-2 pl-12 pr-3 lg:!pl-14 lg:!pr-6 outline-none shadow-md transition duration-300 ${
                   darkMode
-                    ? "border border-[#39483E] bg-[#1B211D] text-[#E3E8E3] placeholder:text-[#737D76] focus:ring-2 focus:ring-[#536B59]"
-                    : "border border-[#ecb6a3] bg-white text-[#384A37] placeholder:text-[#8FA287] focus:ring-2 focus:ring-[#d2d3ce]"
+                    ? "border border-gray-300 bg-[#1B211D] text-[#E3E8E3] placeholder:text-[#737D76] focus:ring-2 focus:ring-gray-300"
+                    : "border border-gray-300 bg-white text-[#384A37] placeholder:text-[#8FA287] focus:ring-2 focus:ring-gray-300"
                 }`}
               />
             </div>
 
             <button
-              className={`rounded-full px-10 py-4 font-semibold text-white shadow-md transition duration-300 hover:scale-105 ${
+              className={`rounded-full lg:!px-10 px-7 py-2  lg:!py-4 font-light lg:!font-semibold text-white shadow-md transition duration-300 hover:scale-105 ${
                 darkMode
                   ? "bg-[#4E6B57] hover:bg-[#617C67]"
                   : "bg-[#cf4919] hover:bg-[#4B5F48]"
@@ -369,13 +360,13 @@ const Api = () => {
           </div>
 
           {/* ================= CATEGORIES ================= */}
-          <div className="flex justify-center flex-wrap gap-4 mb-16">
+          <div className="flex justify-center flex-wrap lg:!gap-4 gap-2 mb-4 lg:!mb-16">
             {["all", "beauty", "fragrances", "furniture", "groceries"].map(
               (cat) => (
                 <button
                   key={cat}
                   onClick={() => setCategory(cat)}
-                  className={`capitalize rounded-full px-8 py-3 text-sm font-semibold tracking-wide transition-all duration-300 ${
+                  className={`capitalize rounded-full lg:!px-8 lg:!py-3 py-1 px-5 lg:!text-sm text-xs font-semibold tracking-wide transition-all duration-300 ${
                     category === cat
                       ? darkMode
                         ? "bg-[#5F745B] text-white shadow-lg shadow-black/30 scale-105"
@@ -390,9 +381,275 @@ const Api = () => {
               ),
             )}
           </div>
+          {/* filter for mobile and smaller screen */}
+            <div className="flex lg:!hidden w-full">
+            <button onClick={()=>setFilterOpen(true)} className="mb-6 cursor-pointer bg-black text-white flex items-center gap-2 border px-5 font-semibold text-sm rounded-full w- py-1"><GiHamburgerMenu /> Select Filters </button>
+            {filterOpen&& (
+  <div className="fixed inset-0 z-[100] bg-black/40">
+    <div className="absolute left-0 z-[100] rounded-xl top-20 w-[50%]">
 
+      <div
+    className={`w-52 lg:!w-62 border shadow-xl p-4 sm:p-5 lg:p-6 space-y-6 lg:space-y-8 transition-colors duration-300 ${
+      darkMode
+        ? "bg-[#1B211D] border-[#344139]"
+        : "bg-white border-blue-100"
+    }`}
+  >
+    {/* Filter Header */}
+    <div className="mb-6 flex items-center gap-1">
+      <div className="flex flex-col w-full">
+
+        <button className={`top-4 right-7 absolute font-bold ${darkMode ? "text-white" : "text-black"}`}
+    onClick={()=>setFilterOpen(false)}><span className="font-bold text-2xl">X</span></button>
+
+   <div className="flex flex-col w-full gap-4">
+        <h1
+          className={`text-2xl cursor pointer sm:text-3xl font-extrabold tracking-wide ${
+            darkMode ? "text-[#A8C0AE]" : "text-[#0f4554]"
+          }`}
+        >
+          Filters
+        </h1>
+
+        <button
+          onClick={() => {
+            setBrand("all");
+            setCategory("all");
+            setRating("all");
+            setPrice("all");
+            setStock("all");
+          }}
+          className={`cursor-pointer whitespace-nowrap lg:!whitespace-nowrap rounded-xl border px-3 py-2 text-sm text-white transition duration-300 hover:scale-105 ${
+            darkMode
+              ? "border-[#4E6B57] bg-[#3F5948] hover:bg-[#5A765F]"
+              : "bg-gray-500 hover:bg-gray-600"
+          }`}
+        >
+          Clear All
+        </button>
+        </div>
+      </div>
+    </div>
+
+    {/* ================= RATING ================= */}
+    <div>
+      <h2
+        className={`text-lg sm:text-xl font-bold border-b pb-1 ${
+          darkMode
+            ? "text-[#A8C0AE] border-[#344139]"
+            : "text-[#0f4554] border-blue-100"
+        }`}
+      >
+        Rating
+      </h2>
+
+      {[4, 3, 2].map((item) => (
+        <label
+          key={item}
+          className={`flex items-center gap-3 cursor-pointer rounded-lg px-3 py-1 transition ${
+            darkMode ? "hover:bg-[#273129]" : "hover:bg-blue-50"
+          }`}
+        >
+          <input
+            type="checkbox"
+            className="hidden"
+            checked={rating === item}
+            onChange={() => setRating(rating === item ? "all" : item)}
+          />
+
+          <div
+            className={`w-4 h-4 sm:w-5 sm:h-5 rounded-md border-2 flex items-center justify-center transition ${
+              rating === item
+                ? darkMode
+                  ? "bg-[#5F745B] border-[#5F745B] text-white shadow"
+                  : "bg-blue-600 border-blue-600 text-white shadow"
+                : darkMode
+                ? "border-[#536257] bg-[#222A25]"
+                : "border-gray-300 bg-white"
+            }`}
+          >
+            {rating === item && (
+              <span className="text-[10px] sm:text-xs font-bold">✓</span>
+            )}
+          </div>
+
+          <span className="text-base sm:text-lg text-yellow-500">
+            {"★".repeat(item)}
+            <span className={darkMode ? "text-[#59635C]" : "text-gray-300"}>
+              {"☆".repeat(5 - item)}
+            </span>
+          </span>
+        </label>
+      ))}
+    </div>
+
+    {/* ================= PRICE ================= */}
+    <div>
+      <h2
+        className={`text-lg sm:text-xl font-bold border-b pb-2 ${
+          darkMode
+            ? "text-[#A8C0AE] border-[#344139]"
+            : "text-[#0f4554] border-blue-100"
+        }`}
+      >
+        Price
+      </h2>
+
+      {priceRanges.map((item) => (
+        <label
+          key={item.value}
+          className={`flex items-center gap-3 cursor-pointer rounded-lg px-3 py-2 transition ${
+            darkMode ? "hover:bg-[#273129]" : "hover:bg-blue-50"
+          }`}
+        >
+          <input
+            type="checkbox"
+            className="hidden"
+            checked={price === item.value}
+            onChange={() =>
+              setPrice(price === item.value ? "all" : item.value)
+            }
+          />
+
+          <div
+            className={`w-4 h-4 sm:w-5 sm:h-5 rounded-md border-2 flex items-center justify-center transition ${
+              price === item.value
+                ? darkMode
+                  ? "bg-[#5F745B] border-[#5F745B] text-white shadow"
+                  : "bg-blue-600 border-blue-600 text-white shadow"
+                : darkMode
+                ? "border-[#536257] bg-[#222A25]"
+                : "border-gray-300 bg-white"
+            }`}
+          >
+            {price === item.value && (
+              <span className="text-[10px] sm:text-xs font-bold">✓</span>
+            )}
+          </div>
+
+          <span
+            className={`text-sm sm:text-base font-medium ${
+              darkMode ? "text-[#D1D8D2]" : "text-gray-700"
+            }`}
+          >
+            {item.label}
+          </span>
+        </label>
+      ))}
+    </div>
+
+    {/* ================= STOCK ================= */}
+    <div>
+      <h2
+        className={`text-lg sm:text-xl font-bold border-b pb-2 ${
+          darkMode
+            ? "text-[#A8C0AE] border-[#344139]"
+            : "text-[#0f4554] border-blue-100"
+        }`}
+      >
+        Stock
+      </h2>
+
+      {["In Stock", "Low Stock"].map((item) => (
+        <label
+          key={item}
+          className={`flex items-center gap-3 cursor-pointer rounded-lg px-3 py-2 transition ${
+            darkMode ? "hover:bg-[#273129]" : "hover:bg-blue-50"
+          }`}
+        >
+          <input
+            type="checkbox"
+            className="hidden"
+            checked={stock === item}
+            onChange={() => setStock(stock === item ? "all" : item)}
+          />
+
+          <div
+            className={`w-4 h-4 sm:w-5 sm:h-5 rounded-md border-2 flex items-center justify-center transition ${
+              stock === item
+                ? darkMode
+                  ? "bg-[#5F745B] border-[#5F745B] text-white shadow"
+                  : "bg-blue-600 border-blue-600 text-white shadow"
+                : darkMode
+                ? "border-[#536257] bg-[#222A25]"
+                : "border-gray-300 bg-white"
+            }`}
+          >
+            {stock === item && (
+              <span className="text-[10px] sm:text-xs font-bold">✓</span>
+            )}
+          </div>
+
+          <span
+            className={`text-sm sm:text-base font-medium ${
+              darkMode ? "text-[#D1D8D2]" : "text-gray-700"
+            }`}
+          >
+            {item}
+          </span>
+        </label>
+      ))}
+    </div>
+
+    {/* ================= TOP BRANDS ================= */}
+    <div>
+      <h2
+        className={`text-lg sm:text-xl font-bold border-b pb-2 ${
+          darkMode
+            ? "text-[#A8C0AE] border-[#344139]"
+            : "text-[#0f4554] border-blue-100"
+        }`}
+      >
+        Top Brands
+      </h2>
+
+      {["Chanel", "Dior", "Calvin Klein", "Gucci"].map((item) => (
+        <label
+          key={item}
+          className={`flex items-center gap-3 cursor-pointer rounded-lg px-3 py-2 transition ${
+            darkMode ? "hover:bg-[#273129]" : "hover:bg-blue-50"
+          }`}
+        >
+          <input
+            type="checkbox"
+            className="hidden"
+            checked={brand === item}
+            onChange={() => setBrand(brand === item ? "all" : item)}
+          />
+
+          <div
+            className={`w-4 h-4 sm:w-5 sm:h-5 rounded-md border-2 flex items-center justify-center transition ${
+              brand === item
+                ? darkMode
+                  ? "bg-[#5F745B] border-[#5F745B] text-white shadow"
+                  : "bg-blue-600 border-blue-600 text-white shadow"
+                : darkMode
+                ? "border-[#536257] bg-[#222A25]"
+                : "border-gray-300 bg-white"
+            }`}
+          >
+            {brand === item && (
+              <span className="text-[10px] sm:text-xs font-bold">✓</span>
+            )}
+          </div>
+
+          <span
+            className={`text-sm sm:text-base font-medium ${
+              darkMode ? "text-[#D1D8D2]" : "text-gray-700"
+            }`}
+          >
+            {item}
+          </span>
+        </label>
+      ))}
+    </div>
+  </div>
+    </div>
+  </div>
+)}
+            </div>
           {/* ================= PRODUCT GRID ================= */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:!gap-10">
             {filteredData.slice(0, 30).map((item) => (
               <div
                 key={item.id}
@@ -405,13 +662,13 @@ const Api = () => {
                 <Link to={`/apis/${item.id}`}>
                   {/* Product Image */}
                   <div
-                    className={`relative flex h-80 items-center justify-center overflow-hidden ${
+                    className={`relative flex h-50 lg:!h-80 items-center justify-center overflow-hidden ${
                       darkMode ? "bg-[#222A25]" : "bg-[#f7f8f8]"
                     }`}
                   >
                     {/* Discount Badge */}
                     <span
-                      className={`absolute left-5 top-5 rounded-full px-4 py-2 text-xs font-semibold tracking-wider text-white ${
+                      className={`absolute left-5 top-5 rounded-full lg:!px-4 px-2 py-1 lg:!py-2 text-xs font-semibold tracking-wider text-white ${
                         darkMode ? "bg-[#4E6B57]" : "bg-[#0f4554]"
                       }`}
                     >
@@ -427,9 +684,9 @@ const Api = () => {
                 </Link>
 
                 {/* Product Information */}
-                <div className="p-6">
+                <div className="lg:!p-6 p-3">
                   <p
-                    className={`text-sm uppercase tracking-[3px] ${
+                    className={`lg:!text-sm text-xs uppercase tracking-[3px] ${
                       darkMode ? "text-[#8FA58F]" : "text-[#72876D]"
                     }`}
                   >
@@ -437,16 +694,16 @@ const Api = () => {
                   </p>
 
                   <h2
-                    className={`mt-2 text-xl font-semibold line-clamp-1 ${
+                    className={`mt-2 lg:!text-xl text-sm font-semibold ${
                       darkMode ? "text-[#E0E6E1]" : "text-[#384A37]"
                     }`}
                   >
-                    {item.title}
+                    {item.title.split(" ").slice(0,2).join(" ")}
                   </h2>
 
                   {/* Rating */}
-                  <div className="mt-4 flex items-center justify-between">
-                    <div className="flex items-center gap-1 text-yellow-500">
+                  <div className="lg:!mt-4 mt-1 flex items-center justify-between">
+                    <div className="flex text-xs lg:!text-lg lg:!flex items-center gap-1 text-yellow-500">
                       {Array.from({ length: 5 }).map((_, index) => (
                         <FontAwesomeIcon
                           key={index}
@@ -472,7 +729,7 @@ const Api = () => {
 
                     {/* Stock */}
                     <span
-                      className={`rounded-full px-3 py-1 text-xs font-medium ${
+                      className={`rounded-full hidden lg:!block px-3 py-1 text-xs font-medium ${
                         item.availabilityStatus === "Low Stock"
                           ? "bg-red-400 border whitespace-nowrap text-white"
                           : darkMode
@@ -487,9 +744,9 @@ const Api = () => {
                   </div>
 
                   {/* Price */}
-                  <div className="mt-6 flex items-end gap-3">
+                  <div className="lg:!mt-6 mt-2 flex items-end gap-3">
                     <h2
-                      className={`text-3xl font-bold ${
+                      className={`lg:!text-3xl text-lg font-bold ${
                         darkMode ? "text-[#DCE6DE]" : "text-[#384A37]"
                       }`}
                     >
@@ -509,10 +766,10 @@ const Api = () => {
                   </div>
 
                   {/* Buttons */}
-                  <div className="mt-8 flex gap-3">
+                  <div className="lg:!mt-8 flex gap-1 mt-4 lg:!gap-3">
                     <Link to={`/apis/${item.id}`} className="flex-1">
                       <button
-                        className={`w-full rounded-full border text-sm py-3 font-semibold transition ${
+                        className={`w-full rounded-full border text-[10px] lg:!px-0 px-1 whitespace-nowrap lg:!whitespace-nowrap lg:!text-sm py-2 lg:!py-3 font-semibold transition ${
                           darkMode
                             ? "border-[#5F745B] text-[#B9C8BB] hover:bg-[#5F745B] hover:text-white"
                             : "border-[#5F745B] text-[#384A37] hover:bg-[#5F745B] hover:text-white"
@@ -524,7 +781,7 @@ const Api = () => {
 
                     <button
                       onClick={() => dispatch(addToCart(item))}
-                      className={`flex-1 rounded-full py-3 font-semibold text-sm text-white transition ${
+                      className={`flex-1 rounded-full lg:!py-3 py-1 lg:!px-0 px-1 whitespace-nowrap lg:!whitespace-nowrap font-semibold lg:!text-sm text-[10px]  text-white transition ${
                         darkMode
                           ? "bg-[#4E6B57] hover:bg-[#637F69]"
                           : "bg-[#205361] hover:bg-[#4B5F48]"
