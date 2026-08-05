@@ -886,7 +886,7 @@ const Home = () => {
               }`}
             />
 
-            <div className="relative z-20 lg:flex-row flex flex-col h-full lg:py-0 py-20 px-4 items-center lg:!px-20">
+            <div className="relative z-20 lg:flex-row flex flex-col h-full lg:!mt-20 py-20 px-4 items-center lg:!px-20">
               <div>
                 <div
                   className={`inline-flex items-center rounded-full lg:mt-0 mt-2 border px-5 py-2 backdrop-blur-md ${
@@ -1370,7 +1370,7 @@ const Home = () => {
         >
          
             {/* Left Content */}
-            <div className="order-2 flex h-full w-full flex-col items-start justify-center px-6 py-10 sm:px-10 lg:!w-[45%] lg:!px-15 lg:!py-15">
+            <div className="order-2 lg:!order-1 flex h-full w-full flex-col items-start justify-center px-6 py-10 sm:px-10 lg:!w-[45%] lg:!px-15 lg:!py-15">
   <p
     className={`mb-6 mt-6 max-w-sm text-sm italic leading-6 sm:mb-8 sm:mt-8 sm:text-base lg:mb-10 lg:mt-10 lg:!text-xl lg:!leading-8 ${
       darkMode ? "text-[#AAB5AC]" : "text-[#6E6258]"
@@ -1422,7 +1422,7 @@ const Home = () => {
 </div>
 
             {/* Right Image */}
-            <div className="lg:!w-[55%] order-1 relative">
+            <div className="lg:!w-[55%] lg:!order-2  order-1 relative">
               <img
                 src="/interior.jpg"
                 alt="Interior"
@@ -1460,7 +1460,7 @@ const Home = () => {
             <div className="mb-14 flex items-end justify-between">
               <div>
                 <p
-                  className={`text-sm uppercase tracking-[0.35em] ${
+                  className={`lg:!text-sm text-xs uppercase tracking-[0.35em] ${
                     darkMode ? "text-[#8FA494]" : "text-[#7C8B73]"
                   }`}
                 >
@@ -1468,15 +1468,15 @@ const Home = () => {
                 </p>
 
                 <h1
-                  className={`mt-4 text-5xl font-light tracking-tight ${
+                  className={`mt-4 ml-6 lg:!text-5xl text-3xl flex gap-7 lg:!gap-10 font-light tracking-tight ${
                     darkMode ? "text-[#F0EEE7]" : "text-[#3E2E24]"
                   }`}
                 >
-                  Best Sellers
+                 <span className="lg:!h-15 h-10 rotate-90 bg-black rounded-full border"></span> Best Sellers
                 </h1>
 
                 <p
-                  className={`mt-5 max-w-xl text-lg leading-8 ${
+                  className={`lg:!mt-3 mt-2 max-w-xl text-sm lg:!text-lg leading-5 lg:!leading-8 ${
                     darkMode ? "text-[#A8B0AA]" : "text-[#6E6258]"
                   }`}
                 >
@@ -1489,7 +1489,7 @@ const Home = () => {
               {/* View All */}
               <button
                 onClick={() => navigate("/shop")}
-                className={`group flex items-center gap-3 rounded-full border px-7 py-3 transition-all duration-300 ${
+                className={`group flex items-center gap-3 text-sm lg:!text-lg whitespace-nowrap rounded-full border lg:!px-7 px-3 py-1 lg:!py-3 transition-all duration-300 ${
                   darkMode
                     ? "border-[#3A493F] text-[#A8B8AC] hover:border-[#4E6B57] hover:bg-[#4E6B57] hover:text-[#F5F3ED]"
                     : "border-[#D9CDC1] text-[#536650] hover:bg-[#536650] hover:text-white"
@@ -1620,7 +1620,7 @@ const Home = () => {
         {/* contact-us */}
 
         <section
-          className={`py-24 ${darkMode ? "bg-[#121814]" : "bg-[#FCFAF7]"}`}
+          className={`py-24 px-7 lg:!px-0 ${darkMode ? "bg-[#121814]" : "bg-[#FCFAF7]"}`}
         >
           <div
             className={`mx-auto flex max-w-7xl flex-col items-center justify-between gap-10 rounded-[40px] px-12 py-16 lg:flex-row ${
@@ -1632,7 +1632,7 @@ const Home = () => {
             {/* Content */}
             <div>
               <p
-                className={`uppercase tracking-[4px] text-sm font-semibold ${
+                className={`uppercase py-3 tracking-[4px] text-sm font-semibold ${
                   darkMode ? "text-[#8FA494]" : "text-[#6F806A]"
                 }`}
               >
@@ -1648,7 +1648,7 @@ const Home = () => {
               </h2>
 
               <p
-                className={`mt-5 max-w-xl text-lg leading-8 ${
+                className={`mt-5 max-w-xl lg:!text-lg text-md  leading-5 lg:!leading-8 ${
                   darkMode ? "text-[#AAB3AC]" : "text-[#6E6258]"
                 }`}
               >
@@ -1660,7 +1660,7 @@ const Home = () => {
             {/* Contact Button */}
             <Link
               to="/contact"
-              className={`rounded-full px-12 py-5 text-lg font-semibold transition-all duration-300 hover:scale-105 ${
+              className={`rounded-full lg:!px-12 px-10 py-3 lg:!py-5 text-lg font-semibold transition-all duration-300 hover:scale-105 ${
                 darkMode
                   ? "bg-[#4E6B57] text-[#F5F3ED] hover:bg-[#617D69] hover:shadow-[0_12px_30px_rgba(78,107,87,0.25)]"
                   : "bg-[#536650] text-white hover:bg-[#435342] hover:shadow-lg"
@@ -1742,7 +1742,7 @@ const Home = () => {
 </div>
   </section>
 
-  <div className="border-t lg:!mb-0 mb-12 lg:!py-0 border-white/10">
+  <div className="border-t lg:!mb-0 mb-auto lg:!py-0 border-white/10">
     <div className="mx-auto flex max-w-7xl flex-col  items-center justify-between gap-4 px-6 py-5 text-sm text-gray-400 sm:px-8 md:flex-row">
       <p>© 2026 SAGE. All rights reserved.</p>
 

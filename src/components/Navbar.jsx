@@ -47,7 +47,7 @@ const { darkMode, toggleTheme } = useContext(ThemeContext);
     <>
     <nav className="fixed top-4 left-0 right-0 mx-3 sm:mx-6 rounded-2xl border border-white/20 bg-white/40 backdrop-blur-lg shadow-lg z-50">
   <ul>
-    <div className="items-center hidden lg:flex justify-between px-4 py-3 sm:px-8 sm:py-4 text-black">
+    <div className="items-center hidden lg:!px-10 lg:flex justify-between px-4 py-3 sm:px-8 sm:py-4 text-black">
 
           <div className="flex gap-6 font-medium">
 
