@@ -109,7 +109,7 @@ const handleResend= async () => {
     </h2>
 
     <p className="text-center text-[#6B7D69] mt-2">
-      Enter the 6-digit verification code sent to
+      Enter the 4-digit verification code sent to
     </p>
 
     <p className="text-center font-semibold text-[#5F745B] mt-1 break-all">
