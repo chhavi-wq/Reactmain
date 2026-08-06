@@ -6,6 +6,7 @@ const Login=()=>{
   const navigate = useNavigate()
   const[signUp,setSignup] = useState(false);
   const[message,setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
   const [formData,setFormdata] = useState({
     name : "",
     email : "",
@@ -21,22 +22,31 @@ const Login=()=>{
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.email || !formData.password) {
-        return toast.error("All fields required");
-    }
+    if (loading) return;
 
-    // ================= SIGNUP =================
-    if (signUp) {
+    setLoading(true);
 
-        if (!formData.name || !formData.confirmPassword) {
-            return toast.error("All fields required");
+    try {
+
+        if (!formData.email || !formData.password) {
+            toast.error("All fields required");
+            return;
         }
 
-        if (formData.password !== formData.confirmPassword) {
-            return toast.error("Password doesn't match");
-        }
+        // ================= SIGNUP =================
 
-        try {
+        if (signUp) {
+
+            if (!formData.name || !formData.confirmPassword) {
+                toast.error("All fields required");
+                return;
+            }
+
+            if (formData.password !== formData.confirmPassword) {
+                toast.error("Password doesn't match");
+                return;
+            }
+
             const response = await fetch(
                 "https://reactbackend-hg62.onrender.com/api/sign",
                 {
@@ -59,11 +69,7 @@ const Login=()=>{
 
             if (response.ok) {
 
-                toast.success(`Your OTP is ${data.otp}`, {
-                    autoClose: 5000
-                });
-
-                console.log("Directing to OTP page");
+                toast.success(`Your OTP is ${data.otp}`);
 
                 navigate("/verifyotp", {
                     state: {
@@ -76,17 +82,11 @@ const Login=()=>{
 
             toast.error(data.message || "Signup failed");
 
-        } catch (error) {
-            console.error("SIGNUP ERROR:", error);
-            toast.error("Server error");
+            return;
         }
 
-        return; // ⭐ VERY IMPORTANT
-    }
+        // ================= LOGIN =================
 
-    // ================= LOGIN =================
-
-    try {
         const response = await fetch(
             "https://reactbackend-hg62.onrender.com/api/login",
             {
@@ -128,8 +128,14 @@ const Login=()=>{
         toast.error(data.message);
 
     } catch (error) {
-        console.error("LOGIN ERROR:", error);
+
+        console.error("ERROR:", error);
         toast.error("Server error");
+
+    } finally {
+
+        // This ALWAYS runs
+        setLoading(false);
     }
 };
     return (
@@ -224,11 +230,17 @@ const Login=()=>{
       )}
 
       <button
-        type="submit"
-        className="w-full rounded-full bg-[#32473D] py-3 text-white font-medium transition duration-300 hover:bg-[#23332B]"
-      >
-        {signUp ? "Create Account" : "Login"}
-      </button>
+    type="submit"
+    disabled={loading}
+    className="w-full rounded-full bg-[#32473D] py-3 text-white font-medium transition duration-300 hover:bg-[#23332B] disabled:opacity-50"
+>
+    {loading
+        ? "Please wait..."
+        : signUp
+            ? "Create Account"
+            : "Login"
+    }
+</button>
     </form>
 
     <p className="mt-6 text-center text-sm text-[#7C7C7C]">
