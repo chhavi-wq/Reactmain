@@ -18,170 +18,120 @@ const Login=()=>{
     setFormdata({...formData,[name]:value})
   }
 
-  const handleSubmit = async(e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if(!formData.email || !formData.password){
-      return toast.error("All field required");
+    if (!formData.email || !formData.password) {
+        return toast.error("All fields required");
     }
-    if(signUp){
-      if(!formData.name || !formData.confirmPassword){
-        return toast.error("All field required");
-      }
-      if(formData.password !== formData.confirmPassword){
-        return toast.error("password doesn't match")
-      }
-    //  try {
-    //   const response = await fetch(
-    //     "https://reactbackend-hg62.onrender.com/api/sign",
-    //     {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify({
-    //         name: formData.name,
-    //         email: formData.email,
-    //         password: formData.password,
-    //       }),
-    //     }
-    //   );
 
-    //   const data = await response.json();
+    // ================= SIGNUP =================
+    if (signUp) {
 
-     
-    //   if (response.ok) {
-    //     toast.success(`Your OTP is ${data.otp}`);
-    //     console.log("Driecting to otp page")
-    //     navigate("/verifyotp", {
-    //       state: {
-    //         email: formData.email,
-    //       },
-    //     });
-
-    //     return;
-    //   }
-
-    //   toast.error(data.message);
-    //   return;
-
-    // } catch (error) {
-    //   console.error(error);
-    //   toast.error("Server error");
-    //   return;
-    // }
-    try {
-    const response = await fetch(
-        "https://reactbackend-hg62.onrender.com/api/sign",
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                name: formData.name,
-                email: formData.email,
-                password: formData.password,
-            }),
+        if (!formData.name || !formData.confirmPassword) {
+            return toast.error("All fields required");
         }
-    );
 
-    console.log("STATUS:", response.status);
-    console.log("OK:", response.ok);
+        if (formData.password !== formData.confirmPassword) {
+            return toast.error("Password doesn't match");
+        }
 
-    const text = await response.text();
+        try {
+            const response = await fetch(
+                "https://reactbackend-hg62.onrender.com/api/sign",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        name: formData.name,
+                        email: formData.email,
+                        password: formData.password,
+                    }),
+                }
+            );
 
-    console.log("RAW RESPONSE:", text);
+            const data = await response.json();
 
-    let data;
+            console.log("SIGNUP STATUS:", response.status);
+            console.log("SIGNUP RESPONSE:", data);
+
+            if (response.ok) {
+
+                toast.success(`Your OTP is ${data.otp}`, {
+                    autoClose: 5000
+                });
+
+                console.log("Directing to OTP page");
+
+                navigate("/verifyotp", {
+                    state: {
+                        email: formData.email,
+                    },
+                });
+
+                return;
+            }
+
+            toast.error(data.message || "Signup failed");
+
+        } catch (error) {
+            console.error("SIGNUP ERROR:", error);
+            toast.error("Server error");
+        }
+
+        return; // ⭐ VERY IMPORTANT
+    }
+
+    // ================= LOGIN =================
 
     try {
-        data = JSON.parse(text);
+        const response = await fetch(
+            "https://reactbackend-hg62.onrender.com/api/login",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: formData.email,
+                    password: formData.password,
+                }),
+            }
+        );
+
+        const data = await response.json();
+
+        console.log("LOGIN STATUS:", response.status);
+        console.log("LOGIN RESPONSE:", data);
+
+        if (response.ok) {
+
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("role", data.role);
+
+            localStorage.setItem(
+                "currentUser",
+                JSON.stringify({
+                    email: formData.email,
+                })
+            );
+
+            toast.success(data.message);
+
+            navigate("/");
+
+            return;
+        }
+
+        toast.error(data.message);
+
     } catch (error) {
-        console.error("Response was not JSON:", text);
-        toast.error("Server returned an invalid response");
-        return;
+        console.error("LOGIN ERROR:", error);
+        toast.error("Server error");
     }
-
-    console.log("PARSED DATA:", data);
-
-    if (response.ok) {
-
-        toast.success(`Your OTP is ${data.otp}`, {
-            autoClose: 5000
-        });
-
-        console.log("Directing to OTP page");
-
-        navigate("/verifyotp", {
-            state: {
-                email: formData.email,
-            },
-        });
-
-        return;
-    }
-
-    toast.error(data.message || "Signup failed");
-
-} catch (error) {
-
-    console.error("FETCH ERROR:", error);
-
-    toast.error("Server error");
-}
-  
-
-  }
-
-
- try {
-    const response = await fetch(
-      "https://reactbackend-hg62.onrender.com/api/login",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: formData.email,
-          password: formData.password,
-        }),
-      }
-    );
-
-    const data = await response.json();
-
-    console.log("LOGIN STATUS:", response.status);
-    console.log("LOGIN RESPONSE:", data);
-
-    if (response.ok) {
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("role", data.role);
-
-      localStorage.setItem(
-        "currentUser",
-        JSON.stringify({
-          email: formData.email,
-        })
-      );
-
-      toast.success(data.message);
-
-      navigate("/");
-
-      return;
-    }
-
-    toast.error(data.message);
-
-  } catch (error) {
-    console.error(error);
-    toast.error("Server error");
-  }
-
-    }
-
+};
     return (
   <>
     <div className="fixed top-0 left-0 w-full z-50">
