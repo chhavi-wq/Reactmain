@@ -49,11 +49,9 @@ const Login=()=>{
 
       const data = await response.json();
 
-      console.log("SIGNUP STATUS:", response.status);
-      console.log("SIGNUP RESPONSE:", data);
-
+     
       if (response.ok) {
-        toast.success("Signup successful");
+        toast.success(`Your OTP is ${data.otp}`);
 
         navigate("/verifyotp", {
           state: {
