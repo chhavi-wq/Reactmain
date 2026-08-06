@@ -31,7 +31,6 @@ const Admin = () => {
       toast.error("Server Error");
     }
   };
-  console.log(users[1]);
   // Delete user
   const deleteUser = async (id) => {
     try {
