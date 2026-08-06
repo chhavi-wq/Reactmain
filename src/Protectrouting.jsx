@@ -1,12 +1,27 @@
-import { Navigate } from "react-router-dom"
+// import { Navigate } from "react-router-dom"
 
-const ProtectRouting=({children})=>{
-    const token=localStorage.getItem("token")
-    if(!token){
-        return <Navigate to="/login" replace/>
+// const ProtectRouting=({children})=>{
+//     const token=localStorage.getItem("token")
+//     if(!token){
+//         return <Navigate to="/login" replace/>
+//     }
+
+//     return children
+
+// }
+// export default ProtectRouting
+
+import { Navigate } from "react-router-dom";
+
+const ProtectRouting = ({ children }) => {
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        return <Navigate to="/login" replace />;
     }
 
-    return children
+    return children;
+};
 
-}
-export default ProtectRouting
+export default ProtectRouting;

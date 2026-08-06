@@ -35,8 +35,7 @@ const Admin = () => {
   // Delete user
   const deleteUser = async (id) => {
     try {
-      const response = await fetch(
-        `http://localhost:3000/api/admin/delete/${id}`,
+      const response = await fetch(`https://reactbackend-hg62.onrender.com/api/admin/delete/${id}`, 
         {
           method: "DELETE",
           headers: {
