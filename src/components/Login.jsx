@@ -31,45 +31,105 @@ const Login=()=>{
       if(formData.password !== formData.confirmPassword){
         return toast.error("password doesn't match")
       }
-     try {
-      const response = await fetch(
-        "https://reactbackend-hg62.onrender.com/api/sign",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            password: formData.password,
-          }),
-        }
-      );
+    //  try {
+    //   const response = await fetch(
+    //     "https://reactbackend-hg62.onrender.com/api/sign",
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify({
+    //         name: formData.name,
+    //         email: formData.email,
+    //         password: formData.password,
+    //       }),
+    //     }
+    //   );
 
-      const data = await response.json();
+    //   const data = await response.json();
 
      
-      if (response.ok) {
-        toast.success(`Your OTP is ${data.otp}`);
-        console.log("Driecting to otp page")
+    //   if (response.ok) {
+    //     toast.success(`Your OTP is ${data.otp}`);
+    //     console.log("Driecting to otp page")
+    //     navigate("/verifyotp", {
+    //       state: {
+    //         email: formData.email,
+    //       },
+    //     });
+
+    //     return;
+    //   }
+
+    //   toast.error(data.message);
+    //   return;
+
+    // } catch (error) {
+    //   console.error(error);
+    //   toast.error("Server error");
+    //   return;
+    // }
+    try {
+    const response = await fetch(
+        "https://reactbackend-hg62.onrender.com/api/sign",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: formData.name,
+                email: formData.email,
+                password: formData.password,
+            }),
+        }
+    );
+
+    console.log("STATUS:", response.status);
+    console.log("OK:", response.ok);
+
+    const text = await response.text();
+
+    console.log("RAW RESPONSE:", text);
+
+    let data;
+
+    try {
+        data = JSON.parse(text);
+    } catch (error) {
+        console.error("Response was not JSON:", text);
+        toast.error("Server returned an invalid response");
+        return;
+    }
+
+    console.log("PARSED DATA:", data);
+
+    if (response.ok) {
+
+        toast.success(`Your OTP is ${data.otp}`, {
+            autoClose: 5000
+        });
+
+        console.log("Directing to OTP page");
+
         navigate("/verifyotp", {
-          state: {
-            email: formData.email,
-          },
+            state: {
+                email: formData.email,
+            },
         });
 
         return;
-      }
-
-      toast.error(data.message);
-      return;
-
-    } catch (error) {
-      console.error(error);
-      toast.error("Server error");
-      return;
     }
+
+    toast.error(data.message || "Signup failed");
+
+} catch (error) {
+
+    console.error("FETCH ERROR:", error);
+
+    toast.error("Server error");
+}
   
 
   }
