@@ -52,7 +52,7 @@ const Login=()=>{
      
       if (response.ok) {
         toast.success(`Your OTP is ${data.otp}`);
-
+        console.log("Driecting to otp page")
         navigate("/verifyotp", {
           state: {
             email: formData.email,
