@@ -144,7 +144,7 @@ const Home = () => {
       <Navbar />
       <div
         className={`min-h-screen w-full${
-          darkMode ? "bg-[#121814]" : "bg-[#FCFAF7]"
+          darkMode ? "bg-[#121814]" : "bg-white"
         }`}
       >
         <div className="mx-auto">
