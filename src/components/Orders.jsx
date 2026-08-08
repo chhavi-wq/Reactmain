@@ -11,17 +11,28 @@ const Orders = () => {
 
   const { darkMode, toggleTheme } = useContext(ThemeContext);
 
-  const fetchOrders = async () => {
-    const response = await fetch("https://reactbackend-hg62.onrender.com/api/orders", {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
+ const fetchOrders = async () => {
+    const response = await fetch(
+        "https://reactbackend-hg62.onrender.com/api/orders",
+        {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        }
+    );
+
+    if (response.status === 401) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("role");
+
+        window.location.href = "/login";
+        return;
+    }
 
     const data = await response.json();
 
     setOrders(data);
-  };
+};
   console.log(orders)
 
   return (
