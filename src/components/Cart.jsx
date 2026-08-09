@@ -577,7 +577,7 @@ const Cart = () => {
             className={`w-full rounded-full py-4 text-lg font-medium text-white transition duration-300 ${
               darkMode
                 ? "bg-[#4E6B57] hover:bg-[#3F5948]"
-                : "bg-red-700 hover:bg-[#23332B]"
+                : "bg-red-700 hover:bg-red-900"
             }`}
           >
             Pay Now
