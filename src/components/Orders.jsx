@@ -10,9 +10,27 @@ const Orders = () => {
   }, []);
 
   const { darkMode, toggleTheme } = useContext(ThemeContext);
+ const apiFetch = async (url, options = {}) => {
+    const response = await fetch(url, {
+        ...options,
+        headers: {
+            ...options.headers,
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+    });
+
+    if (response.status === 401) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("role");
+        window.location.href = "/login";
+        return;
+    }
+
+    return response;
+};
 
  const fetchOrders = async () => {
-    const response = await fetch(
+    const response = await apiFetch(
         "https://reactbackend-hg62.onrender.com/api/orders",
         {
             headers: {

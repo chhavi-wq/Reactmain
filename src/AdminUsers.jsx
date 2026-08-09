@@ -80,7 +80,7 @@ const Admin = () => {
 
   const deleteOrder = async (id) => {
     try {
-      const response = await fetch(
+      const response = await apiFetch(
         `https://reactbackend-hg62.onrender.com/api/admin/orders/${id}`,
         {
           method: "DELETE",
@@ -113,7 +113,7 @@ const Admin = () => {
     }
 
     try {
-      const response = await fetch(
+      const response = await apiFetch(
         `https://reactbackend-hg62.onrender.com/api/admin/search?query=${value}`,
         {
           method: "GET",
@@ -143,7 +143,7 @@ const Admin = () => {
   const getOrders = async () => {
     console.log("orders");
     try {
-      const response = await fetch("https://reactbackend-hg62.onrender.com/api/admin/orders", {
+      const response = await apiFetch("https://reactbackend-hg62.onrender.com/api/admin/orders", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -162,7 +162,7 @@ const Admin = () => {
   };
   const updateStatus = async (id, status) => {
     try {
-      const response = await fetch(
+      const response = await apiFetch(
         `https://reactbackend-hg62.onrender.com/api/admin/orders/${id}`,
         {
           method: "PUT",

@@ -572,6 +572,16 @@ const Cart = () => {
             Clear Cart
           </button>
 
+   <button
+            onClick={placeOrder}
+            className={`w-full rounded-full py-4 text-lg font-medium text-white transition duration-300 ${
+              darkMode
+                ? "bg-[#4E6B57] hover:bg-[#3F5948]"
+                : "bg-[#32473D] hover:bg-[#23332B]"
+            }`}
+          >
+            Pay Now
+          </button>
 
           <button
             onClick={placeOrder}
