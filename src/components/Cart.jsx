@@ -23,6 +23,108 @@ const Cart = () => {
   const { darkMode, toggleTheme } = useContext(ThemeContext);
 
   const navigate = useNavigate();
+
+  const handlePayment = async () => {
+    try {
+        // 1. Create order on your backend
+        const response = await fetch(
+            "http://localhost:3000/api/payment/create-order",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    amount: total,
+                }),
+            }
+        );
+
+        const data = await response.json();
+
+        if (!data.success) {
+            alert("Unable to create payment order");
+            return;
+        }
+
+        // 2. Razorpay checkout options
+        const options = {
+            key: data.key,
+            amount: data.order.amount,
+            currency: data.order.currency,
+            name: "SAGE",
+            description: "SAGE Order",
+            order_id: data.order.id,
+
+       handler: async function (response) {
+    try {
+        const verifyResponse = await fetch(
+            "http://localhost:3000/api/payment/verify-payment",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+                body: JSON.stringify({
+                    razorpay_order_id:
+                        response.razorpay_order_id,
+
+                    razorpay_payment_id:
+                        response.razorpay_payment_id,
+
+                    razorpay_signature:
+                        response.razorpay_signature,
+
+                    products: cartItems,
+
+                    totalAmount: total,
+                }),
+            }
+        );
+
+        const result = await verifyResponse.json();
+
+        if (result.success) {
+            console.log(
+                "Payment verified and order created:",
+                result.order
+            );
+
+            alert("Payment successful!");
+
+            // We'll clear the cart here next
+        } else {
+            alert("Payment verification failed!");
+        }
+
+    } catch (error) {
+        console.error(
+            "Payment verification error:",
+            error
+        );
+
+        alert(
+            "Payment was completed, but something went wrong."
+        );
+    }
+},
+
+            theme: {
+                color: "#4E6B57",
+            },
+        };
+
+        // 3. Open Razorpay
+        const razorpay = new window.Razorpay(options);
+
+        razorpay.open();
+
+    } catch (error) {
+        console.error("Payment error:", error);
+    }
+};
+
   const placeOrder = async () => {
     try {
       const response = await fetch("https://reactbackend-hg62.onrender.com/api/orders", {
@@ -573,11 +675,11 @@ const Cart = () => {
           </button>
 
    <button
-            onClick={placeOrder}
+            onClick={handlePayment}
             className={`w-full rounded-full py-4 text-lg font-medium text-white transition duration-300 ${
               darkMode
                 ? "bg-[#4E6B57] hover:bg-[#3F5948]"
-                : "bg-red-700 hover:bg-red-900"
+                : "bg-red-700 hover:bg-red-800"
             }`}
           >
             Pay Now
