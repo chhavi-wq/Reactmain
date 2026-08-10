@@ -57,7 +57,10 @@ const Cart = () => {
             description: "SAGE Order",
             order_id: data.order.id,
 
-       handler: async function (response) {
+   handler: async function (response) {
+    console.log("🔥 RAZORPAY PAYMENT SUCCESS");
+    console.log("Razorpay response:", response);
+
     try {
         const verifyResponse = await fetch(
             "https://reactbackend-hg62.onrender.com/api/payment/verify-payment",
@@ -68,41 +71,36 @@ const Cart = () => {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
                 body: JSON.stringify({
-                    razorpay_order_id:
-                        response.razorpay_order_id,
-
-                    razorpay_payment_id:
-                        response.razorpay_payment_id,
-
-                    razorpay_signature:
-                        response.razorpay_signature,
-
+                    razorpay_order_id: response.razorpay_order_id,
+                    razorpay_payment_id: response.razorpay_payment_id,
+                    razorpay_signature: response.razorpay_signature,
                     products: cartItems,
-
                     totalAmount: total,
                 }),
             }
         );
 
+        console.log("VERIFY HTTP STATUS:", verifyResponse.status);
+
         const result = await verifyResponse.json();
 
-      if (result.success) {
-    console.log(
-        "Payment verified and order created:",
-        result.order
-    );
+        console.log("VERIFY RESULT:", result);
 
-    dispatch(clearCart());
-    navigate("/orders");
-} else {
-    alert("Payment verification failed!");
-}
+        if (result.success) {
+            console.log(
+                "Payment verified and order created:",
+                result.order
+            );
+
+            dispatch(clearCart());
+            navigate("/orders");
+        } else {
+            console.error("Payment verification failed:", result);
+            alert(result.message || "Payment verification failed!");
+        }
 
     } catch (error) {
-        console.error(
-            "Payment verification error:",
-            error
-        );
+        console.error("🔥 PAYMENT VERIFICATION ERROR:", error);
 
         alert(
             "Payment was completed, but something went wrong."
