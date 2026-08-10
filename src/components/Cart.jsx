@@ -40,7 +40,7 @@ const Cart = () => {
                 }),
             }
         );
-console.log("TOKEN:", localStorage.getItem("token"));
+
         const data = await response.json();
 
         if (!data.success) {
@@ -86,18 +86,17 @@ console.log("TOKEN:", localStorage.getItem("token"));
 
         const result = await verifyResponse.json();
 
-        if (result.success) {
-            console.log(
-                "Payment verified and order created:",
-                result.order
-            );
+      if (result.success) {
+    console.log(
+        "Payment verified and order created:",
+        result.order
+    );
 
-            alert("Payment successful!");
-
-            // We'll clear the cart here next
-        } else {
-            alert("Payment verification failed!");
-        }
+    dispatch(clearCart());
+    navigate("/orders");
+} else {
+    alert("Payment verification failed!");
+}
 
     } catch (error) {
         console.error(
@@ -126,39 +125,7 @@ console.log("TOKEN:", localStorage.getItem("token"));
     }
 };
 
-  const placeOrder = async () => {
-    try {
-      const response = await fetch("https://reactbackend-hg62.onrender.com/api/orders", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        body: JSON.stringify({
-          products: cartItems.map((item) => ({
-            productId: item.id,
-            title: item.title,
-            price: item.price,
-            quantity: item.quantity,
-            thumbnail: item.thumbnail,
-          })),
-          totalAmount: total,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        toast.success(data.message);
-        dispatch(clearCart());
-        navigate("/orders");
-      } else {
-        toast.error(data.message);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
+ 
   if (cartItems.length === 0) {
     return (
       <>
@@ -684,17 +651,6 @@ console.log("TOKEN:", localStorage.getItem("token"));
             }`}
           >
             Pay Now
-          </button>
-
-          <button
-            onClick={placeOrder}
-            className={`w-full rounded-full py-4 text-lg font-medium text-white transition duration-300 ${
-              darkMode
-                ? "bg-[#4E6B57] hover:bg-[#3F5948]"
-                : "bg-[#32473D] hover:bg-[#23332B]"
-            }`}
-          >
-            Secure Checkout →
           </button>
 
         </div>
