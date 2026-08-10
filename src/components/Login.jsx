@@ -109,6 +109,7 @@ const Login=()=>{
         if (response.ok) {
 
             localStorage.setItem("token", data.token);
+            console.log(data.token)
             localStorage.setItem("role", data.role);
 
             localStorage.setItem(
