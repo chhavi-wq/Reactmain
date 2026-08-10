@@ -3,12 +3,15 @@ import { FaUserCircle } from "react-icons/fa";
 import { useContext, useState } from "react";
 import  { ThemeContext } from "../ThemeContext.jsx"
 import {FaBars, FaTimes } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { clearCart } from "../redux/cartSlice";
 const Navbar = () => {
   const navigate = useNavigate();
 const { darkMode, toggleTheme } = useContext(ThemeContext);
   // Get current user safely
   const token = localStorage.getItem("token");
  const [users, setUsers] = useState([]);
+ const dispatch = useDispatch();
  const [menuOpen, setMenuOpen] = useState(false);
   const getUsers = async () => {
       try {
@@ -38,11 +41,15 @@ const { darkMode, toggleTheme } = useContext(ThemeContext);
   const count = cartitem.length;
 
   // Logout function
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/login");
-  };
+ const handleLogout = () => {
+    dispatch(clearCart());
 
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    localStorage.removeItem("currentUser");
+
+    navigate("/login");
+};
   return (
     <>
     <nav className="fixed top-4 left-0 right-0 mx-3 sm:mx-6 rounded-2xl border border-white/20 bg-white/40 backdrop-blur-lg shadow-lg z-50">
