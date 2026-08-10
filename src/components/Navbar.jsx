@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import  { ThemeContext } from "../ThemeContext.jsx"
 import {FaBars, FaTimes } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { clearCart } from "../redux/cartSlice";
+import { clearCart } from "./redux/cartSlice";
 const Navbar = () => {
   const navigate = useNavigate();
 const { darkMode, toggleTheme } = useContext(ThemeContext);
