@@ -9,12 +9,15 @@ import OtpInput from "react-otp-input";
 const VerifyOtp = () => {
   const [otp, setOtp] = useState("");
   const location = useLocation();
+  const [loading,setloading] = useState(false)
   const navigate = useNavigate();
 
   const email = location.state?.email;
 
   const handleSubmit = async(e) => {
     e.preventDefault();
+    if(loading) return 
+    setloading(true);
 
     console.log("OTP:", otp);
 
@@ -70,6 +73,9 @@ const VerifyOtp = () => {
     }
     catch{
       toast.error("Server error")
+    }
+    finally{
+      setloading(false);
     }
   };
 const handleResend= async () => {
@@ -132,11 +138,12 @@ const handleResend= async () => {
 />
 </div>
       <button
-        type="submit"
-        className="w-full mt-6 rounded-xl bg-[#5F745B] py-3 font-semibold text-white transition hover:bg-[#4B5F48]"
-      >
-        Verify OTP
-      </button>
+  type="submit"
+  disabled={loading}
+  className="w-full mt-6 py-3 rounded-xl bg-[#5F745B] text-white disabled:opacity-60"
+>
+  {loading ? "Verifying..." : "Verify OTP"}
+</button>
 
     </form>
 
