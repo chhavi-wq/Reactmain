@@ -39,7 +39,7 @@ const Cart = () => {
                 }),
             }
         );
-
+console.log("TOKEN:", localStorage.getItem("token"));
         const data = await response.json();
 
         if (!data.success) {
