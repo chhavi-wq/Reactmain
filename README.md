@@ -1,4 +1,4 @@
-<img width="1432" height="789" alt="Screenshot 2026-10-04 at 7 57 21 PM" src="https://github.com/user-attachments/assets/35f72370-8311-4394-8772-738f24eae340" /># MERN E-Commerce Website
+# MERN E-Commerce Website
 
 A full-stack e-commerce app with product browsing, cart, orders, JWT authentication with role-based access, OTP email verification, and Razorpay payments.
 
@@ -30,4 +30,9 @@ React.js, Redux, Tailwind CSS, Node.js, Express.js, MongoDB, Mongoose, JWT, bcry
 - JWT authentication with role-based access for users and admins
 - OTP-based email verification and bcrypt password hashing
 - Razorpay payment integration with HMAC-SHA256 signature verification
+  
+  ## SCREENSHOT
+<img width="1432" height="789" alt="Screenshot 2026-10-04 at 7 57 13 PM" src="https://github.com/user-attachments/assets/86723c04-5b83-45b4-b877-695ca632e12d" />
+<img width="1361" height="799" alt="Screenshot 2026-10-04 at 7 56 25 PM" src="https://github.com/user-attachments/assets/d903453e-54d7-4efe-b051-9e85ff90fbf2" />
+<img width="1450" height="829" alt="Screenshot 2026-10-04 at 7 55 34 PM" src="https://github.com/user-attachments/assets/5819611b-0334-4734-b67c-8c11042a535d" />
 
